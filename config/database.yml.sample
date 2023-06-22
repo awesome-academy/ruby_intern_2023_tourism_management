@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username:
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: tourism_management_development
+
+test:
+  <<: *default
+  database: tourism_management_test
+
+production:
+  <<: *default
+  database: tourism_management_production
+  username: tourism_management
+  password: <%= ENV['TOURISM_MANAGEMENT_DATABASE_PASSWORD'] %>
