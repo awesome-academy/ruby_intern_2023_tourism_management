@@ -9,3 +9,11 @@ min_length_name_10: 10
 max_5: 5
 image_size_400: 400
 format_date_f: "%F"
+min_length_text_10: 10
+max_length_text_100: 100
+max_length_text_254: 254
+valid_image_format: image/jpeg image/gif image/png
+validate_image_format: ["image/jpeg", "image/gif", "image/png"]
+max_image_size_5_MB: 5
+limit_image_area: [200, 200]
+tour_header_table: ["Image", "Tour name", "Category", "Cost", "Visit Location", ""]

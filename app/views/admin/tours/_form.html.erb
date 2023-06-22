@@ -1,0 +1,57 @@
+<%= form_for @tour, url: yield(:url) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <%= f.label :name, t(".label_name") %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="tour-input-col">
+      <%= f.label :description, t(".label_description") %>
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+  </div>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <%= f.label :category_id, t(".label_category") %>
+      </br>
+      <%= select_tag :category_id, options_for_select(get_categories, selected: @tour.category_id) %>
+    </div>
+    <div class="tour-input-col">
+      <%= f.label :cost, t(".label_cost") %>
+      <%= f.text_field :cost, class: "form-control" %>
+    </div>
+  </div>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <%= f.label :start_date, t(".label_start_date") %>
+      <%= f.date_field :start_date, class: "form-control" %>
+    </div>
+    <div class="tour-input-col">
+      <%= f.label :end_date, t(".label_end_date") %>
+      <%= f.date_field :end_date, class: "form-control" %>
+    </div>
+  </div>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <%= f.label :visit_location, t(".label_visit_location") %>
+      <%= f.text_field :visit_location, class: "form-control" %>
+    </div>
+    <div class="tour-input-col">
+      <%= f.label :start_location, t(".label_start_location") %>
+      <%= f.text_field :start_location, class: "form-control" %>
+    </div>
+  </div>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <span class="image">
+        <%= f.label :image, t(".label_image") %>
+        <%= f.file_field :image, accept: Settings.valid_image_format %>
+      </span>
+    </div>
+  </div>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <%= f.submit t(".save_button_text"), id: "btnSaveTourForm", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

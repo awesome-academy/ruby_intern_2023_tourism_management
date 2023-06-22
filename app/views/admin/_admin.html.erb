@@ -3,21 +3,9 @@
     class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     id="accordionSidebar"
   >
-    <a
-      class="sidebar-brand d-flex align-items-center justify-content-center"
-      href="index.html"
-    >
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3"><%= t "admin.title" %></div>
-    </a>
-
+    <%= link_to t("admin.title"), admin_tours_path, class: "sidebar-brand-text mx-3 sidebar-brand d-flex align-items-center justify-content-center" %>
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span><%= t "admin.dashboard_title" %></span></a
-      >
+      <%= link_to t("admin.tour_title"), admin_tours_path, class: "nav-link" %>
     </li>
     <hr class="sidebar-divider" />
   </ul>
@@ -61,9 +49,7 @@
         </ul>
       </nav>
       <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">
-          <%= yield :management %>
-        </h1>
+        <%= yield :management %>
       </div>
     </div>
   </div>

@@ -83,3 +83,63 @@ html {
     list-style: none;
   }
 }
+
+a {
+  text-decoration: none !important;
+}
+
+table th, table td {
+  width: 100%;
+  border: 1px solid $boder_primary_color;
+  padding: 8px 16px;
+  overflow-y: auto;
+  white-space: nowrap;
+}
+
+.container-fluid{
+  color: $text_primary_color;
+  table {
+    .id-col {
+      width: 48px;
+    };
+    .img-col {
+      min-width: 200px;
+    };
+    .name-col {
+      min-width: 300px;
+    }
+  }
+  .tour-navbar {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .new-btn {
+      padding: 0 16px;
+      height: 36px;
+      border: 1px solid $boder_primary_color;
+      border-radius: $border_radius_4;
+      display: flex;
+      align-items: center;
+    }
+    .new-btn:hover {
+      background-color: $button_primary_hover_color;
+    }
+  }
+  .form-control {
+    margin-bottom: 8px;
+  }
+  #btnSaveTourForm{
+    width: 120px;
+    margin: 16px 0;
+  }
+  .tour-input-row {
+    display: flex;
+    align-items: center;
+    .tour-input-col {
+      width: 50%;
+      padding: 0 16px;
+    }
+  }
+}

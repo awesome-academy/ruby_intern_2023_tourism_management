@@ -1,0 +1,5 @@
+<% provide :title, t(".title") %>
+<% provide :url, admin_tour_url(@tour) %>
+<% content_for :management do %>
+  <%= render "admin/tours/form" %>
+<% end %>

@@ -45,11 +45,19 @@ categories.each do |category|
     tour.save!
   end
 end
-# User.create!(
-#   phone: "0123456789",
-#   email: "test123@test.com",
-#   password: "123456",
-#   password_confirmation: "123456",
-#   name: "Test",
-#   role: "user",
-# )
+User.create!(
+  phone: "0123456789",
+  email: "lecuong@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  name: "cuong",
+  role: "user",
+)
+User.create!(
+  phone: "0123456789",
+  email: "vuquocbao@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  name: "bao",
+  role: "admin",
+)

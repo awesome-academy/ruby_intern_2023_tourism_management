@@ -18,12 +18,49 @@ en:
       user_not_found: User not found
   admin:
     title: Admin
-    dashboard_title: Dashboard
+    tour_title: Tour Management
     profile: Profile
     logout_button: Log out
+    unauthorized: You are not authorized to perform this action.
     tours:
       index:
         title: Tours
+        new_tour_text: New Tour
+      edit:
+        title: Edit tour
+      new:
+        title: New tour
+      form:
+        label_name: Name
+        label_description: Description
+        label_category: Category
+        label_cost: Cost
+        label_start_date: Start date
+        label_end_date: End date
+        label_visit_location: Visit location
+        label_start_location: Start location
+        label_image: Image
+        save_button_text: Save
+      tour:
+        edit_tour_text: Edit
+        delete_tour_text: Delete
+        delete_confirm: Are you sure?
+      flash:
+        created_tour_success: Tour created successfully
+        created_tour_failed: Tour created failed
+        updated_tour_success: Tour updated successfully
+        updated_tour_failed: Tour updated failed
+        deleted_tour_success: Tour deleted successfully
+        deleted_tour_failed: Tour deleted failed
+        tour_not_found: Tour not found
+        less_than_5MB_image_size: Image size should be less than 5 MB
+        category_not_found: Category not found
+        cant_destroy_tour: This tour can't be deleted
+      validate:
+        valid_image_format: has invalid image format
+  shared:
+    error_messages:
+      error_text: error
   home:
     title: Travel Sun
     hello: Hello

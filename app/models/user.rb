@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
+  has_many :orders, dependent: :destroy
+
   enum role: {guest: 0, admin: 1, user: 2}
 
   before_save :downcase_email

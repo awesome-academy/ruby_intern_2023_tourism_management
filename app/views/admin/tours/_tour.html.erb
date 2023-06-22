@@ -1,0 +1,10 @@
+<tr>
+  <th><%= image_tag tour.display_image %></th>
+  <th><%= link_to tour.name, edit_admin_tour_path(tour) %></th>
+  <th><%= tour.category_name %></th>
+  <th><%= number_to_currency tour.cost %></th>
+  <th><%= tour.visit_location %></th>
+  <th>
+    <%= link_to t(".edit_tour_text"), edit_admin_tour_path(tour) %>
+  </th>
+</tr>
