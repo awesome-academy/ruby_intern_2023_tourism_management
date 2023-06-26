@@ -1,0 +1,74 @@
+<div id="wrapper">
+  <ul
+    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+  >
+    <a
+      class="sidebar-brand d-flex align-items-center justify-content-center"
+      href="index.html"
+    >
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3"><%= t "admin.title" %></div>
+    </a>
+
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span><%= t "admin.dashboard_title" %></span></a
+      >
+    </li>
+    <hr class="sidebar-divider" />
+  </ul>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" >
+        <button
+          id="sidebarToggleTop"
+          class="btn btn-link d-md-none rounded-circle mr-3"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+        <ul class="navbar-nav ml-auto">
+          <div class="topbar-divider d-none d-sm-block"></div>
+          <li class="nav-item dropdown no-arrow">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="userDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                ><%= @current_user.name %></span
+              >
+              <img
+                class="img-profile rounded-circle"
+                src="/admin_layout/img/undraw_profile.svg"
+              />
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+              aria-labelledby="userDropdown"
+            >
+              <%= link_to t("admin.profile"), "#", class: "dropdown-item" %>
+              <%= link_to t("admin.logout_button"), logout_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="container-fluid">
+        <h1 class="h3 mb-4 text-gray-800">
+          <%= yield :management %>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/admin_layout/vendor/jquery/jquery.min.js"></script>
+<script src="/admin_layout/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin_layout/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/admin_layout/js/sb-admin-2.min.js"></script>

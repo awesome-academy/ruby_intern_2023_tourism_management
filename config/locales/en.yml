@@ -1,2 +1,26 @@
 en:
-  hello: "Hello world"
+  application:
+    base_title: Booking Tour
+  sessions:
+    new:
+      title: Log in
+      remember_me_text: Remember me
+      login_button: Log in
+      forgot_password_text: Forgot password?
+      create_account_text: Create account!
+    flash:
+      login_failed: Log in failed
+      user_not_found: User not found
+      login_required: Login required
+      admin_login_required: Admin login required
+  users:
+    flash:
+      user_not_found: User not found
+  admin:
+    title: Admin
+    dashboard_title: Dashboard
+    profile: Profile
+    logout_button: Log out
+    tours:
+      index:
+        title: Tours

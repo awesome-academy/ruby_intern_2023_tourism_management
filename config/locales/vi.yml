@@ -1,0 +1,26 @@
+vi:
+  application:
+    base_title: Booking Tour
+  sessions:
+    new:
+      title: Đăng nhập
+      remember_me_text: Ghi nhớ đăng nhập
+      login_button: Đăng nhập
+      forgot_password_text: Quên mật khẩu?
+      create_account_text: Tạo tài khoản!
+    flash:
+      login_failed: Đăng nhập thất bại
+      user_not_found: Không tìm thấy người dùng
+      login_required: Yêu cầu đăng nhập
+      admin_login_required: Yêu cầu đăng nhập quản trị viên
+  users:
+    flash:
+      user_not_found: Không tìm thấy người dùng
+  admin:
+    title: Quản trị viên
+    dashboard_title: Tổng quan
+    profile: Thông tin cá nhân
+    logout_button: Đăng xuất
+    tours:
+      index:
+        title: Tours
