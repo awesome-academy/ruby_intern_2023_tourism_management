@@ -1,0 +1,12 @@
+<% if @tours.present? %>
+  <ul class="tour_home_page">
+    <%= render partial: "tours/tour_home", collection: @tours %>
+  </ul>
+  <%== pagy_bootstrap_nav @pagy %>
+<% else %>
+  <div>
+    <h3>
+      <%= t "tours.not_found" %>
+    </h3>
+  </div>
+<% end %>

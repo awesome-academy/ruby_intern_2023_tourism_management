@@ -1,7 +1,85 @@
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap/scss/bootstrap";
 @import "root";
+@import "color";
 
 html {
   font-size: $font_size_16;
+  .navbar {
+    padding: 10px 20px;
+    background-color: aliceblue;
+    .title {
+      font-size: larger;
+      font-weight: bold;
+    }
+    #navbarSupportedContent {
+      justify-content: flex-end;
+    }
+    .header_nav {
+      display: flex;
+      gap: 5px;
+      margin-right: 20px;
+    }
+  }
+
+  .search_input {
+    .search {
+      width: 100%;
+      padding: 10px 100px 10px 120px;
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      #name {
+        width: 100%;
+        border-radius: 8px;
+        padding: 0px 10px;
+      }
+    }
+  }
+
+  .content {
+    padding: 10px 80px;
+    margin: 10px 0px;
+    .tour_home_page {
+      display: grid;
+      grid-template-columns: auto auto auto;
+
+      .tour_item {
+        background-color: white;
+        padding: 10px;
+        margin: 5px;
+        border: solid 1px $gray;
+        border-radius: 8px;
+        box-shadow: 2px 5px 5px $gray;
+        text-align: center;
+        transition: all;
+        .tour_image {
+          height: 200px;
+        }
+        .tour_item__content {
+          text-align: left;
+          .title {
+            font-weight: bold;
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+  }
+  .redirect_tag {
+    text-decoration: none;
+    padding: 8px 16px;
+    // border: solid 1px #f0f0f1;
+    // border-radius: 8px;
+    color: black;
+  }
+
+  .redirect_tag:hover {
+    background-color: $gray;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
 }

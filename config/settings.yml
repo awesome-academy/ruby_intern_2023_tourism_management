@@ -4,3 +4,8 @@ min_length_email_20: 20
 max_length_email_255: 255
 min_length_password_6: 6
 gravatar_url: https://secure.gravatar.com/avatar/
+max_length_name_100: 100
+min_length_name_10: 10
+max_5: 5
+image_size_400: 400
+format_date_f: "%F"
