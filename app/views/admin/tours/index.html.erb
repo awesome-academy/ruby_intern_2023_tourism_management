@@ -1,4 +1,20 @@
 <% provide :title, t(".title") %>
 <% content_for :management do %>
-  <p>© 2023 My App. All rights reserved.</p>
+  <div class="tour-navbar">
+    <div class="new-btn"><%= link_to t(".new_tour_text"), new_admin_tour_path %></div>
+    <%== pagy_bootstrap_nav @pagy_tours if @pagy_tours.pages > 1 %>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <% headers = Array.new Settings.tour_header_table %>
+        <% headers.each do |header| %>
+          <th><%= header %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @tours %>
+    </tbody>
+  </table>
 <% end %>

@@ -1,10 +1,9 @@
 class Category < ApplicationRecord
-  validates :name, presence: true, uniqueness: true,
-                  length: {
-                    minimun: Settings.min_length_name_10,
-                    maximum: Settings.max_length_name_100
-                  }
-  validates :description, :duration, presence: true
+  has_many :tours, dependent: :restrict_with_exception
 
-  has_many :tours, dependent: :destroy
+  scope :by_id, ->(category_id){where id: category_id}
+
+  validates :name, presence: true, uniqueness: true,
+                  length: {maximum: Settings.max_length_text_100, minimum: Settings.min_length_text_10}
+  validates :description, :duration, presence: true
 end

@@ -18,12 +18,49 @@ vi:
       user_not_found: Không tìm thấy người dùng
   admin:
     title: Quản trị viên
-    dashboard_title: Tổng quan
+    tour_title: Quản lý Tour
     profile: Thông tin cá nhân
     logout_button: Đăng xuất
+    unauthorized: Người dùng không có quyền để thực hiện hành động này.
     tours:
       index:
         title: Tours
+        new_tour_text: Thêm tour
+      edit:
+        title: Sửa tour
+      new:
+        title: Thêm mới tour
+      form:
+        label_name: Tên
+        label_description: Mô tả
+        label_category: Danh mục
+        label_cost: Giá
+        label_start_date: Ngày đi
+        label_end_date: Ngày về
+        label_visit_location: Địa điểm
+        label_start_location: Nơi đón
+        label_image: Ảnh
+        save_button_text: Lưu
+      tour:
+        edit_tour_text: Sửa
+        delete_tour_text: Xóa
+        delete_confirm: Bạn có chắc chắn muốn xóa?
+      flash:
+        created_tour_success: Tạo tour thành công
+        created_tour_failed: Tạo tour thất bại
+        updated_tour_success: Cập nhật tour thành công
+        updated_tour_failed: Cập nhật tour thất bại
+        deleted_tour_success: Xóa tour thành công
+        deleted_tour_failed: Xóa tour thất bại
+        tour_not_found: Không tìm thấy tour
+        less_than_5MB_image_size: Kích cỡ ảnh phải nhỏ hơn 5MB
+        category_not_found: Không tìm thấy danh mục
+        cant_destroy_tour: Tour này không thể bị xóa
+      validate:
+        valid_image_format: không đúng định dạng
+  shared:
+    error_messages:
+      error_text: lỗi
   home:
     title: Travel Sun
     hello: Chao

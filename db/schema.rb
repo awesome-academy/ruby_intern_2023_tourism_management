@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_26_015515) do
+ActiveRecord::Schema.define(version: 2023_06_27_081114) do
+
+  create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body", size: :long
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +59,23 @@ ActiveRecord::Schema.define(version: 2023_06_26_015515) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "tour_id", null: false
+    t.bigint "user_id", null: false
+    t.text "note"
+    t.integer "status"
+    t.integer "amount_member"
+    t.integer "tour_guide"
+    t.integer "total_cost"
+    t.string "contact_name"
+    t.string "contact_phone"
+    t.string "contact_address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tour_id"], name: "index_orders_on_tour_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "tours", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.string "name"
@@ -78,5 +105,7 @@ ActiveRecord::Schema.define(version: 2023_06_26_015515) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "orders", "tours"
+  add_foreign_key "orders", "users"
   add_foreign_key "tours", "categories"
 end
