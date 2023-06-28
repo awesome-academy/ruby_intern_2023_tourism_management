@@ -24,3 +24,18 @@ en:
     tours:
       index:
         title: Tours
+  home:
+    title: Travel Sun
+    hello: Hello
+    search: Search here
+    profile: Profile
+    order: My Order
+  tours:
+    duration: "Duration: %{duration} days"
+    start_date: "Start date: %{start_date}"
+    location: "Location: %{location}"
+    detail: Detail
+    not_found: No record
+    compare_date: end_date must be after start_date
+  footer:
+    footer: This is footer

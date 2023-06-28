@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       if user.admin?
         redirect_to admin_tours_path
       else
-        redirect_to user_path user
+        redirect_to root_path
       end
     else
       flash.now[:danger] = t "sessions.flash.login_failed"

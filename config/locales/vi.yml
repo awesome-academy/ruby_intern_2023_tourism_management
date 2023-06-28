@@ -24,3 +24,18 @@ vi:
     tours:
       index:
         title: Tours
+  home:
+    title: Travel Sun
+    hello: Chao
+    search: Tim kiem
+    profile: Thong tin ca nhan
+    order: Tour cua toi
+  tours:
+    duration: "Thoi gian: %{duration} ngay"
+    start_date: "Ngay bat dau: %{start_date}"
+    location: "Dia danh: %{location}"
+    detail: Chi tiet
+    not_found: Khong co ban ghi nao
+    compare_date: Ngay Ket thuc phai lon hon ngay Khoi hanh
+  footer:
+    footer: Chung toi khong co footer

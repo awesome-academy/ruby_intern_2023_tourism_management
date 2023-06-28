@@ -1,0 +1,18 @@
+<li class="tour_item">
+  <%= image_tag tour.display_image, class: "tour_image" %>
+  <div class="tour_item__content">
+    <p class="title">
+      <%= tour.name %>
+    </p>
+    <p>
+      <%= t "tours.location", location: tour.visit_location %>
+    </p>
+    <p>
+      <%= t "tours.duration", duration: tour.category.duration %>
+    </p>
+    <p>
+      <%= t "tours.start_date",
+          start_date: tour.start_date.strftime(Settings.format_date_f) %>
+    </p>
+  </div>
+</li>

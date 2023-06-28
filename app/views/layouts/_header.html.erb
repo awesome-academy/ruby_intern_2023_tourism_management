@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg">
+  <%= link_to t("home.title"), root_path, class: "redirect_tag title" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+  aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto header_nav">
+      <%= render partial: "categories/category_search",
+        collection: @categories %>
+    </ul>
+
+    <% if logged_in? %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle"
+        type="button" data-toggle="dropdown" aria-expanded="false">
+          <%= t "home.hello" + " " + current_user.name %>
+        </button>
+        <div class="dropdown-menu">
+          <%= link_to t("home.profile"), login_path ,class:"dropdown-item" %>
+          <%= link_to t("home.order"), login_path,class:"dropdown-item" %>
+        </div>
+      </div>
+    <% else %>
+      <%= link_to t("sessions.new.login_button"),
+          login_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</nav>
+<div class="search_input">
+  <%= form_tag tours_path, method: :get, class: "search" do %>
+    <%= text_field_tag :name %>
+    <%= submit_tag t("home.search"), class: "btn btn-success" %>
+  <% end %>
+</div>
