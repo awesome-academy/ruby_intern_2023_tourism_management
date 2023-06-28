@@ -1,1 +1,31 @@
-<%= render @tour %>
+<div class="detail-container">
+  <div class="detail-left">
+    <div class="detail-header"><%= @tour.name %></div>
+    <%= image_tag @tour.display_image, class: "tour_image" %>
+    <div class="detail-tour">
+      <div class="detail-tour-header"><%= t ".detail_header" %></div>
+      <div class="tour-info">
+        <div class="tour-info-title"><%= t ".description" %></div>
+        <div class="tour-description"><%= @tour.description %></div>
+        <div class="tour-info-title"><%= t ".schedule" %></div>
+        <div class="tour-schedule"><%= @tour.content %></div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-right">
+    <div class="tour-price">
+      <div class="tour-price-title"><%= t ".price_title" %></div>
+      <div class="tour-price-text"><%= number_to_currency @tour.cost %></div>
+    </div>
+    <div class="tour-button">
+      <%= link_to t(".order_button"), new_order_path %>
+    </div>
+    <div class="tour-date">
+      <div><%= t "tours.duration", duration: @tour.category.duration %></span>
+      <div><%= t "tours.start_date", start_date: @tour.start_date.strftime(Settings.format_date_f) %></span>
+      <div><%= t "tours.end_date", end_date: @tour.end_date.strftime(Settings.format_date_f) %></span>
+      <div><%= t "tours.location", location: @tour.visit_location %></span>
+      <div><%= t "tours.start_location", start_location: @tour.start_location %></span>
+    </div>
+  </div>
+</div>

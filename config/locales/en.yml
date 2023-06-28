@@ -71,9 +71,15 @@ en:
   tours:
     duration: "Duration: %{duration} days"
     start_date: "Start date: %{start_date}"
+    end_date: "End date: %{end_date}"
     location: "Location: %{location}"
+    start_location: "Start_location: %{start_location}"
     detail: Detail
     not_found: No record
     compare_date: end_date must be after start_date
-  footer:
-    footer: This is footer
+    show:
+      detail_header: Detail info
+      description: Description
+      schedule: Schedule
+      price_title: "Price only:"
+      order_button: Order now

@@ -64,16 +64,22 @@ vi:
       error_text: lỗi
   home:
     title: Travel Sun
-    hello: Chao
-    search: Tim kiem
-    profile: Thong tin ca nhan
-    order: Tour cua toi
+    hello: Chào
+    search: Tìm kiếm
+    profile: Thông tin cá nhân
+    order: Tour của tôi
   tours:
-    duration: "Thoi gian: %{duration} ngay"
-    start_date: "Ngay bat dau: %{start_date}"
-    location: "Dia danh: %{location}"
-    detail: Chi tiet
-    not_found: Khong co ban ghi nao
-    compare_date: Ngay Ket thuc phai lon hon ngay Khoi hanh
-  footer:
-    footer: Chung toi khong co footer
+    duration: "Thời gian: %{duration} ngày"
+    start_date: "Ngày bắt đầu: %{start_date}"
+    end_date: "Ngày kết thúc: %{end_date}"
+    location: "Địa danh: %{location}"
+    start_location: "Nơi xuất phát: %{start_location}"
+    detail: Chi tiết
+    not_found: Không có bản ghi nào
+    compare_date: Ngày kết thúc phải lớn hơn ngày khởi hành
+    show:
+      detail_header: Thông tin chi tiết
+      description: Mô tả
+      schedule: Lịch trình
+      price_title: "Giá chỉ từ:"
+      order_button: Đặt ngay
