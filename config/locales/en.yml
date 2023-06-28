@@ -40,6 +40,7 @@ en:
         label_visit_location: Visit location
         label_start_location: Start location
         label_image: Image
+        label_content: Content
         save_button_text: Save
       tour:
         edit_tour_text: Edit

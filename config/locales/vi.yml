@@ -40,6 +40,7 @@ vi:
         label_visit_location: Địa điểm
         label_start_location: Nơi đón
         label_image: Ảnh
+        label_content: Lịch trình
         save_button_text: Lưu
       tour:
         edit_tour_text: Sửa
