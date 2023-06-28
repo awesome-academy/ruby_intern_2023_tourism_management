@@ -35,7 +35,7 @@ class Admin::ToursController < Admin::AdminController
   private
   def tour_params
     params.require(:tour).permit :name, :image, :start_date, :end_date, :visit_location,
-                                 :cost, :description, :start_location
+                                 :cost, :description, :start_location, :content
   end
 
   def prepare_create_tour

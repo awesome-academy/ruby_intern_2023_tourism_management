@@ -2,6 +2,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "root";
 @import "color";
+@import "actiontext";
 
 html {
   font-size: $font_size_16;
@@ -141,5 +142,9 @@ table th, table td {
       width: 50%;
       padding: 0 16px;
     }
+  }
+  .tour-richtext-row {
+    padding: 0 16px;
+    margin-top: 16px;
   }
 }

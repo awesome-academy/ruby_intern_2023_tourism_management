@@ -49,6 +49,10 @@
       </span>
     </div>
   </div>
+  <div class="tour-richtext-row">
+    <%= f.label :content, t(".label_content") %>
+    <%= f.rich_text_area :content %>
+  </div>
   <div class="tour-input-row">
     <div class="tour-input-col">
       <%= f.submit t(".save_button_text"), id: "btnSaveTourForm", class: "btn btn-primary" %>
