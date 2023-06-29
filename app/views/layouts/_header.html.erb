@@ -29,9 +29,3 @@
     <% end %>
   </div>
 </nav>
-<div class="search_input">
-  <%= form_tag tours_path, method: :get, class: "search" do %>
-    <%= text_field_tag :name %>
-    <%= submit_tag t("home.search"), class: "btn btn-success" %>
-  <% end %>
-</div>

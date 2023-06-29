@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
-    # root "sessions#new"
+    root "tours#index"
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :tours, except: %i(show delete)
     end
-    root "tours#index"
-    resources :tours, only: [:show, :index]
+    resources :tours, only: %i(show index)
+    resources :orders, only: :new
   end
 end
