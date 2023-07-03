@@ -99,6 +99,10 @@ en:
       end_date: "End date: %{end_date}"
       amount_member: "Apply for: %{amount_member} person"
       total_cost: "Total: %{total_cost}"
+    validate:
+      greater_than_0: must be greater than 0
     flash:
       not_logged_in: Login required
       cant_find_current_tour: Can't find tour
+      create_order_success: Create order successfully
+      create_order_failed: Create order failed

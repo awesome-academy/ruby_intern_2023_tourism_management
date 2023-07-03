@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_032841) do
     t.bigint "tour_id", null: false
     t.bigint "user_id", null: false
     t.text "note"
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "amount_member"
     t.integer "tour_guide"
     t.integer "total_cost"

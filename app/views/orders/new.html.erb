@@ -24,7 +24,7 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <%= f.label :amount_member, t(".label_amount_member") %>
-          <%= f.number_field :amount_member, class: "form-control" %>
+          <%= f.number_field :amount_member, min: 1, step: "1", class: "form-control" %>
           <div class="tour-guide-checkbox">
             <%= f.label :tour_guide do %>
               <%= f.check_box :tour_guide %>
@@ -49,8 +49,10 @@
       </div>
       <div class="tour-info-text"><%= t ".start_date", start_date: @order.tour_start_date.strftime(Settings.format_date_f) %></div>
       <div class="tour-info-text"><%= t ".end_date", end_date: @order.tour_end_date.strftime(Settings.format_date_f) %></div>
-      <div class="tour-info-text"><%= t ".amount_member", amount_member: @order.amount_member %></div>
-      <div class="total-cost"><%= t ".total_cost", total_cost: number_to_currency(@order.total_cost) %></div>
+      <div id="apply_for_amount_member" class="tour-info-text"><%= t ".amount_member", amount_member: @order.amount_member %></div>
+      <div id="order_total_cost" class="total-cost"><%= t ".total_cost", total_cost: number_to_currency(@order.total_cost) %></div>
+      <%= hidden_field_tag :order_tour_cost, @order.tour_cost %>
+      <%= hidden_field_tag :order_tour_guide_cost, @order.tour_tour_guide_cost %>
     </div>
   </div>
 <% end %>

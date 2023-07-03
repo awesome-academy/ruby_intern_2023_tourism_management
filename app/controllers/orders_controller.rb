@@ -2,10 +2,19 @@ class OrdersController < ApplicationController
   before_action :check_user, only: %i(new create)
   before_action :find_current_tour, only: %i(new create)
   before_action :build_new_order, only: :new
+  before_action :calculate_total_cost, only: :create
 
   def new; end
 
-  def create; end
+  def create
+    if @order.save
+      flash[:success] = t "orders.flash.create_order_success"
+      redirect_to root_path
+    else
+      flash.now[:danger] = t "orders.flash.create_order_failed"
+      render :new
+    end
+  end
 
   private
   def order_params
@@ -17,6 +26,13 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build tour: @current_tour, contact_name: current_user.name,
                                        contact_phone: current_user.phone, contact_address: current_user.address,
                                        amount_member: 1, total_cost: @current_tour.cost
+  end
+
+  def calculate_total_cost
+    @order = current_user.orders.build order_params
+    @order.tour = @current_tour
+    @order.total_cost = @order.tour.cost * order_params[:amount_member].to_i
+    @order.total_cost += @order.tour_tour_guide_cost if order_params[:tour_guide]
   end
 
   def check_user
