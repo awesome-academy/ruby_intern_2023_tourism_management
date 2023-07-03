@@ -203,6 +203,11 @@ table th, table td {
       padding-left: 24px;
     }
   }
+  .check-mark {
+    font-size: 2rem;
+    text-align: center;
+    color: $green_background_color;
+  }
 }
 
 .detail-container {
@@ -339,9 +344,6 @@ table th, table td {
   border-radius: 12px;
   background-color: $grey_background_color;
   margin-bottom: 16px;
-  div {
-    padding: 4px 0;
-  }
   .user-order-title {
     font-size: 1.25rem;
     font-weight: 600;
@@ -364,6 +366,52 @@ table th, table td {
   }
   .red-bg {
     background-color: $red_background_color;
+  }
+  .order-info {
+    padding-top: 24px;
+    align-items: flex-start;
+    justify-content: space-between;
+    .order-image {
+      width: 360px;
+    }
+    .order-tour-info {
+      width: 360px;
+      .tour-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+      .point {
+        width: 8px;
+        height: 8px;
+        background-color: $grey_text_color;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      .checkmark {
+        color: $green_background_color;
+        font-size: 1.25rem;
+      }
+      .uncheckmark {
+        color: $red_text_color;
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding-right: 4px;
+      }
+      .tour-info-item {
+        padding: 4px 0;
+        font-size: 1.125rem;
+      }
+    }
+    .order-payment {
+      width: 300px;
+      color: $red_text_color;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      .total-cost {
+        font-size: 1.325rem;
+      }
+    }
   }
 }
 

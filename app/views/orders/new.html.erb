@@ -5,11 +5,11 @@
       <div class="pay-info-title info-title"><%= t ".pay_info_title" %></div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <%= f.label :contact_name, t(".label_contact_name") %>
+          <%= f.label :contact_name, t(".label_contact_name") %> <span class="required">*</span>
           <%= f.text_field :contact_name, class: "form-control" %>
         </div>
         <div class="form-group col-md-6">
-          <%= f.label :contact_phone, t(".label_contact_phone") %>
+          <%= f.label :contact_phone, t(".label_contact_phone") %> <span class="required">*</span>
           <%= f.text_field :contact_phone, class: "form-control" %>
         </div>
       </div>
@@ -18,12 +18,12 @@
         <%= f.text_field :user_email, class: "form-control", disabled: true %>
       </div>
       <div class="form-group">
-        <%= f.label :contact_address, t(".label_contact_address") %>
+        <%= f.label :contact_address, t(".label_contact_address") %> <span class="required">*</span>
         <%= f.text_field :contact_address, class: "form-control" %>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <%= f.label :amount_member, t(".label_amount_member") %>
+          <%= f.label :amount_member, t(".label_amount_member") %> <span class="required">*</span>
           <%= f.number_field :amount_member, min: 1, step: "1", class: "form-control" %>
           <div class="tour-guide-checkbox">
             <%= f.label :tour_guide do %>
