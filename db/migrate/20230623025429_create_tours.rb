@@ -10,6 +10,7 @@ class CreateTours < ActiveRecord::Migration[6.1]
       t.text :visit_location
       t.text :start_location
 
+      t.index :name, :unique => true
       t.timestamps
     end
   end

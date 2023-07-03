@@ -16,10 +16,17 @@
     <table>
       <thead>
         <tr>
-          <% headers = Array.new Settings.order_header_table %>
-          <% headers.each do |header| %>
-            <th><%= header %></th>
-          <% end %>
+          <th><%= t ".order_table.order_number" %></th>
+          <th><%= t ".order_table.image" %></th>
+          <th><%= t ".order_table.tour_name" %></th>
+          <th><%= t ".order_table.cost" %></th>
+          <th><%= t ".order_table.member" %></th>
+          <th><%= t ".order_table.contact_name" %></th>
+          <th><%= t ".order_table.contact_phone" %></th>
+          <th><%= t ".order_table.contact_address" %></th>
+          <th><%= t ".order_table.tour_guide" %></th>
+          <th><%= t ".order_table.total_cost" %></th>
+          <th><%= t ".order_table.status" %></th>
         </tr>
       </thead>
       <tbody id="order_paginate">

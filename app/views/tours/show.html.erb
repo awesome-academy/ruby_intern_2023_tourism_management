@@ -17,9 +17,15 @@
       <div class="tour-price-title"><%= t ".price_title" %></div>
       <div class="tour-price-text"><%= number_to_currency @tour.cost %></div>
     </div>
-    <div class="tour-button">
-      <%= link_to t(".order_button"), new_order_path %>
-    </div>
+      <% if Date.today < @tour.start_date %>
+        <div class="tour-button">
+          <%= link_to t(".order_button"), new_order_path %>
+        </div>
+      <% else %>
+        <div class="disable-tour-button">
+          <%= t ".disable_order_button" %>
+        </div>
+      <% end %>
     <div class="tour-date">
       <div><%= t "tours.duration", duration: @tour.category.duration %></span>
       <div><%= t "tours.start_date", start_date: @tour.start_date.strftime(Settings.format_date_f) %></span>

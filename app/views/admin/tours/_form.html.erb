@@ -1,12 +1,12 @@
-<%= form_for @tour, url: yield(:url) do |f| %>
+<%= form_for tour, url: yield(:url) do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="tour-input-row">
     <div class="tour-input-col">
-      <%= f.label :name, t(".label_name") %>
+      <%= f.label :name, t(".label_name") %> <span class="required">*</span>
       <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="tour-input-col">
-      <%= f.label :description, t(".label_description") %>
+      <%= f.label :description, t(".label_description") %> <span class="required">*</span>
       <%= f.text_field :description, class: "form-control" %>
     </div>
   </div>
@@ -14,43 +14,60 @@
     <div class="tour-input-col">
       <%= f.label :category_id, t(".label_category") %>
       </br>
-      <%= select_tag :category_id, options_for_select(get_categories, selected: @tour.category_id) %>
+      <%= select_tag :category_id, options_for_select(load_categories, selected: tour.category_id) %>
     </div>
     <div class="tour-input-col">
-      <%= f.label :cost, t(".label_cost") %>
-      <%= f.text_field :cost, class: "form-control" %>
+      <%= f.label :cost, t(".label_cost") %> <span class="required">*</span>
+      <%= f.number_field :cost, min: 1000, step: "1000", class: "form-control" %>
+    </div>
+  </div>
+  <% if show_new_category? %>
+    <div class="new-category-form">
+      <%= f.label :is_create_category do %>
+        <%= f.check_box :is_create_category %>
+        <span class="span-checkbox"><%= t ".create_new_category_checkbox" %></span>
+      <% end %>
+      <div id="new_category_content", class="new-category-content">
+        <%= f.fields_for :category do |c| %>
+          <%= render "category_fields", :f => c %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div class="tour-input-row">
+    <div class="tour-input-col">
+      <%= f.label :start_date, t(".label_start_date") %> <span class="required">*</span>
+      <%= f.date_field :start_date, min: Date.today.to_s, class: "form-control" %>
+    </div>
+    <div class="tour-input-col">
+      <%= f.label :end_date, t(".label_end_date") %> <span class="required">*</span>
+      <%= f.date_field :end_date, min: Date.today.to_s, class: "form-control" %>
     </div>
   </div>
   <div class="tour-input-row">
     <div class="tour-input-col">
-      <%= f.label :start_date, t(".label_start_date") %>
-      <%= f.date_field :start_date, class: "form-control" %>
-    </div>
-    <div class="tour-input-col">
-      <%= f.label :end_date, t(".label_end_date") %>
-      <%= f.date_field :end_date, class: "form-control" %>
-    </div>
-  </div>
-  <div class="tour-input-row">
-    <div class="tour-input-col">
-      <%= f.label :visit_location, t(".label_visit_location") %>
+      <%= f.label :visit_location, t(".label_visit_location") %> <span class="required">*</span>
       <%= f.text_field :visit_location, class: "form-control" %>
     </div>
     <div class="tour-input-col">
-      <%= f.label :start_location, t(".label_start_location") %>
+      <%= f.label :start_location, t(".label_start_location") %> <span class="required">*</span>
       <%= f.text_field :start_location, class: "form-control" %>
     </div>
   </div>
   <div class="tour-input-row">
     <div class="tour-input-col">
       <span class="image">
-        <%= f.label :image, t(".label_image") %>
+        <%= f.label :image, t(".label_image") %> <span class="required">*</span>
         <%= f.file_field :image, accept: Settings.valid_image_format %>
       </span>
     </div>
+    <div class="tour-input-col">
+      <%= f.label :tour_guide_cost, t(".label_tour_guide_cost") %> <span class="required">*</span>
+      <%= f.number_field :tour_guide_cost, min: 1000, step: "1000", class: "form-control" %>
+    </div>
   </div>
   <div class="tour-richtext-row">
-    <%= f.label :content, t(".label_content") %>
+    <%= f.label :content, t(".label_content") %> <span class="required">*</span>
     <%= f.rich_text_area :content %>
   </div>
   <div class="tour-input-row">

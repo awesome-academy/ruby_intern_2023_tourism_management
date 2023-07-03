@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_032841) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tour_guide_cost"
     t.index ["category_id"], name: "index_tours_on_category_id"
+    t.index ["name"], name: "name_UNIQUE", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

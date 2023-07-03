@@ -1,0 +1,6 @@
+<%= f.label :name, t(".label_name") %> <span class="required">*</span>
+<%= f.text_field :name, class: "form-control" %>
+<%= f.label :description, t(".label_description") %> <span class="required">*</span>
+<%= f.text_field :description, class: "form-control" %>
+<%= f.label :duration, t(".label_duration") %> <span class="required">*</span>
+<%= f.number_field :duration, min: 1, step: "1", class: "form-control" %>

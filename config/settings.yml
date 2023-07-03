@@ -16,7 +16,4 @@ valid_image_format: image/jpeg image/gif image/png
 validate_image_format: ["image/jpeg", "image/gif", "image/png"]
 max_image_size_5_MB: 5
 limit_image_area: [200, 200]
-tour_header_table: ["Image", "Tour name", "Category", "Cost", "Visit Location", ""]
-order_header_table: ["Order number", "Image", "Tour name", "Cost", "Member", "Contact name", "Contact Phone", "Contact Address",
-                     "Tour Guide", "Total cost", "Status"]
 all_status_value: all
