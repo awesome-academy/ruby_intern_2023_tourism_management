@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      default: "%d-%m-%Y"
   application:
     base_title: Booking Tour
   sessions:
@@ -59,6 +62,18 @@ en:
         cant_destroy_tour: This tour can't be deleted
       validate:
         valid_image_format: has invalid image format
+    order_title: Order management
+    orders:
+      status_all: All status
+      index:
+        title: Orders
+        submit_button: Submit
+        approved_status: Approved
+        cancelled_status: Cancelled
+        search_button: Search
+      flash:
+        order_not_found: Order not found
+        cant_update_tour: Cannot update tour
   shared:
     error_messages:
       error_text: error
