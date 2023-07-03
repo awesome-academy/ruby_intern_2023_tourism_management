@@ -1,1 +1,56 @@
-<div>New order</div>
+<%= form_for @order do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="order-container">
+    <div class="order-left">
+      <div class="pay-info-title info-title"><%= t ".pay_info_title" %></div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :contact_name, t(".label_contact_name") %>
+          <%= f.text_field :contact_name, class: "form-control" %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.label :contact_phone, t(".label_contact_phone") %>
+          <%= f.text_field :contact_phone, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :user_email, t(".label_contact_email") %>
+        <%= f.text_field :user_email, class: "form-control", disabled: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :contact_address, t(".label_contact_address") %>
+        <%= f.text_field :contact_address, class: "form-control" %>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :amount_member, t(".label_amount_member") %>
+          <%= f.number_field :amount_member, class: "form-control" %>
+          <div class="tour-guide-checkbox">
+            <%= f.label :tour_guide do %>
+              <%= f.check_box :tour_guide %>
+              <span><%= t ".label_tour_guide", tour_guide_cost: number_to_currency(@order.tour_tour_guide_cost) %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.label :note, t(".label_note") %>
+          <%= f.text_area :note, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-row order-submit-button">
+        <%= f.submit t(".order_button"), class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="order-right">
+      <div class="tour-info-title info-title"><%= t ".tour_info_title" %></div>
+      <div class="flex">
+        <%= image_tag @order.display_image, class: "tour_image" %>
+        <div class="tour-name"><%= @order.tour_name %></div>
+      </div>
+      <div class="tour-info-text"><%= t ".start_date", start_date: @order.tour_start_date.strftime(Settings.format_date_f) %></div>
+      <div class="tour-info-text"><%= t ".end_date", end_date: @order.tour_end_date.strftime(Settings.format_date_f) %></div>
+      <div class="tour-info-text"><%= t ".amount_member", amount_member: @order.amount_member %></div>
+      <div class="total-cost"><%= t ".total_cost", total_cost: number_to_currency(@order.total_cost) %></div>
+    </div>
+  </div>
+<% end %>

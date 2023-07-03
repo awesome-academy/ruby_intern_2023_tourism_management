@@ -218,3 +218,54 @@ table th, table td {
     }
   }
 }
+
+.order-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: $grey_text_color;
+  .info-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: $blue_text_color;
+    margin-bottom: 8px;
+  }
+  .order-left {
+    width: 60%;
+    .tour-guide-checkbox{
+      margin-top: 24px;
+    }
+    .order-submit-button {
+      display: flex;
+      flex-direction: row-reverse;
+      padding-right: 4px;
+    }
+    #order_note {
+      height: 80px;
+    }
+  }
+  .order-right {
+    width: 35%;
+    .tour-name {
+      margin-left: 12px;
+      font-size: 1.25rem;
+    }
+    .tour-info-text {
+      padding-top: 16px;
+      font-size: 1.125rem;
+    }
+    .total-cost {
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px solid $boder_primary_color;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $red_text_color;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}

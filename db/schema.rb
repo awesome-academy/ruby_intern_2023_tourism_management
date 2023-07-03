@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 2023_06_28_032841) do
     t.integer "cost"
     t.text "visit_location"
     t.text "start_location"
-    t.json "schedule"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tour_guide_cost"
     t.index ["category_id"], name: "index_tours_on_category_id"
   end
 
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_032841) do
     t.integer "role", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

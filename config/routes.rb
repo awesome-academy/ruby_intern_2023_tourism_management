@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       resources :tours, except: %i(show delete)
     end
     resources :tours, only: %i(show index)
-    resources :orders, only: :new
+    resources :orders, only: %i(new create)
   end
 end

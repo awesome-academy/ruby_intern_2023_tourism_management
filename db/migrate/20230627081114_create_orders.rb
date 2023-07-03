@@ -11,6 +11,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :contact_name
       t.string :contact_phone
       t.string :contact_address
+      t.integer :tour_guide_cost
 
       t.timestamps
     end
