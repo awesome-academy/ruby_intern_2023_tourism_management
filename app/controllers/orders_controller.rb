@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :check_user, only: %i(new create update)
-  before_action :find_current_tour, only: %i(new create)
+  before_action :check_user, only: %i(new create update index)
+  before_action :find_current_tour, :check_date_tour, only: %i(new create)
   before_action :build_new_order, only: :new
   before_action :calculate_total_cost, only: :create
   before_action :find_order_by_id, :check_status_pending, only: :update
@@ -53,18 +53,21 @@ class OrdersController < ApplicationController
     return if logged_in?
 
     flash[:danger] = t "orders.flash.not_logged_in"
-    redirect_to root_path
+    redirect_to login_path
   end
 
   def find_current_tour
     @current_tour = Tour.find_by id: session[:tour_id]
-    if @current_tour
-      return if Time.zone.today < @current_tour.start_date
+    return if @current_tour
 
-      flash[:danger] = t "orders.flash.tour_ended"
-    else
-      flash[:danger] = t "orders.flash.cant_find_current_tour"
-    end
+    flash[:danger] = t "orders.flash.cant_find_current_tour"
+    redirect_to root_path
+  end
+
+  def check_date_tour
+    return if Time.zone.today < @current_tour.start_date
+
+    flash[:danger] = t "orders.flash.tour_ended"
     redirect_to root_path
   end
 end

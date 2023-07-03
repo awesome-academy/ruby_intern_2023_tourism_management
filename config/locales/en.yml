@@ -135,11 +135,11 @@ en:
   orders:
     new:
       pay_info_title: PAY INFOMATION
-      label_contact_name: Contact name *
-      label_contact_phone: Contact phone *
-      label_contact_email: Contact email *
-      label_contact_address: Contact address *
-      label_amount_member: Amount member *
+      label_contact_name: Contact name
+      label_contact_phone: Contact phone
+      label_contact_email: Contact email
+      label_contact_address: Contact address
+      label_amount_member: Amount member
       label_tour_guide: "Register for a tour guide (%{tour_guide_cost})"
       label_note: Note
       order_button: Order now
