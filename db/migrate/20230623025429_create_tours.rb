@@ -9,7 +9,6 @@ class CreateTours < ActiveRecord::Migration[6.1]
       t.integer :cost
       t.text :visit_location
       t.text :start_location
-      t.json :schedule
 
       t.timestamps
     end

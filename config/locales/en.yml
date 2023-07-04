@@ -83,3 +83,22 @@ en:
       schedule: Schedule
       price_title: "Price only:"
       order_button: Order now
+  orders:
+    new:
+      pay_info_title: PAY INFOMATION
+      label_contact_name: Contact name
+      label_contact_phone: Contact phone
+      label_contact_email: Contact email
+      label_contact_address: Contact address
+      label_amount_member: Amount member
+      label_tour_guide: "Register for a tour guide (%{tour_guide_cost})"
+      label_note: Note
+      order_button: Order now
+      tour_info_title: TOUR INFOMATION
+      start_date: "Start date: %{start_date}"
+      end_date: "End date: %{end_date}"
+      amount_member: "Apply for: %{amount_member} person"
+      total_cost: "Total: %{total_cost}"
+    flash:
+      not_logged_in: Login required
+      cant_find_current_tour: Can't find tour

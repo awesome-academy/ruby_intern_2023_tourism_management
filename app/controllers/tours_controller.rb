@@ -12,7 +12,9 @@ class ToursController < ApplicationController
                     end
   end
 
-  def show; end
+  def show
+    tour_selected @tour
+  end
 
   private
   def tour_params

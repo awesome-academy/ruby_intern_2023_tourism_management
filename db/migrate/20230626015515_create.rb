@@ -4,6 +4,7 @@ class Create < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :email
       t.string :phone
+      t.string :address
       t.string :password_digest
       t.string :remember_digest
       t.integer :role, default: 0

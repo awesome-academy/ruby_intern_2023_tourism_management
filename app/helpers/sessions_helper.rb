@@ -40,4 +40,8 @@ module SessionsHelper
   def admin_login?
     logged_in? && current_user.admin?
   end
+
+  def tour_selected tour
+    session[:tour_id] = tour.id
+  end
 end
