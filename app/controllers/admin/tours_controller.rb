@@ -15,7 +15,7 @@ class Admin::ToursController < Admin::AdminController
       flash[:success] = t "admin.tours.flash.created_tour_success"
       redirect_to admin_tours_path
     else
-      flash[:danger] = t "admin.tours.flash.created_tour_failed"
+      flash.now[:danger] = t "admin.tours.flash.created_tour_failed"
       render :new
     end
   end
@@ -27,7 +27,7 @@ class Admin::ToursController < Admin::AdminController
       flash[:success] = t "admin.tours.flash.updated_tour_success"
       redirect_to admin_tours_path
     else
-      flash[:danger] = t "admin.tours.flash.updated_tour_failed"
+      flash.now[:danger] = t "admin.tours.flash.updated_tour_failed"
       render :edit
     end
   end

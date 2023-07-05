@@ -8,6 +8,9 @@
 
     <%= stylesheet_link_tag "custom", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag "application", "data-turbolinks-track": "reload", defer: true %>
+    <%= javascript_pack_tag "index", "data-turbolinks-track": "reload", defer: true %>
+    <%= javascript_include_tag "i18n" %>
+    <%= javascript_include_tag "translations", skip_pipeline: true %>
     <%= render "layouts/shim" %>
     <link
       href="/admin_layout/vendor/fontawesome-free/css/all.min.css"
@@ -36,7 +39,10 @@
         <%= yield %>
       </div>
     <% end %>
-
+    <script type = "text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>"
+    </script>
     <script src="/admin_layout/vendor/jquery/jquery.min.js"></script>
     <script src="/admin_layout/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/admin_layout/vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -99,6 +99,10 @@ vi:
       end_date: "Ngày kết thúc: %{end_date}"
       amount_member: "Áp dụng cho: %{amount_member} người"
       total_cost: "TỔNG CỘNG: %{total_cost}"
+    validate:
+      greater_than_0: phải lớn hơn 0
     flash:
       not_logged_in: Yêu cầu đăng nhập
       cant_find_current_tour: Không tìm thấy tour
+      create_order_success: Đặt tour thành công
+      create_order_failed: Đặt tour không thành công
