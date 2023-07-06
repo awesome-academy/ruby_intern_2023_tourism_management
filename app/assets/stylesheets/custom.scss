@@ -99,17 +99,6 @@ table th, table td {
 
 .container-fluid{
   color: $text_primary_color;
-  table {
-    .id-col {
-      width: 48px;
-    };
-    .img-col {
-      min-width: 200px;
-    };
-    .name-col {
-      min-width: 300px;
-    }
-  }
   .tour-navbar {
     height: 48px;
     width: 100%;
@@ -146,6 +135,34 @@ table th, table td {
   .tour-richtext-row {
     padding: 0 16px;
     margin-top: 16px;
+  }
+  .order-navbar {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .order-header-navbar {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .order-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .approved-status{
+    background-color: $green_background_color;
+    justify-content: center;
+    height: 32px;
+    border-radius: 8px;
+    color: $white_text_color;
+    padding: 0 8px;
+  }
+  .cancelled-status{
+    background-color: $red_background_color;
+    justify-content: center;
+    height: 32px;
+    border-radius: 8px;
+    color: $white_text_color;
+    padding: 0 8px;
   }
 }
 
@@ -268,4 +285,11 @@ table th, table td {
 .flex {
   display: flex;
   align-items: center;
+}
+
+input, select {
+  border-radius: 4px;
+  border: 1px solid $boder_primary_color;
+  height: 36px;
+  padding: 0 4px;
 }

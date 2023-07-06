@@ -1,0 +1,27 @@
+<tr>
+  <td><%= order.id %></td>
+  <td><%= image_tag order.display_image %></td>
+  <td><%= order.tour_name %></td>
+  <td><%= number_to_currency order.tour_cost %></td>
+  <td><%= order.amount_member %></td>
+  <td><%= order.contact_name %></td>
+  <td><%= order.contact_phone %></td>
+  <td><%= order.contact_address %></td>
+  <td><%= I18n.l(order.tour_start_date) %></td>
+  <td><%= number_to_currency order.total_cost %></td>
+  <td>
+    <div id="td_order_status">
+      <% if order.pending? %>
+        <%= form_for :order, url: admin_order_url(order), method: :patch, remote: true do |f| %>
+          <% f.label :status %>
+          <%= select_tag :status, options_for_select(load_status, selected: order.status), disabled: !order.pending? %>
+          <%= f.submit t("admin.orders.index.submit_button"), id: "btnSaveOrderForm", class: "btn btn-primary" %>
+        <% end %>
+      <% elsif order.approved? %>
+        <div class="approved-status flex"><%= t "admin.orders.index.approved_status" %></div>
+      <% elsif order.cancelled? %>
+        <div class="cancelled-status flex"><%= t "admin.orders.index.cancelled_status" %></div>
+      <% end %>
+    </div>
+  </td>
+</tr>
