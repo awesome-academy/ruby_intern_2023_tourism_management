@@ -7,7 +7,11 @@
   <td><%= order.contact_name %></td>
   <td><%= order.contact_phone %></td>
   <td><%= order.contact_address %></td>
-  <td><%= I18n.l(order.tour_start_date) %></td>
+  <td>
+    <% if order.tour_guide? %>
+      <div class="check-mark">&checkmark;</div>
+      <% end %>
+  </td>
   <td><%= number_to_currency order.total_cost %></td>
   <td>
     <div id="td_order_status">

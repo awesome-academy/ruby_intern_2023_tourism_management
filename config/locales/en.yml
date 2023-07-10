@@ -17,11 +17,6 @@ en:
       login_required: Login required
       admin_login_required: Admin login required
   users:
-    order:
-      order_number: "Order: %{order_number}"
-      tour_name: "Tour name: %{tour_name}"
-      total_cost: "Total cost: %{total_cost}"
-      cancel_order: "Hủy đặt tour"
     flash:
       user_not_found: User not found
   admin:
@@ -49,7 +44,7 @@ en:
       new:
         title: New tour
       form:
-        label_name: Name 
+        label_name: Name
         label_description: Description
         label_category: Category
         label_cost: Cost
@@ -61,6 +56,7 @@ en:
         label_content: Content
         label_tour_guide_cost: Tour guide cost
         save_button_text: Save
+        create_new_category_checkbox: Create new category
       tour:
         edit_tour_text: Edit
         delete_tour_text: Delete
@@ -107,7 +103,9 @@ en:
           status: Status
       flash:
         order_not_found: Order not found
-        cant_update_tour: Cannot update tour
+        cant_update_order: Cannot update order
+        update_order_success: Update order success
+        order_status_changed: Order status has changed
   shared:
     error_messages:
       error_text: error
@@ -137,11 +135,11 @@ en:
   orders:
     new:
       pay_info_title: PAY INFOMATION
-      label_contact_name: Contact name
-      label_contact_phone: Contact phone
-      label_contact_email: Contact email
-      label_contact_address: Contact address
-      label_amount_member: Amount member
+      label_contact_name: Contact name *
+      label_contact_phone: Contact phone *
+      label_contact_email: Contact email *
+      label_contact_address: Contact address *
+      label_amount_member: Amount member *
       label_tour_guide: "Register for a tour guide (%{tour_guide_cost})"
       label_note: Note
       order_button: Order now
@@ -160,3 +158,17 @@ en:
       tour_ended: Tour is end
       cant_cancelled_tour: Can't cancel tour
       cant_find_order: Can't find order
+      order_status_changed: Order status has changed
+      cancell_order_success: Order has been canceled
+    order:
+      order_number: "Order: %{order_number}"
+      tour_name: "Tour name: %{tour_name}"
+      total_cost: "Total cost:"
+      tour_cost: "Cost: %{tour_cost}"
+      member: "Amount member: %{member}"
+      start_date: "Start date: %{start_date}"
+      end_date: "End date: %{end_date}"
+      visit_location: "Visit location: %{visit_location}"
+      tour_guide: Register for tour guide
+      not_tour_guide: Not register for tour guide
+      cancel_order: "Hủy đặt tour"

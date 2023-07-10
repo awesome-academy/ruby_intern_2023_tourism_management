@@ -1,0 +1,56 @@
+<div class="user-order">
+  <div class="flex">
+    <div class="user-order-title"><%= t ".order_number", order_number: order.id %></div>
+    <% if order.pending? %>
+      <div class="order-status blue-bg"><%= order.status %></div>
+      <%= form_for :order, url: order_url(order), method: :patch, remote: true do |f| %>
+        <%= f.submit t(".cancel_order"), id: "btnSaveOrderForm", class: "btn btn-primary", data: {confirm: "Bạn có chắc chắn muốn hủy tour?"} %>
+      <% end %>
+    <% else %>
+      <div class="order-status <%= order.approved? ? "green-bg" : "red-bg"%>"><%= order.status %></div>
+    <% end %>
+  </div>
+  <div class="order-info flex">
+    <%= image_tag order.display_image, class: "order-image" %>
+    <div class="order-tour-info">
+      <div class="tour-name"><%= order.tour_name %></div>
+      <div class="tour-info">
+        <div class="tour-info-item flex">
+          <div class="point"></div>
+          <%= t ".tour_cost", tour_cost: number_to_currency(order.tour_cost) %>
+        </div>
+        <div class="tour-info-item flex">
+          <div class="point"></div>
+          <%= t ".member", member: order.amount_member %>
+        </div>
+        <div class="tour-info-item flex">
+          <div class="point"></div>
+          <%= t ".start_date", start_date: l(order.tour_start_date) %>
+        </div>
+        <div class="tour-info-item flex">
+          <div class="point"></div>
+          <%= t ".end_date", end_date: l(order.tour_end_date) %>
+        </div>
+        <div class="tour-info-item flex">
+          <div class="point"></div>
+          <%= t ".visit_location", visit_location: order.tour_visit_location %>
+        </div>
+        <% if order.tour_guide? %>
+          <div class="tour-info-item flex">
+            <div class="checkmark">&checkmark;</div>
+            <%= t ".tour_guide" %>
+          </div>
+        <% else %>
+          <div class="tour-info-item flex">
+            <div class="uncheckmark">x</div>
+            <%= t ".not_tour_guide" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="order-payment">
+      <div><%= t ".total_cost" %></div>
+      <div class="total-cost"><%= number_to_currency order.total_cost %></div>
+    </div>
+  </div>
+</div>
