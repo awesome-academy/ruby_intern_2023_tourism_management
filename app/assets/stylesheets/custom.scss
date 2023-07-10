@@ -116,6 +116,12 @@ table th, table td {
     .new-btn:hover {
       background-color: $button_primary_hover_color;
     }
+    input, select {
+      border-radius: 4px;
+      border: 1px solid $boder_primary_color;
+      height: 36px;
+      padding: 0 4px;
+    }
   }
   .form-control {
     margin-bottom: 8px;
@@ -143,10 +149,22 @@ table th, table td {
   .order-header-navbar {
     width: 100%;
     justify-content: space-between;
+    input, select {
+      border-radius: 4px;
+      border: 1px solid $boder_primary_color;
+      height: 36px;
+      padding: 0 4px;
+    }
   }
-  .order-table {
+  .order-table, .tour-table {
     width: 100%;
     overflow-x: auto;
+    input, select {
+      border-radius: 4px;
+      border: 1px solid $boder_primary_color;
+      height: 36px;
+      padding: 0 4px;
+    }
   }
   .approved-status{
     background-color: $green_background_color;
@@ -163,6 +181,27 @@ table th, table td {
     border-radius: 8px;
     color: $white_text_color;
     padding: 0 8px;
+  }
+  #tour_image {
+    border: none;
+  }
+  #category_id {
+    border-radius: 4px;
+    border: 1px solid $boder_primary_color;
+    height: 36px;
+    padding: 0 4px;
+  }
+  .new-category-form{
+    margin: 16px 0;
+    padding-left: 16px;
+    .new-category-content {
+      width: 50%;
+      padding-left: 32px;
+      display: none;
+    }
+    #new_category_checkbox {
+      padding-left: 24px;
+    }
   }
 }
 
@@ -233,6 +272,19 @@ table th, table td {
       font-size: 1.25rem;
       padding: 24px 16px;
     }
+    .disable-tour-button {
+      margin-top: 16px;
+      height: 40px;
+      background-color: $red_background_color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: $white_text_color;
+      font-size: 1.2rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
   }
 }
 
@@ -282,14 +334,44 @@ table th, table td {
   }
 }
 
+.user-order{
+  padding: 24px 36px;
+  border-radius: 12px;
+  background-color: $grey_background_color;
+  margin-bottom: 16px;
+  div {
+    padding: 4px 0;
+  }
+  .user-order-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $blue_text_color;
+  };
+  .order-status {
+    height: 36px;
+    border-radius: 16px;
+    margin: 0 48px;
+    padding: 0 8px;
+    color: $white_text_color;
+    display: flex;
+    align-items: center;
+  }
+  .blue-bg {
+    background-color: $blue_background_color;
+  }
+  .green-bg {
+    background-color: $green_background_color;
+  }
+  .red-bg {
+    background-color: $red_background_color;
+  }
+}
+
+.required {
+  color: $red_text_color;
+}
+
 .flex {
   display: flex;
   align-items: center;
-}
-
-input, select {
-  border-radius: 4px;
-  border: 1px solid $boder_primary_color;
-  height: 36px;
-  padding: 0 4px;
 }

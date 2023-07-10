@@ -2,19 +2,36 @@
 <% content_for :management do %>
   <div class="tour-navbar">
     <div class="new-btn"><%= link_to t(".new_tour_text"), new_admin_tour_path %></div>
-    <%== pagy_bootstrap_nav @pagy_tours if @pagy_tours.pages > 1 %>
+    <div class="search_input">
+      <%= form_tag admin_tours_path, method: :get, remote: true, class: "search" do %>
+        <%= text_field_tag :search_text %>
+        <%= submit_tag t(".filter_button"), class: "btn btn-success" %>
+      <% end %>
+    </div>
+    <div id="pagy_navbar">
+      <%== pagy_bootstrap_nav @pagy_tours %>
+    </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <% headers = Array.new Settings.tour_header_table %>
-        <% headers.each do |header| %>
-          <th><%= header %></th>
+  <div class="tour-table">
+    <table>
+      <thead>
+        <tr>
+          <th><%= t ".tour_table.tour_number" %></th>
+          <th><%= t ".tour_table.image" %></th>
+          <th><%= t ".tour_table.tour_name" %></th>
+          <th><%= t ".tour_table.category" %></th>
+          <th><%= t ".tour_table.cost" %></th>
+          <th><%= t ".tour_table.visit_location" %></th>
+          <th><%= t ".tour_table.start_date" %></th>
+          <th><%= t ".tour_table.end_date" %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tour_paginate">
+        <% @tours.each.with_index(1) do |tour, index| %>
+          <%= render tour, index: index %>
         <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @tours %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 <% end %>

@@ -27,4 +27,18 @@ $(document).on('turbolinks:load', function() {
   function numberToCurrency(number) {
     return number.toLocaleString('vi-VN', { style: 'currency', currencyDisplay: 'symbol', currency: 'VND' }).replace('₫', 'VNĐ');
   }
+
+  $('#tour_is_create_category').change(function() {
+    if ($(this).is(':checked')) {
+      $('#new_category_content').show();
+    } else {
+      $('#new_category_content').hide();
+    }
+  });
+
+  if ($('#tour_is_create_category').is(':checked')) {
+    $('#new_category_content').show();
+  } else {
+    $('#new_category_content').hide();
+  }
 })

@@ -17,6 +17,11 @@ vi:
       login_required: Yêu cầu đăng nhập
       admin_login_required: Yêu cầu đăng nhập quản trị viên
   users:
+    order:
+      order_number: "Đơn đặt tour số: %{order_number}"
+      tour_name: "Tên tour: %{tour_name}"
+      total_cost: "Tổng tiền: %{total_cost}"
+      cancel_order: "Hủy đặt tour"
     flash:
       user_not_found: Không tìm thấy người dùng
   admin:
@@ -29,6 +34,16 @@ vi:
       index:
         title: Tours
         new_tour_text: Thêm tour
+        filter_button: Tìm kiếm
+        tour_table:
+          tour_number: STT
+          image: Ảnh
+          tour_name: Tên
+          category: Danh mục
+          cost: Giá
+          visit_location: Địa điểm tham quan
+          start_date: Ngày bắt đầu
+          end_date: Ngày kết thúc
       edit:
         title: Sửa tour
       new:
@@ -44,11 +59,17 @@ vi:
         label_start_location: Nơi đón
         label_image: Ảnh
         label_content: Lịch trình
+        label_tour_guide_cost: Giá hướng dẫn viên
         save_button_text: Lưu
+        create_new_category_checkbox: Tạo mới danh mục
       tour:
         edit_tour_text: Sửa
         delete_tour_text: Xóa
         delete_confirm: Bạn có chắc chắn muốn xóa?
+      category_fields:
+        label_name: Tên danh mục
+        label_description: Mô tả
+        label_duration: Thời gian 
       flash:
         created_tour_success: Tạo tour thành công
         created_tour_failed: Tạo tour thất bại
@@ -60,6 +81,8 @@ vi:
         less_than_5MB_image_size: Kích cỡ ảnh phải nhỏ hơn 5MB
         category_not_found: Không tìm thấy danh mục
         cant_destroy_tour: Tour này không thể bị xóa
+        cant_edit_tour: Không thể sửa tour khi đã kết thúc
+        cant_create_new_category: Không thể  tạo mới danh mục
       validate:
         valid_image_format: không đúng định dạng
     order_title: Quản lý đặt tour
@@ -71,6 +94,18 @@ vi:
         approved_status: Đã xử lý
         cancelled_status: Đã hủy
         search_button: Tìm kiếm
+        order_table:
+          order_number: STT
+          image: Ảnh
+          tour_name: Tour
+          cost: Giá tour
+          member: Số lượng người
+          contact_name: Người liên hệ
+          contact_phone: Điện thoại
+          contact_address: Địa chỉ
+          tour_guide: Hướng dẫn viên
+          total_cost: Tổng tiền
+          status: Trạng thái
       flash:
         order_not_found: Không tìm thấy đơn đặt tour
   shared:
@@ -90,13 +125,15 @@ vi:
     start_location: "Nơi xuất phát: %{start_location}"
     detail: Chi tiết
     not_found: Không có bản ghi nào
-    compare_date: Ngày kết thúc phải lớn hơn ngày khởi hành
+    compare_date: phải lớn hơn ngày khởi hành
+    before_today: phải lớn hơn ngày hiện tại
     show:
       detail_header: Thông tin chi tiết
       description: Mô tả
       schedule: Lịch trình
       price_title: "Giá chỉ từ:"
       order_button: Đặt ngay
+      disable_order_button: Tour đã kết thúc
   orders:
     new:
       pay_info_title: THÔNG TIN THANH TOÁN
@@ -120,3 +157,6 @@ vi:
       cant_find_current_tour: Không tìm thấy tour
       create_order_success: Đặt tour thành công
       create_order_failed: Đặt tour không thành công
+      tour_ended: Tour đã kết thúc
+      cant_cancelled_tour: Không thể hủy tour
+      cant_find_order: Không tìm thấy đơn đặt tour

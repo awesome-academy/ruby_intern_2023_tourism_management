@@ -17,6 +17,11 @@ en:
       login_required: Login required
       admin_login_required: Admin login required
   users:
+    order:
+      order_number: "Order: %{order_number}"
+      tour_name: "Tour name: %{tour_name}"
+      total_cost: "Total cost: %{total_cost}"
+      cancel_order: "Hủy đặt tour"
     flash:
       user_not_found: User not found
   admin:
@@ -29,12 +34,22 @@ en:
       index:
         title: Tours
         new_tour_text: New Tour
+        filter_button: Search
+        tour_table:
+          tour_number: Order number
+          image: Image
+          tour_name: Name
+          category: Category
+          cost: Cost
+          visit_location: Visit location
+          start_date: Start date
+          end_date: End date
       edit:
         title: Edit tour
       new:
         title: New tour
       form:
-        label_name: Name
+        label_name: Name 
         label_description: Description
         label_category: Category
         label_cost: Cost
@@ -44,11 +59,16 @@ en:
         label_start_location: Start location
         label_image: Image
         label_content: Content
+        label_tour_guide_cost: Tour guide cost
         save_button_text: Save
       tour:
         edit_tour_text: Edit
         delete_tour_text: Delete
         delete_confirm: Are you sure?
+      category_fields:
+        label_name: Category name
+        label_description: Description
+        label_duration: Duration
       flash:
         created_tour_success: Tour created successfully
         created_tour_failed: Tour created failed
@@ -60,6 +80,8 @@ en:
         less_than_5MB_image_size: Image size should be less than 5 MB
         category_not_found: Category not found
         cant_destroy_tour: This tour can't be deleted
+        cant_edit_tour: Can't edit tour when it's ended
+        cant_create_new_category: Can't create new category
       validate:
         valid_image_format: has invalid image format
     order_title: Order management
@@ -71,6 +93,18 @@ en:
         approved_status: Approved
         cancelled_status: Cancelled
         search_button: Search
+        order_table:
+          order_number: Order number
+          image: Image
+          tour_name: Tour
+          cost: Tour cost
+          member: Member
+          contact_name: Contact name
+          contact_phone: Contact phone
+          contact_address: Contact address
+          tour_guide: Tour guide
+          total_cost: Total cost
+          status: Status
       flash:
         order_not_found: Order not found
         cant_update_tour: Cannot update tour
@@ -91,13 +125,15 @@ en:
     start_location: "Start_location: %{start_location}"
     detail: Detail
     not_found: No record
-    compare_date: end_date must be after start_date
+    compare_date: must be after start_date
+    before_today: must be after today
     show:
       detail_header: Detail info
       description: Description
       schedule: Schedule
       price_title: "Price only:"
       order_button: Order now
+      disable_order_button: Tour is end
   orders:
     new:
       pay_info_title: PAY INFOMATION
@@ -121,3 +157,6 @@ en:
       cant_find_current_tour: Can't find tour
       create_order_success: Create order successfully
       create_order_failed: Create order failed
+      tour_ended: Tour is end
+      cant_cancelled_tour: Can't cancel tour
+      cant_find_order: Can't find order
