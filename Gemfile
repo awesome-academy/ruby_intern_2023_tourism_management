@@ -21,8 +21,6 @@ gem "puma", "~> 5.0"
 gem "rails", "~> 6.1.7", ">= 6.1.7.3"
 gem "rails-i18n"
 gem "sass-rails", ">= 6"
-gem "simplecov"
-gem "simplecov-rcov"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 
@@ -33,6 +31,8 @@ group :development, :test do
     gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => "main"
   end
   gem "factory_bot_rails"
+  gem "simplecov"
+  gem "simplecov-rcov"
 end
 
 group :development do

@@ -2,16 +2,16 @@ require "faker"
 
 FactoryBot.define do
   factory :category do
-    name {"Category 1"}
-    description {"Description 1"}
-    duration {2}
+    name { Faker::Address.unique.full_address }
+    description { Faker::Lorem.sentence }
+    duration { Faker::Number.between(from: 1, to: 10) }
   end
 
   factory :tour do
     name {Faker::Address.unique.full_address}
-    description {"Description tour 1"}
-    start_date {Date.tomorrow}
-    end_date {Date.tomorrow}
+    description {Faker::Lorem.sentence}
+    start_date {Faker::Date.between(from: Date.tomorrow, to: Date.tomorrow + 5.day)}
+    end_date {Faker::Date.between(from: start_date, to: start_date + 5.day)}
     cost {200000}
     visit_location {Faker::Address.full_address}
     start_location {Faker::Address.full_address}
@@ -43,9 +43,9 @@ FactoryBot.define do
     contact_name {Faker::Name.name}
     contact_phone {Faker::PhoneNumber.phone_number}
     contact_address {Faker::Address.full_address}
-    amount_member {"2"}
-    note {"Ghi chu"}
-    tour_guide {"1"}
+    amount_member {Faker::Number.between(from: 1, to: 10)}
+    note {Faker::Lorem.sentence}
+    tour_guide {Faker::Number.between(from: 0, to: 1)}
     total_cost {"8150000"}
   end
 end
