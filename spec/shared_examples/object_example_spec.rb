@@ -9,7 +9,14 @@ RSpec.shared_examples "handle not log in" do
 end
 
 RSpec.shared_examples "object constructor" do
+  let(:category) { create(:category) }
   let(:tour) { create(:tour) }
   let(:user) { create(:user) }
   let(:order) { create(:order) }
+  let(:tours) {
+    5.times do
+      create(:tour)
+    end
+    return Tour.all
+  }
 end
