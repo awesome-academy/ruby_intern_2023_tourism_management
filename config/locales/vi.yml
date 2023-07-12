@@ -3,7 +3,8 @@ vi:
     formats:
       default: "%d-%m-%Y"
   application:
-    base_title: Booking Tour
+    base_title: TRAVEL SUN
+    not_permit_action: Bạn cần có quyền truy cập để thực hiện hành động này.
   users:
     flash:
       user_not_found: Không tìm thấy người dùng
@@ -111,7 +112,7 @@ vi:
     location: "Địa danh: %{location}"
     start_location: "Nơi xuất phát: %{start_location}"
     detail: Chi tiết
-    not_found: Không có bản ghi nào
+    not_found: Tour không tồn tại!
     compare_date: phải lớn hơn ngày khởi hành
     before_today: phải lớn hơn ngày hiện tại
     show:

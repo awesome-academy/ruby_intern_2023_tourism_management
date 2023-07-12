@@ -1,5 +1,7 @@
 class Admin::OrdersController < Admin::AdminController
-  before_action :find_order_by_id, :check_status_pending, only: :update
+  load_and_authorize_resource
+  rescue_from ActiveRecord::RecordNotFound, with: :order_not_found
+  before_action :check_status_pending, only: :update
 
   def index
     @pagy_orders, @orders = pagy Order.filter_by_text(params[:search_text])

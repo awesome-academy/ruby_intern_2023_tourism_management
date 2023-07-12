@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :check_user, only: %i(new create update index)
+  load_and_authorize_resource
+  rescue_from ActiveRecord::RecordNotFound, with: :order_not_found
   before_action :find_current_tour, :check_date_tour, only: %i(new create)
   before_action :build_new_order, only: :new
   before_action :calculate_total_cost, only: :create
-  before_action :find_order_by_id, :check_status_pending, only: :update
+  before_action :check_status_pending, only: :update
 
   def index
     @pagy_user_orders, @orders = pagy current_user.orders.newest
@@ -47,13 +48,6 @@ class OrdersController < ApplicationController
     @order.tour = @current_tour
     @order.total_cost = @order.tour.cost * order_params[:amount_member].to_i
     @order.total_cost += @order.tour_tour_guide_cost if order_params[:tour_guide]
-  end
-
-  def check_user
-    return if user_signed_in?
-
-    flash[:danger] = t "orders.flash.not_logged_in"
-    redirect_to login_path
   end
 
   def find_current_tour

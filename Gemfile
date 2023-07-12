@@ -7,6 +7,7 @@ gem "active_storage_validations"
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass"
+gem "cancancan", "~> 3.5"
 gem "cocoon"
 gem "config"
 gem "devise", "~> 4.9", ">= 4.9.2"

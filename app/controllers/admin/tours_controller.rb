@@ -1,6 +1,8 @@
 class Admin::ToursController < Admin::AdminController
+  load_and_authorize_resource
+  rescue_from ActiveRecord::RecordNotFound, with: :tour_not_found
   before_action :prepare_create_tour, only: :create
-  before_action :find_tour_by_id, :check_edit_tour, only: %i(update edit)
+  before_action :check_edit_tour, only: %i(update edit)
 
   def index
     @pagy_tours, @tours = pagy Tour.filter_by_text(params[:search_text]).newest
@@ -54,10 +56,7 @@ class Admin::ToursController < Admin::AdminController
     end
   end
 
-  def find_tour_by_id
-    @tour = Tour.find_by id: params[:id]
-    return if @tour
-
+  def tour_not_found
     flash[:danger] = t "admin.tours.flash.tour_not_found"
     redirect_to admin_tours_path
   end
