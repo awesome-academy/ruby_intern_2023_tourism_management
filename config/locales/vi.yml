@@ -135,11 +135,11 @@ vi:
   orders:
     new:
       pay_info_title: THÔNG TIN THANH TOÁN
-      label_contact_name: Người liên hệ *
-      label_contact_phone: Điện thoại *
-      label_contact_email: Email *
-      label_contact_address: Địa chỉ *
-      label_amount_member: Số lượng thành viên *
+      label_contact_name: Người liên hệ
+      label_contact_phone: Điện thoại
+      label_contact_email: Email
+      label_contact_address: Địa chỉ
+      label_amount_member: Số lượng thành viên
       label_tour_guide: "Đăng ký hướng dẫn viên (%{tour_guide_cost})"
       label_note: Ghi chú
       order_button: ĐẶT NGAY
