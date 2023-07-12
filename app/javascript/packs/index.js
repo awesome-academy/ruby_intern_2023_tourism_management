@@ -41,4 +41,8 @@ $(document).on('turbolinks:load', function() {
   } else {
     $('#new_category_content').hide();
   }
+
+  setTimeout(function() {
+    $('.alert').hide();
+  }, 4999);
 })

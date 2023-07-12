@@ -4,18 +4,6 @@ en:
       default: "%d-%m-%Y"
   application:
     base_title: Booking Tour
-  sessions:
-    new:
-      title: Log in
-      remember_me_text: Remember me
-      login_button: Log in
-      forgot_password_text: Forgot password?
-      create_account_text: Create account!
-    flash:
-      login_failed: Log in failed
-      user_not_found: User not found
-      login_required: Login required
-      admin_login_required: Admin login required
   users:
     flash:
       user_not_found: User not found
@@ -25,6 +13,7 @@ en:
     profile: Profile
     logout_button: Log out
     unauthorized: You are not authorized to perform this action.
+    login_required: Require login as admin to perform this action.
     tours:
       index:
         title: Tours

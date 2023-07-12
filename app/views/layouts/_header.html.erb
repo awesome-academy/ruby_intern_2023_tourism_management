@@ -12,7 +12,7 @@
         collection: @categories %>
     </ul>
 
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle"
         type="button" data-toggle="dropdown" aria-expanded="false">
@@ -24,8 +24,8 @@
         </div>
       </div>
     <% else %>
-      <%= link_to t("sessions.new.login_button"),
-          login_path, class: "btn btn-primary" %>
+      <%= link_to t("devise.sessions.new.login_button"),
+        login_path, class: "btn btn-primary" %>
     <% end %>
   </div>
 </nav>

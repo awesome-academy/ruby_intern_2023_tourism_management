@@ -28,7 +28,6 @@
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
-
     <% if admin_login? %>
       <%= render "admin/admin" %>
     <% else %>

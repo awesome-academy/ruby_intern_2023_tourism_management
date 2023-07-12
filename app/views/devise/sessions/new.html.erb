@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "new", media: "all", "data-turbolinks-track": "reload" %>
+<% provide :title, t(".title") %>
+<div class="login-screen">
+  <div class="login-container">
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-2"><%= t ".logo" %></h1>
+    </div>
+    <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %> <span class="required">*</span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, t(".label_password") %> <span class="required">*</span>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group flex remember-group">
+          <%= f.label :remember_me, class: "flex" do %>
+            <%= f.check_box :remember_me %>
+            <div><%= t ".remember_me_text" %></div>
+          <% end %>
+          <div class="text-center">
+            <%= link_to t(".forgot_password_text"), new_password_path(resource_name) %>
+          </div>
+        </div>
+      <% end %>
+      <%= f.submit t(".login_button"), class: "btn btn-primary btn-block" %>
+    <% end %>
+    <div class="text-center links-bottom">
+        <%= link_to t(".account_confirmed"), new_confirmation_path(resource_name) %><br />
+        <%= link_to t(".account_locked"), new_unlock_path(resource_name) %><br />
+    </div>
+  </div>
+</div>

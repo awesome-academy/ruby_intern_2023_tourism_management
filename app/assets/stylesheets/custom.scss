@@ -419,7 +419,87 @@ table th, table td {
   color: $red_text_color;
 }
 
+.login-screen {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .login-container {
+    width: 460px;
+    padding: 48px 48px;
+    box-shadow: 1.5px 1.5px 4px 2px $box_shadow_color;
+    border-radius: 12px;
+    .text-gray-900 {
+      font-weight: 600;
+      font-size: 1.875rem;
+      color: $red_text_color !important;
+      margin-bottom: 16px !important;
+    }
+    .remember-group {
+      height: 36px;
+      justify-content: space-between;
+    }
+    label {
+      margin-bottom: 0;
+    }
+    .back-to-login {
+      padding-top: 16px;
+    }
+    .links-bottom {
+      padding-top: 8px;
+      font-size: 0.875rem;
+    }
+  }
+}
+
 .flex {
   display: flex;
   align-items: center;
+}
+
+.alert {
+  position: fixed !important;
+  padding: 0.5rem 1rem !important;
+  margin: 12px 0 0 0;
+  right: 16px;
+  color: $white_text_color !important;
+  animation: fadeOut 5s ease-in-out forwards;
+  z-index: 999 !important;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.alert-danger, .alert-alert {
+  background-color: $red_background_color !important;
+}
+
+.alert-success {
+  background-color: $green_background_color !important;
+}
+
+.alert-notice {
+  background-color: $blue_background_color;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border: 1px solid $boder_primary_color !important;
+  margin-right: 8px;
 }

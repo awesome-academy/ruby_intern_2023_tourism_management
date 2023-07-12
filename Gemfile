@@ -9,7 +9,9 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass"
 gem "cocoon"
 gem "config"
+gem "devise", "~> 4.9", ">= 4.9.2"
 gem "faker"
+gem "figaro"
 gem "i18n-js", "~> 3.0", ">= 3.0.2"
 gem "image_processing", ">= 1.2"
 gem "jbuilder", "~> 2.7"
@@ -27,8 +29,8 @@ gem "webpacker", "~> 5.0"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rails-controller-testing"
-  %w[rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
-    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => "main"
+  %w(rspec rspec-core rspec-expectations rspec-mocks rspec-support).each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: "main"
   end
   gem "factory_bot_rails"
   gem "simplecov"

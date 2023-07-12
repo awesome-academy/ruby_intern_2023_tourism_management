@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  include SessionsHelper
   before_action :set_locale
 
   protect_from_forgery with: :exception
@@ -26,5 +25,19 @@ class ApplicationController < ActionController::Base
 
     flash[:danger] = t "admin.orders.flash.order_status_changed"
     redirect_to current_user.admin? ? admin_orders_path : (user_orders_path current_user)
+  end
+
+  def tour_selected tour
+    session[:tour_id] = tour.id
+  end
+
+  protected
+
+  def after_sign_in_path_for resource
+    if resource.is_a?(User) && resource.admin?
+      admin_tours_path
+    else
+      root_path
+    end
   end
 end

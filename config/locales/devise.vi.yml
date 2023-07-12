@@ -1,0 +1,105 @@
+vi:
+  devise:
+    confirmations:
+      confirmed: "Địa chỉ email của bạn đã được xác nhận thành công."
+      send_instructions: "Bạn sẽ nhận được một email hướng dẫn để xác nhận địa chỉ email của bạn trong vài phút."
+      send_paranoid_instructions: "Nếu địa chỉ email của bạn tồn tại trong cơ sở dữ liệu của chúng tôi, bạn sẽ nhận được một email hướng dẫn để xác nhận địa chỉ email của bạn trong vài phút."
+      new:
+        title: Kích hoạt tài khoản
+        logo: TRAVEL SUN *
+        send_instruction_button: Gửi email xác nhận
+        back_to_login: Trở về đăng nhập
+    unlocks:
+      send_instructions: Bạn sẽ nhận được email hướng dẫn kích hoạt tài khoản trong vài phút.
+      unlocked: Tài khoản đã được mở khóa thành công. Vui lòng đăng nhập lại để tiếp tục.
+      new:
+        title: Mở khóa tài khoản
+        logo: TRAVEL SUN *
+        send_instruction_button: Gửi email xác nhận
+        back_to_login: Trở về đăng nhập
+    failure:
+      already_authenticated: "Bạn đã đăng nhập."
+      inactive: "Tài khoản của bạn chưa được kích hoạt."
+      invalid: "Thông tin đăng nhập %{authentication_keys} hoặc mật khẩu không hợp lệ."
+      locked: "Tài khoản của bạn đã bị khóa. Vui lòng vào email để kích hoạt tài khoản."
+      last_attempt: "Bạn còn một lần thử nữa trước khi tài khoản của bạn bị khóa."
+      not_found_in_database: "Thông tin đăng nhập %{authentication_keys} hoặc mật khẩu không hợp lệ."
+      timeout: "Phiên làm việc của bạn đã hết hạn. Vui lòng đăng nhập lại để tiếp tục."
+      unauthenticated: "Bạn cần đăng nhập hoặc đăng ký trước khi tiếp tục."
+      unconfirmed: "Bạn phải xác nhận địa chỉ email của mình trước khi tiếp tục."
+    mailer:
+      confirmation_instructions:
+        subject: "Hướng dẫn xác nhận"
+        hello: "Chào %{user}!"
+        link_bellow: Bạn có thể kích hoạt tài khoản bằng cách nhấn vào đường dẫn bên dưới.
+        link_title: Kích hoạt tài khoản
+      reset_password_instructions:
+        subject: "Hướng dẫn đặt lại mật khẩu"
+        hello: "Hello %{user}!"
+        link_bellow: Yêu cầu thay đổi mật khẩu đã được xác nhận. Bạn có thể thay đổi mật khẩu bằng cách nhấn vào đường dẫn bên dưới.
+        link_title: Đổi mật khẩu
+        ignore: Nếu bạn không phải là người gửi yêu cầu, hãy bỏ qua email này.
+        notice: Mật khẩu sẽ không thay đổi cho đến khi bạn truy cập vào đường dẫn bên dưới và tạo một mật khẩu mới.
+      unlock_instructions:
+        subject: Mở khóa tài khoản
+        hello: "Chào %{user}!"
+        link_title: Mở khóa tài khoản
+        link_bellow: Nhấn vào đường dẫn bên dưới để kích hoạt tài khoản của bạn.
+        notice: Tài khoản của bạn đã bị khóa do nhập sai mật khẩu quá số lần cho phép.
+    passwords:
+      no_token: "Bạn không thể truy cập trang này nếu không đến từ email đặt lại mật khẩu. Nếu bạn đã đến từ email đặt lại mật khẩu, hãy đảm bảo bạn đã sử dụng đúng URL đầy đủ được cung cấp."
+      send_instructions: "Bạn sẽ nhận được một email hướng dẫn để đặt lại mật khẩu của bạn trong vài phút."
+      send_paranoid_instructions: "Nếu địa chỉ email của bạn tồn tại trong cơ sở dữ liệu của chúng tôi, bạn sẽ nhận được một liên kết khôi phục mật khẩu tại địa chỉ email của bạn trong vài phút."
+      updated: "Mật khẩu của bạn đã được thay đổi thành công. Bạn đã đăng nhập."
+      updated_not_active: "Mật khẩu của bạn đã được thay đổi thành công."
+      new:
+        title: Quên mật khẩu
+        logo: TRAVEL SUN *
+        send_instruction_button: Gửi email xác nhận
+        back_to_login: Trở về đăng nhập
+      edit:
+        title: Quên mật khẩu
+        logo: TRAVEL SUN *
+        label_new_password: Mật khẩu mới
+        label_confirm_password: Xác nhận mật khẩu
+        minimum_character: "(Tối thiểu %{minimum_character} kí tự)"
+        change_password_button: Xác nhận
+        back_to_login: Trở về đăng nhập
+    registrations:
+      destroyed: "Tạm biệt! Tài khoản của bạn đã được hủy thành công. Hy vọng gặp lại bạn sớm."
+      signed_up: "Chào mừng! Bạn đã đăng ký thành công."
+      signed_up_but_inactive: "Bạn đã đăng ký thành công. Tuy nhiên, chúng tôi không thể đăng nhập cho bạn vì tài khoản của bạn chưa được kích hoạt."
+      signed_up_but_locked: "Bạn đã đăng ký thành công. Tuy nhiên, chúng tôi không thể đăng nhập cho bạn vì tài khoản của bạn đã bị khóa."
+      signed_up_but_unconfirmed: "Một tin nhắn với liên kết xác nhận đã được gửi đến địa chỉ email của bạn. Vui lòng làm theo liên kết để kích hoạt tài khoản của bạn."
+      update_needs_confirmation: "Bạn đã cập nhật tài khoản thành công, nhưng chúng tôi cần xác minh địa chỉ email mới của bạn. Vui lòng kiểm tra email của bạn và làm theo liên kết xác nhận để xác minh địa chỉ email mới của bạn."
+      updated: "Tài khoản của bạn đã được cập nhật thành công."
+      updated_but_not_signed_in: "Tài khoản của bạn đã được cập nhật thành công, nhưng do mật khẩu đã được thay đổi, bạn cần đăng nhập lại."
+    sessions:
+      signed_in: "Đăng nhập thành công."
+      signed_out: "Đăng xuất thành công."
+      already_signed_out: "Đăng xuất thành công."
+      new:
+        title: Đăng nhập
+        logo: TRAVEL SUN *
+        remember_me_text: Ghi nhớ đăng nhập
+        login_button: ĐĂNG NHẬP
+        forgot_password_text: Quên mật khẩu?
+        create_account_text: Tạo tài khoản!
+        label_password: Mật khẩu
+        account_locked: Tài khoản bị khóa?
+        account_confirmed: Tài khoản chưa kích hoạt?
+      flash:
+        login_failed: Đăng nhập thất bại
+        user_not_found: Người dùng không tồn tại
+        login_required: Yêu cầu đăng nhập
+        admin_login_required: Yêu cầu đăng nhập quản trị viên
+  errors:
+    messages:
+      already_confirmed: "đã được xác nhận, vui lòng thử đăng nhập"
+      confirmation_period_expired: "cần được xác nhận trong vòng %{period}, vui lòng yêu cầu mới"
+      expired: "đã hết hạn, vui lòng yêu cầu mới"
+      not_found: "không tìm thấy"
+      not_locked: "không bị khóa"
+      not_saved:
+        one: "Đã có 1 lỗi xảy ra:"
+        other: "Đã có %{count} lỗi xảy ra:"

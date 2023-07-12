@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "tours#index"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
+    devise_for :users
+    as :user do
+      get "login", to: "devise/sessions#new"
+      post "login", to: "devise/sessions#create"
+      delete "logout", to: "devise/sessions#destroy"
+    end
     resources :users do
       resources :orders, only: :index
     end
