@@ -1,6 +1,7 @@
 class Tour < ApplicationRecord
   belongs_to :category
   has_many :orders, dependent: :restrict_with_exception
+  has_many :comments, through: :orders
   has_one_attached :image
   has_rich_text :content
 
@@ -39,5 +40,10 @@ class Tour < ApplicationRecord
 
   def before_today? check_date
     check_date && check_date < Time.zone.today
+  end
+
+  def update_average_rate
+    average_rate = comments.average(:rate)
+    update_columns average_rate: average_rate
   end
 end

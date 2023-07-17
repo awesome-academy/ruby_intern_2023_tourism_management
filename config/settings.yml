@@ -12,11 +12,15 @@ format_date_f: "%d-%m-%Y"
 min_length_text_10: 10
 max_length_text_100: 100
 max_length_text_254: 254
+max_length_text_500: 500
 valid_image_format: image/jpeg image/gif image/png
 validate_image_format: ["image/jpeg", "image/gif", "image/png"]
 max_image_size_5_MB: 5
 limit_image_area: [200, 200]
 all_status_value: all
 pagy_items_9: 9
-order_status_approved: "approved"
-order_status_cancelled: "cancelled"
+order:
+  status:
+    approved: "approved"
+    cancelled: "cancelled"
+    done: "done"

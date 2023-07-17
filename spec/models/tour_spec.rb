@@ -12,13 +12,13 @@ RSpec.describe Tour, type: :model do
     end
 
     it "error when start date before today" do
-      tour.start_date = Date.today - 1.day
+      tour.start_date = Time.zone.today - 1.day
       tour.compare_date
       expect(tour.errors[:start_date]).to include(I18n.t("tours.before_today"))
     end
 
     it "error when end date before today" do
-      tour.end_date = Date.today - 1.day
+      tour.end_date = Time.zone.today - 1.day
       tour.compare_date
       expect(tour.errors[:end_date]).to include(I18n.t("tours.before_today"))
     end

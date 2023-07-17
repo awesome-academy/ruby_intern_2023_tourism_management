@@ -9,6 +9,7 @@ class CreateTours < ActiveRecord::Migration[6.1]
       t.integer :cost
       t.text :visit_location
       t.text :start_location
+      t.decimal :column_name, precision: 2, scale: 1, default: 0
 
       t.index :name, :unique => true
       t.timestamps

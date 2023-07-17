@@ -18,6 +18,20 @@ RSpec.describe OrdersController, type: :controller do
     }
   }
 
+  let(:create_exist_order){
+    Order.create!(
+      contact_name: "Nguyen Duc Huy",
+      contact_phone: "0975222888",
+      contact_address: "133 Xuan Thuy",
+      amount_member: "2",
+      note: "Ghi chu",
+      tour_guide: "1",
+      total_cost: "150000",
+      tour_id: session[:tour_id],
+      user_id: user.id
+    )
+  }
+
   describe "GET #index" do
     context "when log in" do
       before do
@@ -43,7 +57,7 @@ RSpec.describe OrdersController, type: :controller do
       before do
         user.confirm
         sign_in user
-        tour.start_date = Date.today
+        tour.start_date = Time.zone.today
         tour.save!
         session[:tour_id] = tour.id
       end
@@ -64,6 +78,21 @@ RSpec.describe OrdersController, type: :controller do
       it "render new order template" do
         get :new
         expect(response).to render_template(:new)
+      end
+
+      describe "when order existed" do
+        before do
+          create_exist_order
+          get :new
+        end
+
+        it "flash" do
+          expect(flash[:danger]).to eq I18n.t("orders.flash.order_existed")
+        end
+
+        it "redirect to root" do
+          expect(response).to redirect_to root_path
+        end
       end
     end
   end
@@ -95,7 +124,7 @@ RSpec.describe OrdersController, type: :controller do
       end
 
       it "flash tour start date before today" do
-        tour.start_date = Date.today
+        tour.start_date = Time.zone.today
         tour.save!
         session[:tour_id] = tour.id
         post_order
@@ -106,6 +135,21 @@ RSpec.describe OrdersController, type: :controller do
         allow_any_instance_of(Order).to receive(:save).and_return(false)
         post_order
         expect(flash[:danger]).to eq I18n.t("orders.flash.create_order_failed")
+      end
+
+      describe "when order existed" do
+        before do
+          create_exist_order
+          post_order
+        end
+
+        it "flash" do
+          expect(flash[:danger]).to eq I18n.t("orders.flash.order_existed")
+        end
+
+        it "redirect to root" do
+          expect(response).to redirect_to root_path
+        end
       end
     end
   end
@@ -125,7 +169,7 @@ RSpec.describe OrdersController, type: :controller do
       end
 
       it "flash success cancelled" do
-        put :update, params:{id: order.id, order:{status: Order.statuses[:cancelled]}}
+        put :update, params:{id: order.id, status: Order.statuses[:cancelled]}
         expect(flash[:success]).to eq I18n.t("orders.flash.cancel_order_success")
       end
 

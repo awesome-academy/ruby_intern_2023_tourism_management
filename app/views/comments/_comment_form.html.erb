@@ -1,0 +1,17 @@
+<div class="comment-form">
+  <%= form_for comment, url: form_path do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <div class="flex">
+      <%= f.text_field :review, placeholder: t(".review_placeholder"), class: "review-input form-control" %>
+      <div class="rating">
+        <%= f.collection_radio_buttons(:rate, [[5],[4],[3],[2],[1]], :first, :last) do |star| %>
+          <%= star.radio_button %>
+          <%= star.label(class: "text-white") %>
+        <% end %>
+      </div>
+      <%= f.hidden_field :order_id, value: comment.order.id %>
+      <%= f.hidden_field :tour_id, value: comment.order.tour_id %>
+      <%= f.submit t(".comment_button"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

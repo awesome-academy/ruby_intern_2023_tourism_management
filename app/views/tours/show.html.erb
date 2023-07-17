@@ -11,19 +11,38 @@
         <div class="tour-schedule"><%= @tour.content %></div>
       </div>
     </div>
+    <div class="detail-tour">
+      <div class="detail-tour-header"><%= t ".comment_title" %></div>
+      <div class="tour-info tour-info-comment">
+        <% @tour.comments.each do |comment| %>
+          <div class="tour-comment">
+            <div class="user-comment">
+              <%= comment.user.name if comment.review.present? %>
+            </div>
+            <div class="comment-line">
+              <%= comment.review if comment.review.present? %>
+            </div>
+          </div>
+        <% end%>
+      </div>
+    </div>
   </div>
   <div class="detail-right">
     <div class="tour-price">
       <div class="tour-price-title"><%= t ".price_title" %></div>
       <div class="tour-price-text"><%= number_to_currency @tour.cost %></div>
     </div>
-      <% if Date.today < @tour.start_date %>
-        <div class="tour-button">
-          <%= link_to t(".order_button"), new_order_path %>
-        </div>
-      <% else %>
+      <% if Date.today > @tour.start_date %>
         <div class="disable-tour-button">
           <%= t ".disable_order_button" %>
+        </div>
+      <% elsif tour_ordered? %>
+        <div class="tour-button">
+          <%= link_to "Xem chi tiet dat tour", user_orders_path(current_user) %>
+        </div>
+      <% else %>
+        <div class="tour-button">
+          <%= link_to t(".order_button"), new_order_path %>
         </div>
       <% end %>
     <div class="tour-date">

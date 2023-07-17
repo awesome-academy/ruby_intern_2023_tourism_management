@@ -1,13 +1,14 @@
 class OrdersController < ApplicationController
   load_and_authorize_resource
   rescue_from ActiveRecord::RecordNotFound, with: :order_not_found
-  before_action :find_current_tour, :check_date_tour, only: %i(new create)
+  before_action :find_current_tour, :check_order_exist, :check_date_tour, only: %i(new create)
   before_action :build_new_order, only: :new
   before_action :calculate_total_cost, only: :create
   before_action :check_status_pending, only: :update
 
   def index
-    @pagy_user_orders, @orders = pagy current_user.orders.newest
+    @pagy_user_orders, @orders = pagy current_user.orders.includes(tour: {image_attachment: :blob})
+                                                  .includes([:comment]).newest
   end
 
   def new; end
@@ -63,6 +64,20 @@ class OrdersController < ApplicationController
     return if Time.zone.today < @current_tour.start_date
 
     flash[:danger] = t "orders.flash.tour_ended"
+    redirect_to root_path
+  end
+
+  def check_status_pending
+    return if @order.pending?
+
+    flash[:danger] = t "admin.orders.flash.order_status_changed"
+    redirect_to user_orders_path current_user
+  end
+
+  def check_order_exist
+    return unless current_user.orders&.exists?(tour_id: session[:tour_id])
+
+    flash[:danger] = t "orders.flash.order_existed"
     redirect_to root_path
   end
 end

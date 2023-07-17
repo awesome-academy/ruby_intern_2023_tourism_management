@@ -2,12 +2,14 @@
   <div class="flex">
     <div class="user-order-title"><%= t ".order_number", order_number: order.id %></div>
     <% if order.pending? %>
-      <div class="order-status blue-bg"><%= order.status %></div>
+      <div class="order-status grey-bg"><%= order.status %></div>
       <%= form_for :order, url: order_url(order), method: :patch, remote: true do |f| %>
         <%= f.submit t(".cancel_order"), id: "btnSaveOrderForm", class: "btn btn-primary", data: {confirm: "Bạn có chắc chắn muốn hủy tour?"} %>
       <% end %>
+    <% elsif order.approved? %>
+      <div class="order-status blue-bg"><%= order.status %></div>
     <% else %>
-      <div class="order-status <%= order.approved? ? "green-bg" : "red-bg"%>"><%= order.status %></div>
+      <div class="order-status <%= order.done? ? "green-bg" : "red-bg"%>"><%= order.status %></div>
     <% end %>
   </div>
   <div class="order-info flex">
@@ -53,4 +55,12 @@
       <div class="total-cost"><%= number_to_currency order.total_cost %></div>
     </div>
   </div>
+  <% if order.done? && order.comment %>
+    <div class="flex">
+      <%= render partial: "comments/comment_form", locals:{comment: order.comment, form_path: comment_path(order.comment)} %>
+      <%= link_to t(".delete_comment_button"), order.comment, method: :delete, data: {confirm: t(".confirm_delete_comment")}, class: "btn btn-danger delete-comment-btn" %>
+    </div>
+  <% elsif order.done? %>
+    <%= render partial: "comments/comment_form", locals:{comment: Comment.new(order: order), form_path: comments_path} %>
+  <% end %>
 </div>

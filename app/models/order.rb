@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :tour
   belongs_to :user
+  has_one :comment, dependent: :destroy
 
   delegate :name, :phone, :email, :address, to: :user, prefix: true, allow_nil: true
   delegate :name, :image, :cost, :start_date, :end_date, :tour_guide_cost, :visit_location, to: :tour,
@@ -12,7 +13,7 @@ class Order < ApplicationRecord
     joins(:tour).where("tours.name LIKE ? OR contact_name LIKE ?", search_text, search_text) if search_text.present?
   }
 
-  enum status: {pending: 0, approved: 1, cancelled: 2}
+  enum status: {pending: 0, approved: 1, cancelled: 2, done: 3}
   validates :amount_member, :contact_name, :contact_phone, :contact_address, presence: true
   validates :amount_member, numericality: {only_integer: true, greater_than: 0}
 

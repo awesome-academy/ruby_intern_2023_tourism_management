@@ -56,4 +56,11 @@ Rails.application.configure do
     authentication: :cram_md5,
     enable_starttls_auto: true
   }
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.raise = true
+    Bullet.unused_eager_loading_enable = false
+  end
 end

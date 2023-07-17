@@ -146,7 +146,7 @@ RSpec.describe Admin::ToursController, type: :controller do
 
     context "when start date before today" do
       before do
-        tour.start_date = Date.today
+        tour.start_date = Time.zone.today
         tour.save
         get :edit, params:{id: tour.id}
       end

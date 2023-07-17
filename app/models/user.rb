@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :registerable, :confirmable, :lockable, :trackable
 
   has_many :orders, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   enum role: {guest: 0, admin: 1, user: 2}
 

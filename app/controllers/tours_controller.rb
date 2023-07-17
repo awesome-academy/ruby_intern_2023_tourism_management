@@ -1,11 +1,11 @@
 class ToursController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   before_action :load_categories
-  rescue_from ActiveRecord::RecordNotFound, with: :tour_not_found
+  before_action :find_tour_by_id, only: :show
 
   def index
     build_tour_filter
-    @pagy_tours, @tours = pagy @q.result.includes(:category), items: Settings.pagy_items_9
+    @pagy_tours, @tours = pagy @q.result.includes(:category, {image_attachment: :blob}), items: Settings.pagy_items_9
   end
 
   def show
@@ -17,7 +17,10 @@ class ToursController < ApplicationController
     @categories = Category.pluck(:id, :name)
   end
 
-  def tour_not_found
+  def find_tour_by_id
+    @tour = Tour.includes(comments: :user).find_by(id: params[:id])
+    return if @tour
+
     flash[:danger] = t "tours.not_found"
     redirect_to tours_path
   end
