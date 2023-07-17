@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def build_tour_filter
     @q = Tour.includes(:category, {image_attachment: :blob}).ransack(params[:q])
-    @q.sorts = ["created_at desc", "name asc"] if @q.sorts.empty?
+    @q.sorts = ["updated_at desc", "name asc"] if @q.sorts.empty?
   end
 
   protected

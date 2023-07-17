@@ -11,6 +11,7 @@ RSpec.shared_examples "object constructor" do
   let(:admin) { create(:admin) }
   let(:order) { create(:order) }
   let(:comment) { create(:comment) }
+  let(:option) { create(:option) }
   let(:tours) {
     5.times do
       create(:tour)

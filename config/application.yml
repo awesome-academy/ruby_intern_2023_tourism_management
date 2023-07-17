@@ -1,6 +1,6 @@
 host: "localhost:3000"
 host_email: "admin@sun-asterisk.com"
-mail_user_name: "b21ac827668ce4"
-mail_user_password: "886fc69a4dc8ee"
+mail_user_name: "d498d93fcb7cb8"
+mail_user_password: "2178c45cdc36f8"
 mail_address: "sandbox.smtp.mailtrap.io"
 mail_port: "2525"

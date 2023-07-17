@@ -72,15 +72,16 @@ $(document).on('turbolinks:load', function() {
       method: "GET",
       dataType: "json",
       success: function (data) {
-        const html = `
-          <h2>${data.name}</h2>
-          <p>Category: ${data.category.name}</p>
-          <p>Cost: ${data.cost}</p>
-          <p>Visit Location: ${data.visit_location}</p>
-          <div class="close-btn">Đóng</div>
-        `;
-        $("#tour-details-popup .popup-content").html(html);
-        $("#tour-details-popup").show();
+        $("#tour_details_popup .popup-title").text(data.name)
+        $("#tour_category_name").text(data.category.name)
+        $("#tour_cost").text(numberToCurrency(data.cost))
+        $("#tour_description").text(data.description)
+        $("#tour_start_date").text(formatDate(data.start_date))
+        $("#tour_end_date").text(formatDate(data.end_date))
+        $("#tour_visit_location").text(data.visit_location)
+        $("#tour_start_location").text(data.start_location)
+        $("#tour_guide_cost").text(numberToCurrency(data.tour_guide_cost))
+        $("#tour_details_popup").show();
       },
       error: function (xhr, status, error) {
         console.error(error);
@@ -88,11 +89,78 @@ $(document).on('turbolinks:load', function() {
     });
   });
 
-  $(document).on("click", "#tour-details-popup .close-btn", function () {
-    $("#tour-details-popup").hide();
+  $(document).on("click", "#tour_details_popup .close-btn", function () {
+    $("#tour_details_popup").hide();
   });
 
   $(document).on("click", "#closePopupError", function () {
     $("#error_explanation").hide();
   });
+
+  $(document).on("click", ".order-link", function (e) {
+    e.preventDefault();
+    const orderId = $(this).data("order-id");
+    $.ajax({
+      url: `/admin/orders/${orderId}`,
+      method: "GET",
+      dataType: "json",
+      success: function (data) {
+        $("#order_id").text(data.id)
+        $("#order_tour_name").text(data.tour.name)
+        $("#order_unit_cost").text(numberToCurrency(data.total_cost/data.amount_member))
+        $("#order_member").text(data.amount_member)
+        $("#order_user").text(data.user.name)
+        $("#order_contact_name").text(data.contact_name)
+        $("#order_contact_phone").text(data.contact_phone)
+        $("#order_contact_address").text(data.contact_address)
+        if(data.tour_guide == 1){
+          $("#order_tour_guide").text(I18n.t("admin.orders.order_detail.regis_tour_guide"))
+        } else {
+          $("#order_tour_guide").text(I18n.t("admin.orders.order_detail.unregis_tour_guide"))
+        }
+        if(data.status == "pending"){
+          $("#order_status").text(I18n.t("orders.status.pending"))
+        }
+        else if(data.status == "approved"){
+          $("#order_status").text(I18n.t("orders.status.approved"))
+        }
+        else if(data.status == "cancelled"){
+          $("#order_status").text(I18n.t("orders.status.cancelled"))
+        }
+        else{
+          $("#order_status").text(I18n.t("orders.status.done"))
+        }
+        $("#order_details_popup").show();
+      },
+      error: function (xhr, status, error) {
+        console.error(error);
+      }
+    });
+  });
+
+  $(document).on("click", "#order_details_popup .close-btn", function () {
+    $("#order_details_popup").hide();
+  });
+
+  function formatDate(formatDate) {
+    let _formatDate = new Date(formatDate);
+    if (formatDate && _formatDate instanceof Date && !isNaN(_formatDate.valueOf())){
+      let _date = _formatDate.getDate();
+      let _month = _formatDate.getMonth() + 1;
+      let _year = _formatDate.getFullYear();
+
+      if (_month <= 9) {
+        if (_date <= 9) {
+          _formatDate = `0${_date}-0${_month}-${_year}`;
+        } else {
+          _formatDate = `${_date}-0${_month}-${_year}`;
+        }
+      } else {
+        _formatDate = `${_date}/${_month}/${_year}`;
+      }
+      return _formatDate;
+    } else {
+      return "";
+    }
+  }
 })

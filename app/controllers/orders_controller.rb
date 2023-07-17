@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
   end
 
   def find_current_tour
-    @current_tour = Tour.find_by id: session[:tour_id]
+    @current_tour = Tour.includes(options: [:rich_text_option_content]).find_by id: session[:tour_id]
     return if @current_tour
 
     flash[:danger] = t "orders.flash.cant_find_current_tour"

@@ -17,9 +17,10 @@ RSpec.describe Admin::ToursController, type: :controller do
         content: "<div>Lich Trinh</div>",
         tour_guide_cost: 2000000,
         image: fixture_file_upload("images/left_arrow.png", "image/jpeg"),
-        is_create_category: 0
+        is_create_category: 0,
+        option_ids: ["", option.id]
       },
-      category_id: category.id
+      category_id: category.id,
     }
   }
 
@@ -37,10 +38,10 @@ RSpec.describe Admin::ToursController, type: :controller do
         tour_guide_cost: 2000000,
         image: fixture_file_upload("images/left_arrow.png", "image/jpeg"),
         is_create_category: 1,
+        option_ids: [""],
         category_attributes: {
           name: "Category name 1",
           description: "Description of category 1",
-          duration: 3
         }
       },
     }
@@ -110,7 +111,8 @@ RSpec.describe Admin::ToursController, type: :controller do
             content: "<div>Lich Trinh</div>",
             tour_guide_cost: 2000000,
             image: fixture_file_upload("images/left_arrow.png", "image/jpeg"),
-            is_create_category: 0
+            is_create_category: 0,
+            option_ids: [""]
           },
           category_id: -1
         }
@@ -179,7 +181,7 @@ RSpec.describe Admin::ToursController, type: :controller do
 
     context "when update success" do
       before do
-        put :update, params:{id: tour.id, tour: {name: "Tour Tam Dao Vinh Phuc"}, category_id: categories.first.id}
+        put :update, params:{id: tour.id, tour: {name: "Tour Tam Dao Vinh Phuc", option_ids: [""]}, category_id: categories.first.id}
       end
 
       it "flash" do
@@ -191,7 +193,7 @@ RSpec.describe Admin::ToursController, type: :controller do
 
     context "when category not found" do
       before do
-        put :update, params:{id: tour.id, tour: {name: "Tour Tam Dao Vinh Phuc"}, category_id: -1}
+        put :update, params:{id: tour.id, tour: {name: "Tour Tam Dao Vinh Phuc", option_ids: [""]}, category_id: -1}
       end
 
       it "flash" do
@@ -204,7 +206,7 @@ RSpec.describe Admin::ToursController, type: :controller do
     context "when update failed" do
       before do
         allow_any_instance_of(Tour).to receive(:update).and_return(false)
-        put :update, params:{id: tour.id, tour: {name: "Tour Tam Dao Vinh Phuc"}, category_id: category.id}
+        put :update, params:{id: tour.id, tour: {name: "Tour Tam Dao Vinh Phuc", option_ids: [""]}, category_id: category.id}
       end
 
       it "flash" do

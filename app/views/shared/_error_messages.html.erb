@@ -1,15 +1,17 @@
 <% if object.errors.any? %>
-  <div class="popup-error" id="error_explanation">
-    <div class="popup-error-content">
-      <div class="">
-        <%= pluralize object.errors.count, t("shared.error_messages.error_text") %>.
+  <div class="popup-container" id="error_explanation">
+    <div class="popup-content">
+      <div class="error-title">
+        <%= t ".error_text", error_count: object.errors.count %>
       </div>
       <ul>
         <% object.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
-      <div class="close-btn btn btn-primary" id="closePopupError">Close</div>
+      <div class="popup-control">
+        <div class="close-btn btn btn-primary" id="closePopupError"><%= t ".close_button" %></div>
+      </div>
     </div>
   </div>
 <% end %>

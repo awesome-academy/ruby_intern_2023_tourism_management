@@ -6,9 +6,9 @@
       <div class="detail-tour-header"><%= t ".detail_header" %></div>
       <div class="tour-info">
         <div class="tour-info-title"><%= t ".description" %></div>
-        <div><%= @tour.description %></div>
+        <div class="tour-info-content"><%= @tour.description %></div>
         <div class="tour-info-title"><%= t ".schedule" %></div>
-        <div><%= @tour.content %></div>
+        <div class="tour-info-content"><%= @tour.content %></div>
         <div class="tour-info-title"><%= t ".option_title" %></div>
         <div><%= render partial: "tours/tour_option", collection: @tour.options %></div>
       </div>
@@ -21,12 +21,17 @@
             <div class="tour-comment">
               <div class="user-comment">
                 <%= comment.user.name if comment.review.present? %>
+                <% if comment.rate.present? %>
+                  <span class="user-rate"><%= t ".user_rate", rate: comment.rate %></span>
+                <% end%>
               </div>
               <div class="comment-line">
                 <%= comment.review if comment.review.present? %>
               </div>
             </div>
           <% end%>
+        <% else %>
+          <div class="tour-info-content"><%= t ".not_comment" %></div>
         <% end%>
       </div>
     </div>
