@@ -2,12 +2,15 @@ class Tour < ApplicationRecord
   belongs_to :category
   has_many :orders, dependent: :restrict_with_exception
   has_many :comments, through: :orders
+  has_many :tour_options, dependent: :destroy
+  has_many :options, through: :tour_options
   has_one_attached :image
   has_rich_text :content
 
   attr_accessor :is_create_category
 
   accepts_nested_attributes_for :category
+  accepts_nested_attributes_for :options, reject_if: :all_blank, allow_destroy: true
 
   delegate :name, to: :category, prefix: true, allow_nil: true
 

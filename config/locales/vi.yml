@@ -50,6 +50,8 @@ vi:
         label_tour_guide_cost: Giá hướng dẫn viên
         save_button_text: Lưu
         create_new_category_checkbox: Tạo mới danh mục
+        add_option_button: Thêm mới option
+        add_option_title: Thêm option
       tour:
         edit_tour_text: Sửa
         delete_tour_text: Xóa
@@ -58,6 +60,11 @@ vi:
         label_name: Tên danh mục
         label_description: Mô tả
         label_duration: Thời gian
+      option_fields:
+        label_name: Tên option
+        label_cost: Giá
+        label_content: Nội dung
+        remove_option_button: Xóa option
       flash:
         created_tour_success: Tạo tour thành công
         created_tour_failed: Tạo tour thất bại
@@ -71,6 +78,7 @@ vi:
         cant_destroy_tour: Tour này không thể bị xóa
         cant_edit_tour: Không thể sửa tour khi đã kết thúc
         cant_create_new_category: Không thể  tạo mới danh mục
+        duplicate_option_name: Tên option đã tồn tại!
       validate:
         valid_image_format: không đúng định dạng
     order_title: Quản lý đặt tour
@@ -136,11 +144,15 @@ vi:
       order_button: Đặt ngay
       disable_order_button: Tour đã kết thúc
       comment_title: Bình luận
+      option_title: Gói dịch vụ
+      view_order_button: Xem thông tin đặt tour
     index:
       search_text: Tìm kiếm
       cost_range: Khoảng giá
       category: Danh mục
   orders:
+    helper:
+      default_option: Gói tiêu chuẩn
     new:
       pay_info_title: THÔNG TIN THANH TOÁN
       label_contact_name: Người liên hệ

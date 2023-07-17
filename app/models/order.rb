@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_one :comment, dependent: :destroy
 
   delegate :name, :phone, :email, :address, to: :user, prefix: true, allow_nil: true
-  delegate :name, :image, :cost, :start_date, :end_date, :tour_guide_cost, :visit_location, to: :tour,
+  delegate :name, :image, :cost, :start_date, :end_date, :tour_guide_cost, :visit_location, :options, to: :tour,
            prefix: true, allow_nil: true
 
   scope :newest, ->{order updated_at: :desc}

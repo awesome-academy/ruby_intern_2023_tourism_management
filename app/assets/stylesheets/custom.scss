@@ -130,7 +130,26 @@ td {
     .tour-input-col {
       width: 50%;
       padding: 0 16px;
+      .label-flex {
+        align-items: flex-start;
+      }
+      label {
+        margin-bottom: 0;
+      }
+      .collection-checkboxes {
+        margin-left: 32px;
+        .collection-checkbox-item {
+          padding: 2px 0;
+        }
+      }
+      .mgtb-6px {
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
     }
+  }
+  .flex-start {
+    align-items: flex-start;
   }
   .tour-richtext-row {
     padding: 0 16px;
@@ -178,8 +197,6 @@ td {
     padding: 0 4px;
   }
   .new-category-form{
-    margin: 16px 0;
-    padding-left: 16px;
     .new-category-content {
       width: 50%;
       padding-left: 32px;
@@ -231,6 +248,18 @@ td {
         border-radius: 8px;
         padding: 0px 10px;
       }
+    }
+  }
+  .new-option-form {
+    padding: 0 16px;
+    margin-bottom: 8px;
+    .option-item {
+      display: flex;
+      flex-direction: column;
+      margin-left: 16px;
+    }
+    .nested-fields{
+      margin-left: 48px;
     }
   }
 }
@@ -750,4 +779,54 @@ input[type="checkbox"] {
 .rating > input:checked ~ label,
 .rating > input:checked ~ label ~ label {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23fbbc04' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+}
+
+.tour-name-link {
+  cursor: pointer;
+}
+
+.tour-link {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.tour-link:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(107, 102, 102, 0.5);
+  z-index: 99999;
+}
+
+.popup-content, .popup-error-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.close-btn {
+  cursor: pointer;
+}
+
+.popup-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
 }

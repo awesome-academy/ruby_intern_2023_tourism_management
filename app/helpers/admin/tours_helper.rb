@@ -18,4 +18,8 @@ module Admin::ToursHelper
       [t("tours.cost_range.over_4m_range"), t("tours.cost_range.over_4m_value")]
     ]
   end
+
+  def load_options
+    Option.not_in_tour(@tour.id)
+  end
 end

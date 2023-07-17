@@ -50,6 +50,8 @@ en:
         label_tour_guide_cost: Tour guide cost
         save_button_text: Save
         create_new_category_checkbox: Create new category
+        add_option_button: Add new option
+        add_option_title: Add option
       tour:
         edit_tour_text: Edit
         delete_tour_text: Delete
@@ -58,6 +60,11 @@ en:
         label_name: Category name
         label_description: Description
         label_duration: Duration
+      option_fields:
+        label_name: Name
+        label_cost: Cost
+        label_content: Content
+        remove_option_button: Remove option
       flash:
         created_tour_success: Tour created successfully
         created_tour_failed: Tour created failed
@@ -71,6 +78,7 @@ en:
         cant_destroy_tour: This tour can't be deleted
         cant_edit_tour: Can't edit tour when it's ended
         cant_create_new_category: Can't create new category
+        duplicate_option_name: Duplicate option name
       validate:
         valid_image_format: has invalid image format
     order_title: Order management
@@ -136,11 +144,15 @@ en:
       order_button: Order now
       disable_order_button: Tour is end
       comment_title: Comment
+      option_title: Option
+      view_order_button: View detail order
     index:
       search_text: Search
       cost_range: Cost range
       category: Category
   orders:
+    helper:
+      default_option: Option default
     new:
       pay_info_title: PAY INFOMATION
       label_contact_name: Contact name

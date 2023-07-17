@@ -1,7 +1,7 @@
 <tr>
   <td class="td-text-center"><%= index %></td>
   <td class="td-text-center"><%= image_tag tour.display_image %></td>
-  <td><%= tour.name %></td>
+  <td><span class="tour-link" data-tour-id="<%= tour.id %>"><%= tour.name %></span></td>
   <td><%= tour.category_name %></td>
   <td class="td-text-right"><%= number_to_currency tour.cost %></td>
   <td><%= tour.visit_location %></td>

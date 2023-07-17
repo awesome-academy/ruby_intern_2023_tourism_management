@@ -1,73 +1,69 @@
 <%= form_for tour, url: yield(:url) do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="tour-input-row">
+  <div class="tour-input-row flex-start">
     <div class="tour-input-col">
-      <%= f.label :name, t(".label_name") %> <span class="required">*</span>
+      <div class="flex label-flex"><%= f.label :name, t(".label_name") %><div class="required">&nbsp;*</div></div>
       <%= f.text_field :name, class: "form-control" %>
-    </div>
-    <div class="tour-input-col">
-      <%= f.label :description, t(".label_description") %> <span class="required">*</span>
-      <%= f.text_field :description, class: "form-control" %>
-    </div>
-  </div>
-  <div class="tour-input-row">
-    <div class="tour-input-col">
-      <%= f.label :category_id, t(".label_category") %>
-      </br>
+      <%= f.label :category_id, t(".label_category") %><span> &nbsp;</span>
       <%= select_tag :category_id, options_for_select(load_categories, selected: tour.category_id) %>
-    </div>
-    <div class="tour-input-col">
-      <%= f.label :cost, t(".label_cost") %> <span class="required">*</span>
-      <%= f.number_field :cost, min: 1000, step: "1000", class: "form-control" %>
-    </div>
-  </div>
-  <% if show_new_category? %>
-    <div class="new-category-form">
-      <%= f.label :is_create_category do %>
-        <%= f.check_box :is_create_category %>
-        <span class="span-checkbox"><%= t ".create_new_category_checkbox" %></span>
+      <% if show_new_category? %>
+        <div class="new-category-form mgtb-6px">
+          <%= f.label :is_create_category do %>
+            <%= f.check_box :is_create_category %>
+            <span class="span-checkbox"><%= t ".create_new_category_checkbox" %></span>
+          <% end %>
+          <div id="new_category_content", class="new-category-content">
+            <%= f.fields_for :category do |c| %>
+              <%= render "category_fields", :f => c %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-      <div id="new_category_content", class="new-category-content">
-        <%= f.fields_for :category do |c| %>
-          <%= render "category_fields", :f => c %>
+      <%= f.label :option_ids, t(".add_option_title") %>
+      <div class="collection-checkboxes mgtb-6px">
+        <%= f.collection_check_boxes :option_ids, load_options, :id, :option_name, {}, { multiple: true } do |b| %>
+          <div class="collection-checkbox-item flex">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
         <% end %>
       </div>
+      <div class="new-option-form">
+        <div class="option-item">
+          <%= f.fields_for :options do |o| %>
+            <%= render "option_fields", :f => o %>
+          <% end %>
+          <%= link_to_add_association t(".add_option_button"), f, :options %>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <div class="tour-input-row">
     <div class="tour-input-col">
-      <%= f.label :start_date, t(".label_start_date") %> <span class="required">*</span>
+      <div class="flex label-flex"><%= f.label :description, t(".label_description") %> <div class="required"> &nbsp;*</div></div>
+      <%= f.text_field :description, class: "form-control" %>
+      <div class="flex label-flex"><%= f.label :cost, t(".label_cost") %> <div class="required"> &nbsp;*</div></div>
+      <%= f.number_field :cost, min: 1000, step: "1000", class: "form-control" %>
+      <div class="flex label-flex"><%= f.label :start_date, t(".label_start_date") %> <div class="required"> &nbsp;*</div></div>
       <%= f.date_field :start_date, min: Date.today.to_s, class: "form-control" %>
-    </div>
-    <div class="tour-input-col">
-      <%= f.label :end_date, t(".label_end_date") %> <span class="required">*</span>
+      <div class="flex label-flex"><%= f.label :end_date, t(".label_end_date") %> <div class="required"> &nbsp;*</div></div>
       <%= f.date_field :end_date, min: Date.today.to_s, class: "form-control" %>
-    </div>
-  </div>
-  <div class="tour-input-row">
-    <div class="tour-input-col">
-      <%= f.label :visit_location, t(".label_visit_location") %> <span class="required">*</span>
+      <div class="flex label-flex"><%= f.label :visit_location, t(".label_visit_location") %> <div class="required"> &nbsp;*</div></div>
       <%= f.text_field :visit_location, class: "form-control" %>
-    </div>
-    <div class="tour-input-col">
-      <%= f.label :start_location, t(".label_start_location") %> <span class="required">*</span>
+      <div class="flex label-flex"><%= f.label :start_location, t(".label_start_location") %> <div class="required"> &nbsp;*</div></div>
       <%= f.text_field :start_location, class: "form-control" %>
+      <div class="flex label-flex"><%= f.label :tour_guide_cost, t(".label_tour_guide_cost") %> <div class="required"> &nbsp;*</div></div>
+      <%= f.number_field :tour_guide_cost, min: 1000, step: "1000", class: "form-control" %>
     </div>
   </div>
   <div class="tour-input-row">
     <div class="tour-input-col">
       <span class="image">
-        <%= f.label :image, t(".label_image") %> <span class="required">*</span>
+        <div class="flex label-flex"><%= f.label :image, t(".label_image") %> <div class="required"> &nbsp;*</div></div>
         <%= f.file_field :image, accept: Settings.valid_image_format %>
       </span>
     </div>
-    <div class="tour-input-col">
-      <%= f.label :tour_guide_cost, t(".label_tour_guide_cost") %> <span class="required">*</span>
-      <%= f.number_field :tour_guide_cost, min: 1000, step: "1000", class: "form-control" %>
-    </div>
   </div>
   <div class="tour-richtext-row">
-    <%= f.label :content, t(".label_content") %> <span class="required">*</span>
+    <div class="flex label-flex"><%= f.label :content, t(".label_content") %> <div class="required"> &nbsp;*</div></div>
     <%= f.rich_text_area :content %>
   </div>
   <div class="tour-input-row">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_20_103715) do
+ActiveRecord::Schema.define(version: 2023_07_25_014927) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2023_07_20_103715) do
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
@@ -72,6 +71,14 @@ ActiveRecord::Schema.define(version: 2023_07_20_103715) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "options", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "option_name"
+    t.integer "option_cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_name"], name: "index_options_on_option_name", unique: true
+  end
+
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "tour_id", null: false
     t.bigint "user_id", null: false
@@ -85,8 +92,18 @@ ActiveRecord::Schema.define(version: 2023_07_20_103715) do
     t.string "contact_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "service_option"
     t.index ["tour_id"], name: "index_orders_on_tour_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "tour_options", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "tour_id", null: false
+    t.bigint "option_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_id"], name: "index_tour_options_on_option_id"
+    t.index ["tour_id"], name: "index_tour_options_on_tour_id"
   end
 
   create_table "tours", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -101,7 +118,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_103715) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tour_guide_cost"
-    t.decimal "average_rate", precision: 1, default: "0"
+    t.decimal "average_rate", precision: 2, scale: 1, default: "0.0"
     t.index ["category_id"], name: "index_tours_on_category_id"
     t.index ["name"], name: "name_UNIQUE", unique: true
   end
@@ -143,5 +160,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_103715) do
   add_foreign_key "comments", "users"
   add_foreign_key "orders", "tours"
   add_foreign_key "orders", "users"
+  add_foreign_key "tour_options", "options"
+  add_foreign_key "tour_options", "tours"
   add_foreign_key "tours", "categories"
 end

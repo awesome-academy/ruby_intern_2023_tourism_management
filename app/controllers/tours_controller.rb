@@ -18,7 +18,7 @@ class ToursController < ApplicationController
   end
 
   def find_tour_by_id
-    @tour = Tour.includes(comments: :user).find_by(id: params[:id])
+    @tour = Tour.includes(comments: :user, options: [:rich_text_option_content]).find_by(id: params[:id])
     return if @tour
 
     flash[:danger] = t "tours.not_found"
