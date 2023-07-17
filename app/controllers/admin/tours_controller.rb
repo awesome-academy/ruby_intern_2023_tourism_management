@@ -3,6 +3,7 @@ class Admin::ToursController < Admin::AdminController
   rescue_from ActiveRecord::RecordNotFound, with: :tour_not_found
   before_action :prepare_create_tour, only: :create
   before_action :check_edit_tour, only: %i(update edit)
+  before_action :find_category_by_id, only: :update
 
   def index
     build_tour_filter
@@ -66,6 +67,14 @@ class Admin::ToursController < Admin::AdminController
     return if Time.zone.today < @tour.start_date
 
     flash[:danger] = t "admin.tours.flash.cant_edit_tour"
+    redirect_to admin_tours_path
+  end
+
+  def find_category_by_id
+    category = Category.find_by id: params[:category_id]
+    return if category
+
+    flash[:danger] = t "admin.tours.flash.category_not_found"
     redirect_to admin_tours_path
   end
 end

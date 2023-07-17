@@ -3,9 +3,25 @@ require_relative "../shared_examples/object_example_spec"
 
 RSpec.describe OrdersController, type: :controller do
   include_examples "object constructor"
+
+  let(:post_order){
+    post :create, params:{
+      order:{
+        contact_name: "Nguyen Duc Huy",
+        contact_phone: "0975222888",
+        contact_address: "133 Xuan Thuy",
+        amount_member: "2",
+        note: "Ghi chu",
+        tour_guide: "1",
+        total_cost: "150000"
+      }
+    }
+  }
+
   describe "GET #index" do
     context "when log in" do
       before do
+        user.confirm
         sign_in user
       end
 
@@ -25,6 +41,7 @@ RSpec.describe OrdersController, type: :controller do
   describe "GET #new" do
     context "when Start date is before Today" do
       before do
+        user.confirm
         sign_in user
         tour.start_date = Date.today
         tour.save!
@@ -39,6 +56,7 @@ RSpec.describe OrdersController, type: :controller do
     context "when valid to create" do
       before do
         tour.reload
+        user.confirm
         sign_in user
         session[:tour_id] = tour.id
       end
@@ -53,35 +71,26 @@ RSpec.describe OrdersController, type: :controller do
   describe "POST #create" do
     context "when not login" do
       before do
-        post :create
+        post_order
       end
 
       it_behaves_like "handle not log in"
     end
     context "when login" do
       before do
+        user.confirm
         sign_in user
         session[:tour_id] = tour.id
       end
 
       it "flash success create" do
-        post :create, params:{
-          order:{
-            contact_name: "Nguyen Duc Huy",
-            contact_phone: "0975222888",
-            contact_address: "133 Xuan Thuy",
-            amount_member: "2",
-            note: "Ghi chu",
-            tour_guide: "1",
-            total_cost: "150000"
-          }
-        }
+        post_order
         expect(flash[:success]).to eq I18n.t("orders.flash.create_order_success")
       end
 
       it "flash not current tour" do
         session[:tour_id] = -1
-        post :create
+        post_order
         expect(flash[:danger]).to eq I18n.t("orders.flash.cant_find_current_tour")
       end
 
@@ -89,23 +98,13 @@ RSpec.describe OrdersController, type: :controller do
         tour.start_date = Date.today
         tour.save!
         session[:tour_id] = tour.id
-        post :create
+        post_order
         expect(flash[:danger]).to eq I18n.t("orders.flash.tour_ended")
       end
 
       it "flash failed if order create failed" do
         allow_any_instance_of(Order).to receive(:save).and_return(false)
-        post :create, params:{
-          order:{
-            contact_name: "Nguyen Duc Huy",
-            contact_phone: "0975222888",
-            contact_address: "133 Xuan Thuy",
-            amount_member: "2",
-            note: "Ghi chu",
-            tour_guide: "1",
-            total_cost: "150000"
-          }
-        }
+        post_order
         expect(flash[:danger]).to eq I18n.t("orders.flash.create_order_failed")
       end
     end
@@ -121,6 +120,7 @@ RSpec.describe OrdersController, type: :controller do
     end
     context "when login" do
       before do
+        user.confirm
         sign_in user
       end
 
@@ -135,7 +135,7 @@ RSpec.describe OrdersController, type: :controller do
       end
 
       it "flash order not pending" do
-        order.update! status: Order.statuses[:approved]
+        order.approved!
         put :update, params:{id: order.id, order:{status: Order.statuses[:cancelled]}}
         expect(flash[:danger]).to eq I18n.t("admin.orders.flash.order_status_changed")
       end

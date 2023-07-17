@@ -179,3 +179,14 @@ en:
       tour_guide: Register for tour guide
       not_tour_guide: Not register for tour guide
       cancel_order: "Hủy đặt tour"
+  user_mailer:
+    order_approved:
+      subject: Order approved
+      hello: "Hello %{user}"
+      notice: Your order has been approved.
+      thanks: Thank you for using our service!
+    order_cancelled:
+      subject: Order cancelled
+      hello: "Hello %{user}"
+      notice: Your order has been cancelled.
+      thanks: Thank you for using our service!

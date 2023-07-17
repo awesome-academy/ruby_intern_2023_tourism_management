@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
   def update
     if @order.update status: Order.statuses[:cancelled]
       flash[:success] = t "orders.flash.cancel_order_success"
+      @order.user.send_email_cancelled_order
     else
       flash[:danger] = t "orders.flash.cant_cancelled_tour"
     end

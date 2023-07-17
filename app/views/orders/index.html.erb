@@ -2,5 +2,5 @@
   <%= render @orders %>
 </div>
 <div id="pagy_user_orders_nav">
-  <%== pagy_bootstrap_nav @pagy_user_orders %>
+  <%== render partial: "shared/pagination", locals: {pagy: @pagy_user_orders} %>
 </div>
