@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
   end
 
   def check_user
-    return if logged_in?
+    return if user_signed_in?
 
     flash[:danger] = t "orders.flash.not_logged_in"
     redirect_to login_path

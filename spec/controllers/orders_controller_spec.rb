@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 require_relative "../shared_examples/object_example_spec"
 
 RSpec.describe OrdersController, type: :controller do
@@ -7,7 +6,7 @@ RSpec.describe OrdersController, type: :controller do
   describe "GET #index" do
     context "when log in" do
       before do
-        log_in user
+        sign_in user
       end
 
       it "render index template" do
@@ -17,7 +16,6 @@ RSpec.describe OrdersController, type: :controller do
     end
     context "when not log in" do
       before do
-        log_out if logged_in?
         get :index, params: { user_id: user.id }
       end
       it_behaves_like "handle not log in"
@@ -27,10 +25,10 @@ RSpec.describe OrdersController, type: :controller do
   describe "GET #new" do
     context "when Start date is before Today" do
       before do
-        log_in user
+        sign_in user
         tour.start_date = Date.today
         tour.save!
-        tour_selected tour
+        session[:tour_id] = tour.id
       end
 
       it "flash tour ended" do
@@ -41,8 +39,8 @@ RSpec.describe OrdersController, type: :controller do
     context "when valid to create" do
       before do
         tour.reload
-        log_in user
-        tour_selected tour
+        sign_in user
+        session[:tour_id] = tour.id
       end
 
       it "render new order template" do
@@ -55,7 +53,6 @@ RSpec.describe OrdersController, type: :controller do
   describe "POST #create" do
     context "when not login" do
       before do
-        log_out if logged_in?
         post :create
       end
 
@@ -63,8 +60,8 @@ RSpec.describe OrdersController, type: :controller do
     end
     context "when login" do
       before do
-        log_in user
-        tour_selected tour
+        sign_in user
+        session[:tour_id] = tour.id
       end
 
       it "flash success create" do
@@ -91,7 +88,7 @@ RSpec.describe OrdersController, type: :controller do
       it "flash tour start date before today" do
         tour.start_date = Date.today
         tour.save!
-        tour_selected tour
+        session[:tour_id] = tour.id
         post :create
         expect(flash[:danger]).to eq I18n.t("orders.flash.tour_ended")
       end
@@ -117,7 +114,6 @@ RSpec.describe OrdersController, type: :controller do
   describe "PUT #update" do
     context "when not login" do
       before do
-        log_out if logged_in?
         put :update, params:{id: order.id, order:{status: Order.statuses[:cancelled]}}
       end
 
@@ -125,7 +121,7 @@ RSpec.describe OrdersController, type: :controller do
     end
     context "when login" do
       before do
-        log_in user
+        sign_in user
       end
 
       it "flash success cancelled" do
