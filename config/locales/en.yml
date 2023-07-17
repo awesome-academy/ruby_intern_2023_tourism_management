@@ -2,6 +2,7 @@ en:
   time:
     formats:
       default: "%d-%m-%Y"
+      placeholder: dd-mm-yyyy
   application:
     base_title: TRAVEL SUN
     not_permit_action: You are not allowed to do this action.
@@ -29,6 +30,8 @@ en:
           visit_location: Visit location
           start_date: Start date
           end_date: End date
+        placeholder_date: Filter by created date (dd-mm-yyyy)
+        placeholder_text: Type to search...
       edit:
         title: Edit tour
       new:
@@ -91,6 +94,7 @@ en:
           tour_guide: Tour guide
           total_cost: Total cost
           status: Status
+        search_placeholder: Type to search
       flash:
         order_not_found: Order not found
         cant_update_order: Cannot update order
@@ -115,6 +119,15 @@ en:
     not_found: No record
     compare_date: must be after start_date
     before_today: must be after today
+    cost_range:
+      all_range: "All range"
+      all_value: "-"
+      0_to_2m_range: "0 to 2,000,000 VNĐ"
+      0_to_2m_value: "0-2000000"
+      2m_to_4m_range: "2,000,000 to 4,000,000 VNĐ"
+      2_to_4m_value: "2000000-4000000"
+      over_4m_range: "Over 4,000,000 VNĐ"
+      over_4m_value: "4000000-"
     show:
       detail_header: Detail info
       description: Description
@@ -122,6 +135,10 @@ en:
       price_title: "Price only:"
       order_button: Order now
       disable_order_button: Tour is end
+    index:
+      search_text: Search
+      cost_range: Cost range
+      category: Category
   orders:
     new:
       pay_info_title: PAY INFOMATION

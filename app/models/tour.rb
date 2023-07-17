@@ -10,12 +10,10 @@ class Tour < ApplicationRecord
 
   delegate :name, to: :category, prefix: true, allow_nil: true
 
-  scope :filter_by_category, ->(category_id){where category_id: category_id}
-  scope :filter_by_name, ->(name){where name: name}
-  scope :newest, ->{order updated_at: :desc}
-  scope :filter_by_text, lambda{|search_text|
-    where("name LIKE ? OR visit_location LIKE ?", search_text, search_text) if search_text.present?
-  }
+  ransack_alias :tour, :name_or_description_or_visit_location_or_start_location_or_category_name
+  ransacker :created_at, type: :date do
+    Arel.sql("date(created_at)")
+  end
 
   validates :name, uniqueness: true, presence: true,
             length: {maximum: Settings.max_length_text_254, minimum: Settings.min_length_text_10}

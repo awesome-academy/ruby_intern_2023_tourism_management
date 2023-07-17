@@ -2,6 +2,7 @@ vi:
   time:
     formats:
       default: "%d-%m-%Y"
+      placeholder: dd-mm-yyyy
   application:
     base_title: TRAVEL SUN
     not_permit_action: Bạn cần có quyền truy cập để thực hiện hành động này.
@@ -18,7 +19,7 @@ vi:
     tours:
       index:
         title: Tours
-        new_tour_text: Thêm tour
+        new_tour_text: THÊM TOUR
         filter_button: Tìm kiếm
         tour_table:
           tour_number: STT
@@ -29,6 +30,8 @@ vi:
           visit_location: Địa điểm tham quan
           start_date: Ngày bắt đầu
           end_date: Ngày kết thúc
+        placeholder_date: Lọc theo ngày tạo (dd-mm-yyyy)
+        placeholder_text: Nhập để tìm kiếm...
       edit:
         title: Sửa tour
       new:
@@ -91,6 +94,7 @@ vi:
           tour_guide: Hướng dẫn viên
           total_cost: Tổng tiền
           status: Trạng thái
+        search_placeholder: Nhập để tìm kiếm...
       flash:
         order_not_found: Không tìm thấy đơn đặt tour
         cant_update_order: Không thể cập nhật đơn hàng
@@ -100,7 +104,7 @@ vi:
     error_messages:
       error_text: lỗi
   home:
-    title: Travel Sun
+    title: TRAVEL SUN *
     hello: Chào
     search: Tìm kiếm
     profile: Thông tin cá nhân
@@ -115,6 +119,13 @@ vi:
     not_found: Tour không tồn tại!
     compare_date: phải lớn hơn ngày khởi hành
     before_today: phải lớn hơn ngày hiện tại
+    cost_range:
+      0_to_2m_range: "0 đến 2,000,000 VNĐ"
+      0_to_2m_value: "0-2000000"
+      2m_to_4m_range: "2,000,000 đến 4,000,000 VNĐ"
+      2_to_4m_value: "2000000-4000000"
+      over_4m_range: "Trên 4,000,000 VNĐ"
+      over_4m_value: "4000000-"
     show:
       detail_header: Thông tin chi tiết
       description: Mô tả
@@ -122,6 +133,10 @@ vi:
       price_title: "Giá chỉ từ:"
       order_button: Đặt ngay
       disable_order_button: Tour đã kết thúc
+    index:
+      search_text: Tìm kiếm
+      cost_range: Khoảng giá
+      category: Danh mục
   orders:
     new:
       pay_info_title: THÔNG TIN THANH TOÁN

@@ -1,0 +1,2 @@
+$('#tour_grid').html('<%= j render @tours %>');
+$('#tour_paging').html('<%== j render partial: "shared/pagination", locals: {pagy: @pagy_tours} %>');

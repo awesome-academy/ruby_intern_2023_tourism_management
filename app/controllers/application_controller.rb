@@ -27,8 +27,15 @@ class ApplicationController < ActionController::Base
 
   def access_denied
     flash[:danger] = t "application.not_permit_action"
+    return redirect_to(root_path) unless current_user&.admin?
+
     back_path = send "admin_#{controller_name}_path"
-    redirect_to current_user&.admin? ? back_path : root_path
+    redirect_to back_path
+  end
+
+  def build_tour_filter
+    @q = Tour.ransack params[:q]
+    @q.sorts = ["tours.created_at desc", "tours.name asc"] if @q.sorts.empty?
   end
 
   protected

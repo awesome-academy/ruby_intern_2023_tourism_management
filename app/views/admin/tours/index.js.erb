@@ -2,4 +2,4 @@ $('#tour_paginate').empty();
 <% @tours.each.with_index(1) do |tour, index| %>
   $('#tour_paginate').append('<%= j render tour, index: index %>');
 <% end %>
-$('#pagy_navbar').html('<%== pagy_bootstrap_nav @pagy_tours %>');
+$('#pagy_navbar').html('<%== j render partial: "shared/pagination", locals: {pagy: @pagy_tours} %>');

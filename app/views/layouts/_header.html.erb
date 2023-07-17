@@ -1,17 +1,6 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-home navbar-expand-lg">
   <%= link_to t("home.title"), root_path, class: "redirect_tag title" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-  aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto header_nav">
-      <%= render partial: "categories/category_search",
-        collection: @categories %>
-    </ul>
-
     <% if user_signed_in? %>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle"
@@ -19,8 +8,9 @@
           <%= t "home.hello" + " " + current_user.name %>
         </button>
         <div class="dropdown-menu">
-          <%= link_to t("home.profile"), login_path ,class:"dropdown-item" %>
-          <%= link_to t("home.order"), login_path,class:"dropdown-item" %>
+          <%= link_to t("home.profile"), user_path(current_user) ,class:"dropdown-item" %>
+          <%= link_to t("home.order"), user_orders_path(current_user),class:"dropdown-item" %>
+          <%= link_to t("admin.logout_button"), logout_path, method: :delete, class:"dropdown-item" %>
         </div>
       </div>
     <% else %>
@@ -29,3 +19,7 @@
     <% end %>
   </div>
 </nav>
+<script src="/admin_layout/vendor/jquery/jquery.min.js"></script>
+<script src="/admin_layout/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin_layout/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/admin_layout/js/sb-admin-2.min.js"></script>

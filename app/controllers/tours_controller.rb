@@ -4,13 +4,8 @@ class ToursController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :tour_not_found
 
   def index
-    @pagy, @tours = if params[:category_id]
-                      pagy Tour.filter_by_category params[:category_id]
-                    elsif params[:name]
-                      pagy Tour.filter_by_name params[:name]
-                    else
-                      pagy Tour.all
-                    end
+    build_tour_filter
+    @pagy_tours, @tours = pagy @q.result.includes(:category), items: Settings.pagy_items_9
   end
 
   def show

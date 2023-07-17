@@ -5,7 +5,8 @@ class Admin::ToursController < Admin::AdminController
   before_action :check_edit_tour, only: %i(update edit)
 
   def index
-    @pagy_tours, @tours = pagy Tour.filter_by_text(params[:search_text]).newest
+    build_tour_filter
+    @pagy_tours, @tours = pagy @q.result.includes(:category)
   end
 
   def new
