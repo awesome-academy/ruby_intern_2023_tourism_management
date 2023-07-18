@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-  def show
-    @user = User.find_by id: params[:id]
-    return if @user
+  load_and_authorize_resource
+  rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
 
-    flash[:warning] = t "users.flash.user_not_found"
-    redirect_to home_path
+  def show; end
+
+  private
+  def user_not_found
+    flash[:danger] = t "users.flash.user_not_found"
+    redirect_to root_path
   end
 end

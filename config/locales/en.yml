@@ -3,7 +3,8 @@ en:
     formats:
       default: "%d-%m-%Y"
   application:
-    base_title: Booking Tour
+    base_title: TRAVEL SUN
+    not_permit_action: You are not allowed to do this action.
   users:
     flash:
       user_not_found: User not found

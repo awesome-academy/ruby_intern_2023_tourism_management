@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   protect_from_forgery with: :exception
+  rescue_from CanCan::AccessDenied, with: :access_denied
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -12,10 +13,7 @@ class ApplicationController < ActionController::Base
     {locale: I18n.locale}
   end
 
-  def find_order_by_id
-    @order = Order.find_by id: params[:id]
-    return if @order
-
+  def order_not_found
     flash[:danger] = t "orders.flash.cant_find_order"
     redirect_to current_user.admin? ? admin_orders_path : (user_orders_path current_user)
   end
@@ -27,8 +25,10 @@ class ApplicationController < ActionController::Base
     redirect_to current_user.admin? ? admin_orders_path : (user_orders_path current_user)
   end
 
-  def tour_selected tour
-    session[:tour_id] = tour.id
+  def access_denied
+    flash[:danger] = t "application.not_permit_action"
+    back_path = send "admin_#{controller_name}_path"
+    redirect_to current_user&.admin? ? back_path : root_path
   end
 
   protected

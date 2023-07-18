@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
+  load_and_authorize_resource
   before_action :load_categories
-  before_action :load_by_id, only: :show
+  rescue_from ActiveRecord::RecordNotFound, with: :tour_not_found
 
   def index
     @pagy, @tours = if params[:category_id]
@@ -13,22 +14,15 @@ class ToursController < ApplicationController
   end
 
   def show
-    tour_selected @tour
+    session[:tour_id] = @tour.id
   end
 
   private
-  def tour_params
-    params.require(:tour).permit :category_id, :name
-  end
-
   def load_categories
     @categories = Category.pluck(:id, :name)
   end
 
-  def load_by_id
-    @tour = Tour.find_by id: params[:id]
-    return if @tour
-
+  def tour_not_found
     flash[:danger] = t "tours.not_found"
     redirect_to tours_path
   end
