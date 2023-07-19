@@ -1,15 +1,15 @@
 <tr>
-  <th><%= index %></th>
-  <th><%= image_tag tour.display_image %></th>
-  <th><%= tour.name %></th>
-  <th><%= tour.category_name %></th>
-  <th><%= number_to_currency tour.cost %></th>
-  <th><%= tour.visit_location %></th>
-  <th><%= l(tour.start_date) %></th>
-  <th><%= l(tour.end_date) %></th>
-  <th>
+  <td class="td-text-center"><%= index %></td>
+  <td class="td-text-center"><%= image_tag tour.display_image %></td>
+  <td><%= tour.name %></td>
+  <td><%= tour.category_name %></td>
+  <td class="td-text-right"><%= number_to_currency tour.cost %></td>
+  <td><%= tour.visit_location %></td>
+  <td class="td-text-center"><%= l(tour.start_date) %></td>
+  <td class="td-text-center"><%= l(tour.end_date) %></td>
+  <td>
     <% if Date.today < tour.start_date %>
       <%= link_to t(".edit_tour_text"), edit_admin_tour_path(tour) %>
     <% end %>
-  </th>
+  </td>
 </tr>

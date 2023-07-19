@@ -45,4 +45,15 @@ $(document).on('turbolinks:load', function() {
   setTimeout(function() {
     $('.alert').hide();
   }, 4999);
+
+  $('.form-check-input').change(function() {
+    $('#btn_filter_by').click();
+  });
+
+  $('#select_cost_range').change(function() {
+    let arr = $('#select_cost_range').val().split("-")
+    $('#cost_gteq').val(parseInt(arr[0]))
+    $('#cost_lteq').val(parseInt(arr[1]))
+    $('#btn_filter_by').click();
+  });
 })

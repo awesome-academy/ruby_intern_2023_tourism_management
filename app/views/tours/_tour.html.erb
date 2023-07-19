@@ -1,18 +1,11 @@
-<li class="tour_item">
-  <%= image_tag tour.display_image, class: "tour_image" %>
-  <div class="tour_item__content">
-    <p class="title">
-      <%= tour.name %>
-    </p>
-    <p>
-      <%= t "tours.location", location: tour.visit_location %>
-    </p>
-    <p>
-      <%= t "tours.duration", duration: tour.category.duration %>
-    </p>
-    <p>
-      <%= t "tours.start_date",
-          start_date: tour.start_date.strftime(Settings.format_date_f) %>
-    </p>
+<div class="tour-item">
+  <%= image_tag tour.display_image, class: "tour-image" %>
+  <div class="tour-item-content">
+    <%= link_to tour.name, tour_path(id: tour.id), class: "tour-name" %>
+    <p><%= t "tours.location", location: tour.visit_location %></p>
+    <p><%= t "tours.start_date", start_date: l(tour.start_date) %>
+    <div class="tour-price">
+      <span class="tour-price-text"><%= number_to_currency tour.cost %></span>
+    </div>
   </div>
-</li>
+</div>

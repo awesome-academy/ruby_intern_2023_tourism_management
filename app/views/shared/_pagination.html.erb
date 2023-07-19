@@ -1,0 +1,38 @@
+<% link = pagy_link_proc(pagy) %>
+<nav aria-label="pager" class="table-pagination" role="navigation">
+  <ul class="pagination">
+    <% if pagy.prev %>
+      <li class="page-item">
+        <%== link.call(pagy.prev, image_tag("left_arrow.png", alt: "Previous", class: "page-link__previous"), 'aria-label="previous" class="page-link"') %>
+      </li>
+    <% else %>
+      <li class="page-item disabled">
+        <%==link.call(1, image_tag("left_arrow.png", alt: "Previous", class: "page-link__previous"), 'class="page-link"') %>
+      </li>
+    <% end %>
+    <% pagy.series.each do |item| %>
+      <% if item.is_a?(Integer) %>
+        <li class="page-item">
+          <%== link.call(item, item, 'class=page-link') %>
+        </li>
+      <% elsif item.is_a?(String) %>
+        <li class="page-item active">
+          <%= link_to(item, "javascript:void(0)", class: "page-link") %>
+        </li>
+      <% elsif item == :gap %>
+      <li class="page-item disabled">
+          <%== link_to("...", "javascript:void(0)", class: "page-link") %>
+        </li>
+      <% end %>
+    <% end %>
+    <% if pagy.next %>
+      <li class="page-item">
+        <%== link.call(pagy.next, image_tag("right_arrow.png", alt: "Previous", class: "page-link__previous"), 'aria-label="next" class="page-link"') %>
+      </li>
+    <% else %>
+      <li class="page-item disabled">
+        <%== link.call(pagy.last, image_tag("right_arrow.png", alt: "Previous", class: "page-link__previous"), 'class="page-link"') %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

@@ -1,2 +1,2 @@
 $('#order_paginate').html('<%= j render @orders %>');
-$('#order_navbar').html('<%== pagy_bootstrap_nav @pagy_orders %>');
+$('#order_navbar').html('<%== j render partial: "shared/pagination", locals: {pagy: @pagy_orders} %>');

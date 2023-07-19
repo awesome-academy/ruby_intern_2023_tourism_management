@@ -1,18 +1,18 @@
 <tr>
-  <td><%= order.id %></td>
-  <td><%= image_tag order.display_image %></td>
+  <td class="td-text-center"><%= order.id %></td>
+  <td class="td-text-center"><%= image_tag order.display_image %></td>
   <td><%= order.tour_name %></td>
-  <td><%= number_to_currency order.tour_cost %></td>
-  <td><%= order.amount_member %></td>
+  <td class="td-text-center"><%= number_to_currency order.tour_cost %></td>
+  <td class="td-text-center"><%= order.amount_member %></td>
   <td><%= order.contact_name %></td>
   <td><%= order.contact_phone %></td>
   <td><%= order.contact_address %></td>
-  <td>
+  <td class="td-text-center">
     <% if order.tour_guide? %>
       <div class="check-mark">&checkmark;</div>
       <% end %>
   </td>
-  <td><%= number_to_currency order.total_cost %></td>
+  <td class="td-text-right"><%= number_to_currency order.total_cost %></td>
   <td>
     <div id="td_order_status">
       <% if order.pending? %>

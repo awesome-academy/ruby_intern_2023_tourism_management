@@ -3,29 +3,26 @@
   <div class="order-header-navbar flex">
     <div class="search_input">
       <%= form_tag admin_orders_path, method: :get, remote: true, class: "search" do %>
-        <%= text_field_tag :search_text %>
         <%= select_tag :status_search, options_for_select(load_search_status) %>
-        <%= submit_tag t(".search_button"), class: "btn btn-success" %>
+        <%= text_field_tag :search_text, nil, class: "form-control", placeholder: t(".search_placeholder") %>
+        <%= submit_tag t(".search_button"), class: "btn-search-order btn btn-primary" %>
       <% end %>
-    </div>
-    <div id="order_navbar" class="order-navbar">
-      <%== pagy_bootstrap_nav @pagy_orders %>
     </div>
   </div>
   <div class="order-table">
     <table>
       <thead>
         <tr>
-          <th><%= t ".order_table.order_number" %></th>
-          <th><%= t ".order_table.image" %></th>
+          <th class="td-text-center"><%= t ".order_table.order_number" %></th>
+          <th class="td-text-center"><%= t ".order_table.image" %></th>
           <th><%= t ".order_table.tour_name" %></th>
-          <th><%= t ".order_table.cost" %></th>
+          <th class="td-text-center"><%= t ".order_table.cost" %></th>
           <th><%= t ".order_table.member" %></th>
           <th><%= t ".order_table.contact_name" %></th>
-          <th><%= t ".order_table.contact_phone" %></th>
+          <th class="td-text-center"><%= t ".order_table.contact_phone" %></th>
           <th><%= t ".order_table.contact_address" %></th>
-          <th><%= t ".order_table.tour_guide" %></th>
-          <th><%= t ".order_table.total_cost" %></th>
+          <th class="td-text-center"><%= t ".order_table.tour_guide" %></th>
+          <th class="td-text-center"><%= t ".order_table.total_cost" %></th>
           <th><%= t ".order_table.status" %></th>
         </tr>
       </thead>
@@ -33,5 +30,10 @@
         <%= render @orders %>
       </tbody>
     </table>
+  </div>
+  <div class="table-paging flex">
+    <div id="order_navbar">
+      <%== render partial: "shared/pagination", locals: {pagy: @pagy_orders} %>
+    </div>
   </div>
 <% end %>

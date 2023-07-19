@@ -1,29 +1,30 @@
 <% provide :title, t(".title") %>
 <% content_for :management do %>
   <div class="tour-navbar">
-    <div class="new-btn"><%= link_to t(".new_tour_text"), new_admin_tour_path %></div>
+    <button type="button" class="btn btn-primary">
+      <%= link_to t(".new_tour_text"), new_admin_tour_path %>
+    </button>
     <div class="search_input">
-      <%= form_tag admin_tours_path, method: :get, remote: true, class: "search" do %>
-        <%= text_field_tag :search_text %>
-        <%= submit_tag t(".filter_button"), class: "btn btn-success" %>
+      <%= search_form_for @q, url: admin_tours_path, method: :get, remote: true do |f| %>
+        <%= f.select :category_id_eq, options_for_select(load_search_categories) %>
+        <%= f.search_field :created_at_date_equals, placeholder: t(".placeholder_date"), class: "form-control" %>
+        <%= f.search_field :tour_cont, placeholder: t(".placeholder_text"), class: "form-control" %>
+        <%= f.submit t(".filter_button"), class: "btn btn-primary" %>
       <% end %>
-    </div>
-    <div id="pagy_navbar">
-      <%== pagy_bootstrap_nav @pagy_tours %>
     </div>
   </div>
   <div class="tour-table">
     <table>
       <thead>
         <tr>
-          <th><%= t ".tour_table.tour_number" %></th>
-          <th><%= t ".tour_table.image" %></th>
+          <th class="td-text-center"><%= t ".tour_table.tour_number" %></th>
+          <th class="td-text-center"><%= t ".tour_table.image" %></th>
           <th><%= t ".tour_table.tour_name" %></th>
           <th><%= t ".tour_table.category" %></th>
-          <th><%= t ".tour_table.cost" %></th>
+          <th class="td-text-center"><%= t ".tour_table.cost" %></th>
           <th><%= t ".tour_table.visit_location" %></th>
-          <th><%= t ".tour_table.start_date" %></th>
-          <th><%= t ".tour_table.end_date" %></th>
+          <th class="td-text-center"><%= t ".tour_table.start_date" %></th>
+          <th class="td-text-center"><%= t ".tour_table.end_date" %></th>
           <th></th>
         </tr>
       </thead>
@@ -33,5 +34,10 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="table-paging flex">
+    <div id="pagy_navbar">
+      <%== render partial: "shared/pagination", locals: {pagy: @pagy_tours} %>
+    </div>
   </div>
 <% end %>

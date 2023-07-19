@@ -4,17 +4,17 @@
     id="accordionSidebar"
   >
     <%= link_to t("admin.title"), admin_tours_path, class: "sidebar-brand-text mx-3 sidebar-brand d-flex align-items-center justify-content-center" %>
-    <li class="nav-item">
-      <%= link_to t("admin.tour_title"), admin_tours_path, class: "nav-link" %>
+    <hr class="sidebar-divider" />
+    <li class="nav-item <%= "active" if current_page?(admin_tours_path) %>">
+      <%= link_to t("admin.tour_title"), admin_tours_path, class: "nav-link " %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item <%= "active" if current_page?(admin_orders_path) %>">
       <%= link_to t("admin.order_title"), admin_orders_path, class: "nav-link" %>
     </li>
-    <hr class="sidebar-divider" />
   </ul>
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" >
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow" >
         <button
           id="sidebarToggleTop"
           class="btn btn-link d-md-none rounded-circle mr-3"
