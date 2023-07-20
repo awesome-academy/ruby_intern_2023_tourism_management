@@ -177,3 +177,14 @@ vi:
       tour_guide: Đăng ký hướng dẫn viên
       not_tour_guide: Không đăng ký hướng dẫn viên
       cancel_order: "Hủy đặt tour"
+  user_mailer:
+    order_approved:
+      subject: Duyệt đơn đặt tour
+      hello: "Chào %{user}"
+      notice: Đơn đặt tour của bạn đã được duyệt.
+      thanks: Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!
+    order_cancelled:
+      subject: Hủy đơn đặt tour
+      hello: "Chào %{user}"
+      notice: Đơn đặt tour của bạn đã hủy thành công.
+      thanks: Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!

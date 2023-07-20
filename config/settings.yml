@@ -18,3 +18,5 @@ max_image_size_5_MB: 5
 limit_image_area: [200, 200]
 all_status_value: all
 pagy_items_9: 9
+order_status_approved: "approved"
+order_status_cancelled: "cancelled"

@@ -11,9 +11,16 @@ class Admin::OrdersController < Admin::AdminController
   def update
     if @order.update status: Order.statuses[params[:status]]
       flash[:success] = t "admin.orders.flash.update_order_success"
+      send_mail_update_order
     else
       flash[:danger] = t "admin.orders.flash.cant_update_order"
     end
     redirect_to admin_orders_path
+  end
+
+  private
+  def send_mail_update_order
+    @order.user.send_email_approved_order if params[:status] == Settings.order_status_approved
+    @order.user.send_email_cancelled_order if params[:status] == Settings.order_status_cancelled
   end
 end

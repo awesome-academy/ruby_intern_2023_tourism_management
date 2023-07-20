@@ -48,4 +48,14 @@ FactoryBot.define do
     tour_guide {Faker::Number.between(from: 0, to: 1)}
     total_cost {"8150000"}
   end
+
+  factory :admin, class: "User" do
+    phone {Faker::PhoneNumber.phone_number}
+    email {Faker::Internet.unique.email}
+    address {Faker::Address.full_address}
+    password {"123456"}
+    password_confirmation {"123456"}
+    name {Faker::Name.last_name}
+    role {"admin"}
+  end
 end
