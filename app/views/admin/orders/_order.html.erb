@@ -18,13 +18,19 @@
       <% if order.pending? %>
         <%= form_for :order, url: admin_order_url(order), method: :patch, remote: true do |f| %>
           <% f.label :status %>
-          <%= select_tag :status, options_for_select(load_status, selected: order.status), disabled: !order.pending? %>
+          <%= select_tag :status, options_for_select(load_status, selected: order.status) %>
           <%= f.submit t("admin.orders.index.submit_button"), id: "btnSaveOrderForm", class: "btn btn-primary" %>
         <% end %>
       <% elsif order.approved? %>
-        <div class="approved-status flex"><%= t "admin.orders.index.approved_status" %></div>
+        <%= form_for :order, url: admin_order_url(order), method: :patch, remote: true do |f| %>
+          <% f.label :status %>
+          <%= select_tag :status, options_for_select(select_done_status, selected: order.status) %>
+          <%= f.submit t("admin.orders.index.submit_button"), id: "btnSaveOrderForm", class: "btn btn-primary" %>
+        <% end %>
       <% elsif order.cancelled? %>
         <div class="cancelled-status flex"><%= t "admin.orders.index.cancelled_status" %></div>
+      <% elsif order.done? %>
+        <div class="approved-status flex"><%= t "admin.orders.index.done_status" %></div>
       <% end %>
     </div>
   </td>

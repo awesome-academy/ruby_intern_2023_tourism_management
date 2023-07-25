@@ -10,6 +10,7 @@ RSpec.shared_examples "object constructor" do
   let(:user) { create(:user) }
   let(:admin) { create(:admin) }
   let(:order) { create(:order) }
+  let(:comment) { create(:comment) }
   let(:tours) {
     5.times do
       create(:tour)
@@ -77,5 +78,11 @@ end
 RSpec.shared_examples "handle admin tours redirect" do
   it "redirect to admin tours" do
     expect(response).to redirect_to admin_tours_path
+  end
+end
+
+RSpec.shared_examples "handle orders history redirect" do
+  it "redirect to user orders" do
+    expect(response).to redirect_to user_orders_path(user)
   end
 end

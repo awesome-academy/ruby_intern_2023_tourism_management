@@ -81,6 +81,7 @@ vi:
         submit_button: Thay đổi
         approved_status: Đã xử lý
         cancelled_status: Đã hủy
+        done_status: Đã hoàn thành
         search_button: Tìm kiếm
         order_table:
           order_number: STT
@@ -100,6 +101,7 @@ vi:
         cant_update_order: Không thể cập nhật đơn hàng
         update_order_success: Cập nhật đơn hàng thành công
         order_status_changed: Trạng thái đơn hàng đã thay đổi
+        order_not_end: Không thể hoàn thành tour khi tour chưa kết thúc.
   shared:
     error_messages:
       error_text: lỗi
@@ -133,6 +135,7 @@ vi:
       price_title: "Giá chỉ từ:"
       order_button: Đặt ngay
       disable_order_button: Tour đã kết thúc
+      comment_title: Bình luận
     index:
       search_text: Tìm kiếm
       cost_range: Khoảng giá
@@ -165,6 +168,7 @@ vi:
       cant_find_order: Không tìm thấy đơn đặt tour
       order_status_changed: Trạng thái đơn hàng đã thay đổi
       cancel_order_success: Hủy tour thành công
+      order_existed: Bạn đã đặt tour này
     order:
       order_number: "Đơn đặt tour số: %{order_number}"
       tour_name: "Tên tour: %{tour_name}"
@@ -177,6 +181,8 @@ vi:
       tour_guide: Đăng ký hướng dẫn viên
       not_tour_guide: Không đăng ký hướng dẫn viên
       cancel_order: "Hủy đặt tour"
+      confirm_delete_comment: Bạn có chắc chắn muốn xóa bình luận không?
+      delete_comment_button: Xóa
   user_mailer:
     order_approved:
       subject: Duyệt đơn đặt tour
@@ -188,3 +194,17 @@ vi:
       hello: "Chào %{user}"
       notice: Đơn đặt tour của bạn đã hủy thành công.
       thanks: Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!
+  comments:
+    comment_form:
+      review_placeholder: Nhập bình luận tại đây...
+      comment_button: Bình luận
+    flash:
+      comment_success: Bình luận đã được đăng.
+      comment_failed: Không thể bình luận.
+      update_success: Bình luận đã được cập nhật.
+      update_failed: Không thể cập nhật bình luận.
+      delete_success: Bình luận đã được xóa.
+      delete_failed: Không thể xóa bình luận.
+      comment_not_found: Không thể tìm thấy comment.
+      both_blank: Review và đánh giá không thể cùng để trắng.
+      review_too_short: Review quá ngắn (tối thiểu 10 ký tự)

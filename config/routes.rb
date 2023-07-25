@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     end
     resources :tours, only: %i(show index)
     resources :orders, only: %i(new create update)
+    resources :comments, only: %i(create update destroy)
   end
 end

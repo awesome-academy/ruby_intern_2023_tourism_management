@@ -18,13 +18,6 @@ class ApplicationController < ActionController::Base
     redirect_to current_user.admin? ? admin_orders_path : (user_orders_path current_user)
   end
 
-  def check_status_pending
-    return if @order.pending?
-
-    flash[:danger] = t "admin.orders.flash.order_status_changed"
-    redirect_to current_user.admin? ? admin_orders_path : (user_orders_path current_user)
-  end
-
   def access_denied
     flash[:danger] = t "application.not_permit_action"
     return redirect_to(root_path) unless current_user&.admin?
@@ -34,8 +27,8 @@ class ApplicationController < ActionController::Base
   end
 
   def build_tour_filter
-    @q = Tour.ransack params[:q]
-    @q.sorts = ["tours.created_at desc", "tours.name asc"] if @q.sorts.empty?
+    @q = Tour.includes(:category, {image_attachment: :blob}).ransack(params[:q])
+    @q.sorts = ["created_at desc", "name asc"] if @q.sorts.empty?
   end
 
   protected

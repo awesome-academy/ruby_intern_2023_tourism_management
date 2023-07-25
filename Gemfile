@@ -30,6 +30,7 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 
 group :development, :test do
+  gem "bullet"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rails-controller-testing"
   %w(rspec rspec-core rspec-expectations rspec-mocks rspec-support).each do |lib|

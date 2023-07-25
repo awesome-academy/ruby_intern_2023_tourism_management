@@ -81,6 +81,7 @@ en:
         submit_button: Submit
         approved_status: Approved
         cancelled_status: Cancelled
+        done_status: Done
         search_button: Search
         order_table:
           order_number: Order number
@@ -100,6 +101,7 @@ en:
         cant_update_order: Cannot update order
         update_order_success: Update order success
         order_status_changed: Order status has changed
+        order_not_end: Can't update done status when tour did not end
   shared:
     error_messages:
       error_text: error
@@ -120,8 +122,6 @@ en:
     compare_date: must be after start_date
     before_today: must be after today
     cost_range:
-      all_range: "All range"
-      all_value: "-"
       0_to_2m_range: "0 to 2,000,000 VNĐ"
       0_to_2m_value: "0-2000000"
       2m_to_4m_range: "2,000,000 to 4,000,000 VNĐ"
@@ -135,6 +135,7 @@ en:
       price_title: "Price only:"
       order_button: Order now
       disable_order_button: Tour is end
+      comment_title: Comment
     index:
       search_text: Search
       cost_range: Cost range
@@ -167,6 +168,7 @@ en:
       cant_find_order: Can't find order
       order_status_changed: Order status has changed
       cancell_order_success: Order has been canceled
+      order_existed: Order is exsisted
     order:
       order_number: "Order: %{order_number}"
       tour_name: "Tour name: %{tour_name}"
@@ -179,6 +181,8 @@ en:
       tour_guide: Register for tour guide
       not_tour_guide: Not register for tour guide
       cancel_order: "Hủy đặt tour"
+      confirm_delete_comment: You sure to delete this comment?
+      delete_comment_button: Delete comment
   user_mailer:
     order_approved:
       subject: Order approved
@@ -190,3 +194,17 @@ en:
       hello: "Hello %{user}"
       notice: Your order has been cancelled.
       thanks: Thank you for using our service!
+  comments:
+    comment_form:
+      review_placeholder: Type review
+      comment_button: Comment
+    flash:
+      comment_success: Your comment has been posted.
+      comment_failed: Can't comment.
+      update_success: Your comment has been updated.
+      update_failed: Can't update comment.
+      delete_success: Your comment has been deleted.
+      delete_failed: Can't delete comment.
+      comment_not_found: Comment not found.
+      both_blank: Review and rate cant be both blank.
+      review_too_short: Review is too short (minimum is 10 characters)

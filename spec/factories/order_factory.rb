@@ -58,4 +58,12 @@ FactoryBot.define do
     name {Faker::Name.last_name}
     role {"admin"}
   end
+
+  factory :comment do
+    association :order
+    association :user
+    tour_id {order.tour_id}
+    review {Faker::Lorem.sentence}
+    rate {Faker::Number.between(from: 1, to: 5)}
+  end
 end

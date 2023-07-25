@@ -7,7 +7,7 @@ class Admin::ToursController < Admin::AdminController
 
   def index
     build_tour_filter
-    @pagy_tours, @tours = pagy @q.result.includes(:category)
+    @pagy_tours, @tours = pagy @q.result
   end
 
   def new
