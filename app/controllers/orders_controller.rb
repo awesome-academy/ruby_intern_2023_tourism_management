@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit :note, :status, :amount_member, :tour_guide, :total_cost,
-                                  :contact_name, :contact_phone, :contact_address
+                                  :contact_name, :contact_phone, :contact_address, :service_option
   end
 
   def build_new_order
@@ -48,8 +48,9 @@ class OrdersController < ApplicationController
   def calculate_total_cost
     @order = current_user.orders.build order_params
     @order.tour = @current_tour
-    @order.total_cost = @order.tour.cost * order_params[:amount_member].to_i
-    @order.total_cost += @order.tour_tour_guide_cost if order_params[:tour_guide]
+    find_option_cost
+    @order.total_cost = @order_option_cost * order_params[:amount_member].to_i
+    @order.total_cost += @order.tour_tour_guide_cost if order_params[:tour_guide] == "1"
   end
 
   def find_current_tour
@@ -79,5 +80,10 @@ class OrdersController < ApplicationController
 
     flash[:danger] = t "orders.flash.order_existed"
     redirect_to root_path
+  end
+
+  def find_option_cost
+    option = Option.find_by(id: order_params[:service_option])
+    @order_option_cost = option.present? ? option.option_cost : @order.tour.cost
   end
 end

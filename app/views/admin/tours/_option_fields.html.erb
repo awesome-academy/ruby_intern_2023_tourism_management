@@ -1,0 +1,10 @@
+<div class="nested-fields">
+  <%= f.hidden_field :id %>
+  <div class="flex label-flex"><%= f.label :option_name, t(".label_name") %> <div class="required">&nbsp;*</div></div>
+  <%= f.text_field :option_name, class: "form-control" %>
+  <div class="flex label-flex"><%= f.label :option_cost, t(".label_cost") %> <div class="required">&nbsp;*</div></div>
+  <%= f.number_field :option_cost, min: 1000, step: "1000", class: "form-control" %>
+  <div class="flex label-flex"><%= f.label :option_content, t(".label_content") %> <div class="required">&nbsp;*</div></div>
+  <%= f.rich_text_area :option_content %>
+  <%= link_to_remove_association t(".remove_option_button"), f %>
+</div>

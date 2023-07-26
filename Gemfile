@@ -4,6 +4,7 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 ruby "3.0.2"
 
 gem "active_storage_validations"
+gem "activerecord-import"
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass"

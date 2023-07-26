@@ -6,23 +6,27 @@
       <div class="detail-tour-header"><%= t ".detail_header" %></div>
       <div class="tour-info">
         <div class="tour-info-title"><%= t ".description" %></div>
-        <div class="tour-description"><%= @tour.description %></div>
+        <div><%= @tour.description %></div>
         <div class="tour-info-title"><%= t ".schedule" %></div>
-        <div class="tour-schedule"><%= @tour.content %></div>
+        <div><%= @tour.content %></div>
+        <div class="tour-info-title"><%= t ".option_title" %></div>
+        <div><%= render partial: "tours/tour_option", collection: @tour.options %></div>
       </div>
     </div>
     <div class="detail-tour">
       <div class="detail-tour-header"><%= t ".comment_title" %></div>
       <div class="tour-info tour-info-comment">
-        <% @tour.comments.each do |comment| %>
-          <div class="tour-comment">
-            <div class="user-comment">
-              <%= comment.user.name if comment.review.present? %>
+        <% if @tour.comments.present? %>
+          <% @tour.comments.each do |comment| %>
+            <div class="tour-comment">
+              <div class="user-comment">
+                <%= comment.user.name if comment.review.present? %>
+              </div>
+              <div class="comment-line">
+                <%= comment.review if comment.review.present? %>
+              </div>
             </div>
-            <div class="comment-line">
-              <%= comment.review if comment.review.present? %>
-            </div>
-          </div>
+          <% end%>
         <% end%>
       </div>
     </div>
@@ -38,7 +42,7 @@
         </div>
       <% elsif tour_ordered? %>
         <div class="tour-button">
-          <%= link_to "Xem chi tiet dat tour", user_orders_path(current_user) %>
+          <%= link_to t(".view_order_button"), user_orders_path(current_user) %>
         </div>
       <% else %>
         <div class="tour-button">
@@ -46,9 +50,8 @@
         </div>
       <% end %>
     <div class="tour-date">
-      <div><%= t "tours.duration", duration: @tour.category.duration %></span>
-      <div><%= t "tours.start_date", start_date: @tour.start_date.strftime(Settings.format_date_f) %></span>
-      <div><%= t "tours.end_date", end_date: @tour.end_date.strftime(Settings.format_date_f) %></span>
+      <div><%= t "tours.start_date", start_date: l(@tour.start_date) %></span>
+      <div><%= t "tours.end_date", end_date: l(@tour.end_date) %></span>
       <div><%= t "tours.location", location: @tour.visit_location %></span>
       <div><%= t "tours.start_location", start_location: @tour.start_location %></span>
     </div>

@@ -1,7 +1,7 @@
 class Admin::ToursController < Admin::AdminController
-  load_and_authorize_resource
-  rescue_from ActiveRecord::RecordNotFound, with: :tour_not_found
+  authorize_resource
   before_action :prepare_create_tour, only: :create
+  before_action :find_tour_by_id, :check_edit_tour, only: %i(show update edit)
   before_action :check_edit_tour, only: %i(update edit)
   before_action :find_category_by_id, only: :update
 
@@ -19,10 +19,14 @@ class Admin::ToursController < Admin::AdminController
     if @tour.save
       flash[:success] = t "admin.tours.flash.created_tour_success"
       redirect_to admin_tours_path
+      add_option_to_tour
     else
       flash.now[:danger] = t "admin.tours.flash.created_tour_failed"
       render :new
     end
+  rescue ActiveRecord::RecordNotUnique
+    flash.now[:danger] = t "admin.tours.flash.duplicate_option_name"
+    render :new
   end
 
   def edit; end
@@ -31,17 +35,23 @@ class Admin::ToursController < Admin::AdminController
     if @tour.update tour_params.merge(category_id: params[:category_id])
       flash[:success] = t "admin.tours.flash.updated_tour_success"
       redirect_to admin_tours_path
+      add_option_to_tour
     else
       flash.now[:danger] = t "admin.tours.flash.updated_tour_failed"
       render :edit
     end
   end
 
+  def show
+    render json: @tour.to_json(include: :category)
+  end
+
   private
   def tour_params
     params.require(:tour).permit :name, :image, :start_date, :end_date, :visit_location, :tour_guide_cost,
                                  :cost, :description, :start_location, :content, :is_create_category,
-                                 category_attributes: [:name, :description, :duration]
+                                 category_attributes: [:name, :description],
+                                 options_attributes: [:id, :option_content, :option_name, :option_cost, :_destroy]
   end
 
   def prepare_create_tour
@@ -58,11 +68,6 @@ class Admin::ToursController < Admin::AdminController
     end
   end
 
-  def tour_not_found
-    flash[:danger] = t "admin.tours.flash.tour_not_found"
-    redirect_to admin_tours_path
-  end
-
   def check_edit_tour
     return if Time.zone.today < @tour.start_date
 
@@ -76,5 +81,24 @@ class Admin::ToursController < Admin::AdminController
 
     flash[:danger] = t "admin.tours.flash.category_not_found"
     redirect_to admin_tours_path
+  end
+
+  def find_tour_by_id
+    @tour = Tour.includes(:category, options: [:rich_text_option_content]).find_by(id: params[:id])
+    return if @tour
+
+    flash[:danger] = t "admin.tours.flash.tour_not_found"
+    redirect_to admin_tours_path
+  end
+
+  def add_option_to_tour
+    new_tour_option_ids = params.dig(:tour, :option_ids).reject(&:blank?)
+    return if new_tour_option_ids.blank?
+
+    tour_options = []
+    new_tour_option_ids.each do |option_id|
+      tour_options << TourOption.new(option_id: option_id, tour_id: @tour.id)
+    end
+    TourOption.import tour_options, all_or_none: true
   end
 end

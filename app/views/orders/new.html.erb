@@ -37,6 +37,14 @@
           <%= f.text_area :note, class: "form-control" %>
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.collection_radio_buttons(:service_option, load_service_option, :id, :option_name) do |r| %>
+            <%= r.radio_button(class: "option-radio-button", data: {option_cost: r.object.option_cost}) %>
+            <%= r.label %>
+          <% end %>
+        </div>
+      </div>
       <div class="form-row order-submit-button">
         <%= f.submit t(".order_button"), class: "btn btn-primary" %>
       </div>
@@ -47,8 +55,8 @@
         <%= image_tag @order.display_image, class: "tour_image" %>
         <div class="tour-name"><%= @order.tour_name %></div>
       </div>
-      <div class="tour-info-text"><%= t ".start_date", start_date: @order.tour_start_date.strftime(Settings.format_date_f) %></div>
-      <div class="tour-info-text"><%= t ".end_date", end_date: @order.tour_end_date.strftime(Settings.format_date_f) %></div>
+      <div class="tour-info-text"><%= t ".start_date", start_date: l(@order.tour_start_date) %></div>
+      <div class="tour-info-text"><%= t ".end_date", end_date: l(@order.tour_end_date) %></div>
       <div id="apply_for_amount_member" class="tour-info-text"><%= t ".amount_member", amount_member: @order.amount_member %></div>
       <div id="order_total_cost" class="total-cost"><%= t ".total_cost", total_cost: number_to_currency(@order.total_cost) %></div>
       <%= hidden_field_tag :order_tour_cost, @order.tour_cost %>
