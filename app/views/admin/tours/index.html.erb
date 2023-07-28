@@ -20,9 +20,7 @@
           <th class="td-text-center"><%= t ".tour_table.tour_number" %></th>
           <th class="td-text-center"><%= t ".tour_table.image" %></th>
           <th><%= t ".tour_table.tour_name" %></th>
-          <th><%= t ".tour_table.category" %></th>
           <th class="td-text-center"><%= t ".tour_table.cost" %></th>
-          <th><%= t ".tour_table.visit_location" %></th>
           <th class="td-text-center"><%= t ".tour_table.start_date" %></th>
           <th class="td-text-center"><%= t ".tour_table.end_date" %></th>
           <th></th>
@@ -40,7 +38,5 @@
       <%== render partial: "shared/pagination", locals: {pagy: @pagy_tours} %>
     </div>
   </div>
-  <div class="popup-overlay" id="tour-details-popup">
-    <div class="popup-content"></div>
-  </div>
+  <%= render partial: "tour_detail" %>
 <% end %>

@@ -2,14 +2,16 @@
   <div class="flex">
     <div class="user-order-title"><%= t ".order_number", order_number: order.id %></div>
     <% if order.pending? %>
-      <div class="order-status grey-bg"><%= order.status %></div>
+      <div class="order-status grey-bg"><%= t "orders.status.pending" %></div>
       <%= form_for :order, url: order_url(order), method: :patch, remote: true do |f| %>
-        <%= f.submit t(".cancel_order"), id: "btnSaveOrderForm", class: "btn btn-primary", data: {confirm: "Bạn có chắc chắn muốn hủy tour?"} %>
+        <%= f.submit t(".cancel_order"), id: "btnSaveOrderForm", class: "btn btn-danger", data: {confirm: "Bạn có chắc chắn muốn hủy tour?"} %>
       <% end %>
     <% elsif order.approved? %>
-      <div class="order-status blue-bg"><%= order.status %></div>
+      <div class="order-status blue-bg"><%= t "orders.status.approved" %></div>
     <% else %>
-      <div class="order-status <%= order.done? ? "green-bg" : "red-bg"%>"><%= order.status %></div>
+      <div class="order-status <%= order.done? ? "green-bg" : "red-bg"%>">
+        <%= order.done? ? t("orders.status.done") : t("orders.status.cancelled") %>
+      </div>
     <% end %>
   </div>
   <div class="order-info flex">
@@ -19,7 +21,7 @@
       <div class="tour-info">
         <div class="tour-info-item flex">
           <div class="point"></div>
-          <%= t ".tour_cost", tour_cost: number_to_currency(order.tour_cost) %>
+          <%= t ".tour_cost", tour_cost: number_to_currency(order.total_cost/order.amount_member) %>
         </div>
         <div class="tour-info-item flex">
           <div class="point"></div>

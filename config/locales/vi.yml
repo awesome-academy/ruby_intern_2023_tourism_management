@@ -65,6 +65,16 @@ vi:
         label_cost: Giá
         label_content: Nội dung
         remove_option_button: Xóa option
+      tour_detail:
+        category_name: "Danh mục: "
+        cost: "Giá: "
+        description: "Mô tả: "
+        start_date: "Ngày đi: "
+        end_date: "Ngày về: "
+        visit_location: "Nơi tham quan: "
+        start_location: "Nơi xuất phát: "
+        tour_guide_cost: "Giá hướng dẫn viên: "
+        close_button: Đóng
       flash:
         created_tour_success: Tạo tour thành công
         created_tour_failed: Tạo tour thất bại
@@ -104,6 +114,19 @@ vi:
           total_cost: Tổng tiền
           status: Trạng thái
         search_placeholder: Nhập để tìm kiếm...
+      order_detail:
+        order_number: "Đơn hàng số "
+        tour_name: "Tour: "
+        unit_cost: "Đơn giá: "
+        amount_member: "Số lượng thành viên: "
+        order_user: "Người đặt: "
+        contact_name: "Người liên hệ: "
+        contact_phone: "Số điện thoại: "
+        contact_address: "Địa chỉ: "
+        regis_tour_guide: Đăng ký hướng dẫn viên
+        unregis_tour_guide: Không đăng ký hướng dẫn viên
+        status: "Trạng thái: "
+        close_button: Đóng
       flash:
         order_not_found: Không tìm thấy đơn đặt tour
         cant_update_order: Không thể cập nhật đơn hàng
@@ -112,7 +135,8 @@ vi:
         order_not_end: Không thể hoàn thành tour khi tour chưa kết thúc.
   shared:
     error_messages:
-      error_text: lỗi
+      error_text: "Có %{error_count} lỗi sau:"
+      close_button: Đóng
   home:
     title: TRAVEL SUN *
     hello: Chào
@@ -146,11 +170,22 @@ vi:
       comment_title: Bình luận
       option_title: Gói dịch vụ
       view_order_button: Xem thông tin đặt tour
+      not_comment: Chưa có bình luận nào
+      user_rate: " đã đánh giá %{rate} sao"
     index:
       search_text: Tìm kiếm
       cost_range: Khoảng giá
       category: Danh mục
+      search_placeholder: Nhập để tìm kiếm...
+    tour:
+      not_rate: Chưa có đánh giá
+      rate: "%{rate} / 5 sao"
   orders:
+    status:
+      pending: Chờ xử lý
+      approved: Đã xử lý
+      cancelled: Đã hủy
+      done: Đã hoàn thành
     helper:
       default_option: Gói tiêu chuẩn
     new:

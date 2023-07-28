@@ -14,16 +14,12 @@
       <thead>
         <tr>
           <th class="td-text-center"><%= t ".order_table.order_number" %></th>
-          <th class="td-text-center"><%= t ".order_table.image" %></th>
           <th><%= t ".order_table.tour_name" %></th>
-          <th class="td-text-center"><%= t ".order_table.cost" %></th>
           <th><%= t ".order_table.member" %></th>
           <th><%= t ".order_table.contact_name" %></th>
-          <th class="td-text-center"><%= t ".order_table.contact_phone" %></th>
-          <th><%= t ".order_table.contact_address" %></th>
           <th class="td-text-center"><%= t ".order_table.tour_guide" %></th>
-          <th class="td-text-center"><%= t ".order_table.total_cost" %></th>
-          <th><%= t ".order_table.status" %></th>
+          <th class="td-text-right"><%= t ".order_table.total_cost" %></th>
+          <th class="td-text-center"><%= t ".order_table.status" %></th>
         </tr>
       </thead>
       <tbody id="order_paginate">
@@ -36,4 +32,6 @@
       <%== render partial: "shared/pagination", locals: {pagy: @pagy_orders} %>
     </div>
   </div>
+  <%= render partial: "admin/tours/tour_detail" %>
+  <%= render partial: "order_detail" %>
 <% end %>

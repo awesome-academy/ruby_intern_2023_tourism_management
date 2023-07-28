@@ -5,11 +5,11 @@
       <div class="pay-info-title info-title"><%= t ".pay_info_title" %></div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <%= f.label :contact_name, t(".label_contact_name") %> <span class="required">*</span>
+          <div class="flex label-flex"><%= f.label :contact_name, t(".label_contact_name") %><div class="required">&nbsp;*</div></div>
           <%= f.text_field :contact_name, class: "form-control" %>
         </div>
         <div class="form-group col-md-6">
-          <%= f.label :contact_phone, t(".label_contact_phone") %> <span class="required">*</span>
+          <div class="flex label-flex"><%= f.label :contact_phone, t(".label_contact_phone") %><div class="required">&nbsp;*</div></div>
           <%= f.text_field :contact_phone, class: "form-control" %>
         </div>
       </div>
@@ -18,12 +18,12 @@
         <%= f.text_field :user_email, class: "form-control", disabled: true %>
       </div>
       <div class="form-group">
-        <%= f.label :contact_address, t(".label_contact_address") %> <span class="required">*</span>
+        <div class="flex label-flex"><%= f.label :contact_address, t(".label_contact_address") %><div class="required">&nbsp;*</div></div>
         <%= f.text_field :contact_address, class: "form-control" %>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <%= f.label :amount_member, t(".label_amount_member") %> <span class="required">*</span>
+          <div class="flex label-flex"><%= f.label :amount_member, t(".label_amount_member") %><div class="required">&nbsp;*</div></div>
           <%= f.number_field :amount_member, min: 1, step: "1", class: "form-control" %>
           <div class="tour-guide-checkbox">
             <%= f.label :tour_guide do %>
@@ -37,13 +37,19 @@
           <%= f.text_area :note, class: "form-control" %>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <%= f.collection_radio_buttons(:service_option, load_service_option, :id, :option_name) do |r| %>
-            <%= r.radio_button(class: "option-radio-button", data: {option_cost: r.object.option_cost}) %>
-            <%= r.label %>
-          <% end %>
-        </div>
+      <div class="order-option">
+        <%= f.collection_radio_buttons(:service_option, load_service_option, :id, :option_name) do |r| %>
+          <div class="option-item">
+            <div class="option-title">
+              <div class="flex">
+                <%= r.radio_button(class: "option-radio-button", data: {option_cost: r.object.option_cost}) %>
+                <%= r.label(class: "option-name") %>
+              </div>
+              <div class="option-cost"><%= r.object.option_cost.present? ? number_to_currency(r.object.option_cost) : number_to_currency(@order.tour_cost) %></div>
+            </div>
+            <div class="option-content"><%= r.object.option_content %></div>
+          </div>
+        <% end %>
       </div>
       <div class="form-row order-submit-button">
         <%= f.submit t(".order_button"), class: "btn btn-primary" %>

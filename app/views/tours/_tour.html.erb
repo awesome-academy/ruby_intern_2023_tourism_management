@@ -3,9 +3,13 @@
   <div class="tour-item-content">
     <%= link_to tour.name, tour_path(id: tour.id), class: "tour-name" %>
     <p><%= t "tours.location", location: tour.visit_location %></p>
-    <p><%= t "tours.start_date", start_date: l(tour.start_date) %>
     <div class="tour-price">
-      <span class="tour-price-text"><%= number_to_currency tour.cost %></span>
+      <% if tour.average_rate > 0.0 %>
+        <div class="rate-text"><%= t ".rate", rate: tour.average_rate %></div>
+      <% else %>
+        <div class="rate-text small"><%= t ".not_rate" %></div>
+      <% end %>
+      <div class="tour-price-text"><%= number_to_currency tour.cost %></div>
     </div>
   </div>
 </div>

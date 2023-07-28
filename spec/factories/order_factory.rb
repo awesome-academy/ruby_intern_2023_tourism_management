@@ -4,7 +4,6 @@ FactoryBot.define do
   factory :category do
     name { Faker::Address.unique.full_address }
     description { Faker::Lorem.sentence }
-    duration { Faker::Number.between(from: 1, to: 10) }
   end
 
   factory :tour do
@@ -65,5 +64,11 @@ FactoryBot.define do
     tour_id {order.tour_id}
     review {Faker::Lorem.sentence}
     rate {Faker::Number.between(from: 1, to: 5)}
+  end
+
+  factory :option do
+    option_name {Faker::Address.unique.full_address}
+    option_cost {500000}
+    option_content {"<div>option content</div>"}
   end
 end

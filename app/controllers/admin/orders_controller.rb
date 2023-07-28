@@ -2,9 +2,10 @@ class Admin::OrdersController < Admin::AdminController
   load_and_authorize_resource
   rescue_from ActiveRecord::RecordNotFound, with: :order_not_found
   before_action :allow_status_pending_or_approved, :check_date_before_done, only: :update
+  before_action :find_order_by_id, only: :show
 
   def index
-    @pagy_orders, @orders = pagy Order.includes(tour: {image_attachment: :blob})
+    @pagy_orders, @orders = pagy Order.includes(:tour)
                                       .filter_by_text(params[:search_text])
                                       .filter_by_status(params[:status_search]).newest
   end
@@ -17,6 +18,10 @@ class Admin::OrdersController < Admin::AdminController
       flash[:danger] = t "admin.orders.flash.cant_update_order"
     end
     redirect_to admin_orders_path
+  end
+
+  def show
+    render json: @order.to_json(include: [:tour, :user])
   end
 
   private
@@ -37,5 +42,12 @@ class Admin::OrdersController < Admin::AdminController
 
     flash[:danger] = t "admin.orders.flash.order_not_end"
     redirect_to admin_orders_path
+  end
+
+  def find_order_by_id
+    @order = Order.includes(:tour, :user).find_by id: params[:id]
+    return if @order
+
+    order_not_found
   end
 end

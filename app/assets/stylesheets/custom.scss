@@ -5,6 +5,9 @@
 
 html {
   body {
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
     position: relative;
   }
   font-size: $font_size_16;
@@ -98,6 +101,7 @@ td {
   position: relative;
   height: calc(100vh - 5.5rem);
   color: $text_primary_color;
+  overflow: auto;
   .tour-navbar, .order-header-navbar {
     height: 48px;
     width: 100%;
@@ -137,14 +141,31 @@ td {
         margin-bottom: 0;
       }
       .collection-checkboxes {
-        margin-left: 32px;
+        padding: 12px 32px 12px 32px;
+        background-color: $white_text_color;
+        margin-bottom: 4px;
+        border-radius: 4px;
         .collection-checkbox-item {
           padding: 2px 0;
         }
+        .new-option-form {
+          .option-item {
+            display: flex;
+            flex-direction: column;
+            .btn {
+              margin: 6px 0;
+              padding: 3px 6px;
+              width: 140px;
+            }
+          }
+          .nested-fields{
+            margin-left: 24px;
+          }
+        }
       }
-      .mgtb-6px {
-        margin-top: 6px;
-        margin-bottom: 6px;
+      .mgtb-8px {
+        margin-top: 16px;
+        margin-bottom: 16px;
       }
     }
   }
@@ -295,6 +316,14 @@ td {
           font-size: 1.375rem;
           font-weight: 600;
         }
+        .tour-info-content {
+          padding: 8px 16px;
+          border-radius: 8px;
+          background-color: $grey_background_color;
+        }
+        .trix-content {
+          background-color: $grey_background_color;
+        }
       }
       .tour-info-comment {
         padding-top: 16px;
@@ -303,12 +332,32 @@ td {
           .user-comment {
             font-size: 1.175rem;
             font-weight: 700;
+            .user-rate {
+              font-size: 1rem;
+              font-weight: 500;
+            }
           }
           .comment-line {
-            padding: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
             background-color: $grey_background_color;
-            border-radius: 4px;
           }
+        }
+      }
+      .tour-option {
+        .trix-content {
+          background-color: $grey_background_color;
+        }
+        border-radius: 8px;
+        padding: 4px 16px;
+        margin-bottom: 2px;
+        background-color: $grey_background_color;
+          .tour-option-title {
+          font-size: 1.075rem;
+          color: $blue_text_color;
+        }
+        .tour-option-content {
+          padding-left: 16px;
         }
       }
     }
@@ -386,6 +435,46 @@ td {
     #order_note {
       height: 80px;
     }
+    .option-item {
+      background-color: $white_text_color;
+      padding: 8px 16px;
+      margin-bottom: 2px;
+      border-radius: 8px;
+      .option-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .option-cost {
+          font-size: 1.175rem;
+          font-weight: 600;
+          color: $blue_text_color;
+        }
+      }
+      .option-content {
+        padding-left: 48px;
+      }
+      label {
+        margin-bottom: 0;
+      }
+      .option-radio-button {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+      .option-name {
+        font-size: 1.175rem;
+      }
+    }
+    .order-option {
+      margin-bottom: 24px;
+    }
+    .tour-guide-checkbox label {
+      display: flex;
+      align-items: center;
+    }
+    .label-flex {
+      align-items: flex-start;
+    }
   }
   .order-right {
     width: 35%;
@@ -421,8 +510,8 @@ td {
   .order-status {
     height: 36px;
     border-radius: 16px;
-    margin: 0 48px;
-    padding: 0 8px;
+    margin: 0 24px;
+    padding: 0 16px;
     color: $white_text_color;
     display: flex;
     align-items: center;
@@ -534,7 +623,7 @@ td {
 .alert {
   position: absolute !important;
   padding: 0.5rem 1rem !important;
-  margin: 12px 0 0 0;
+  top: 12px;
   right: 16px;
   color: $white_text_color !important;
   animation: fadeOut 5s ease-in-out forwards;
@@ -575,6 +664,10 @@ input[type="checkbox"] {
   height: 16px;
   border: 1px solid $boder_primary_color !important;
   margin-right: 8px;
+}
+
+.trix-content {
+  background-color: $white_text_color;
 }
 
 .table-pagination {
@@ -689,7 +782,7 @@ input[type="checkbox"] {
         display: flex;
         flex-wrap: wrap;
         align-items: baseline;
-        justify-content: space-between;
+        justify-content: space-around;
       }
       .tour-item {
         background-color: $white_text_color;
@@ -713,12 +806,19 @@ input[type="checkbox"] {
           }
           .tour-price {
             display: flex;
-            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
             .tour-price-text {
               color: $red_text_color;
               font-size: 1.125rem;
               font-weight: 600;
               padding-right: 8px;
+            }
+            .rate-text {
+              color: $yellow_text_color;
+            }
+            .small {
+              font-size: 0.875rem;
             }
           }
         }
@@ -781,52 +881,52 @@ input[type="checkbox"] {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23fbbc04' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
 }
 
-.tour-name-link {
-  cursor: pointer;
-}
-
-.tour-link {
-  text-decoration: underline;
-  color: blue;
-  cursor: pointer;
-}
-
-.tour-link:hover {
+.tour-link, .order-link {
   text-decoration: none;
-  color: red;
+  color: $blue_text_color;
+  cursor: pointer;
+}
+
+.tour-link:hover, .order-link:hover {
+  color: $red_text_color;
 }
 
 .popup-overlay {
   display: none;
+}
+
+.popup-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(107, 102, 102, 0.5);
+  background-color: $popup_bg_color;
   z-index: 99999;
-}
-
-.popup-content, .popup-error-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.close-btn {
-  cursor: pointer;
-}
-
-.popup-error {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 99999;
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 360px;
+    transform: translate(-50%, -50%);
+    background-color: $white_text_color;
+    padding: 20px;
+    border-radius: 5px;
+    .popup-control {
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      .close-btn {
+        cursor: pointer;
+      }
+    }
+    .popup-title, .error-title {
+      padding: 4px 0;
+      font-size: 1.175rem;
+      font-weight: 600;
+    }
+    .tour-content-item {
+      padding: 4px 16px;
+    }
+  }
 }

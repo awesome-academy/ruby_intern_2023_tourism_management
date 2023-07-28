@@ -2,14 +2,12 @@
   <td class="td-text-center"><%= index %></td>
   <td class="td-text-center"><%= image_tag tour.display_image %></td>
   <td><span class="tour-link" data-tour-id="<%= tour.id %>"><%= tour.name %></span></td>
-  <td><%= tour.category_name %></td>
   <td class="td-text-right"><%= number_to_currency tour.cost %></td>
-  <td><%= tour.visit_location %></td>
   <td class="td-text-center"><%= l(tour.start_date) %></td>
   <td class="td-text-center"><%= l(tour.end_date) %></td>
   <td>
     <% if Date.today < tour.start_date %>
-      <%= link_to t(".edit_tour_text"), edit_admin_tour_path(tour) %>
+      <%= link_to t(".edit_tour_text"), edit_admin_tour_path(tour), class: "btn btn-secondary" %>
     <% end %>
   </td>
 </tr>

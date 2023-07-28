@@ -65,6 +65,16 @@ en:
         label_cost: Cost
         label_content: Content
         remove_option_button: Remove option
+      tour_detail:
+        category_name: "Category: "
+        cost: "Cost: "
+        description: "Description: "
+        start_date: "Start date: "
+        end_date: "End date: "
+        visit_location: "Visit location: "
+        start_location: "Start location: "
+        tour_guide_cost: "Tour guide cost: "
+        close_button: Close
       flash:
         created_tour_success: Tour created successfully
         created_tour_failed: Tour created failed
@@ -104,6 +114,19 @@ en:
           total_cost: Total cost
           status: Status
         search_placeholder: Type to search
+      order_detail:
+        order_number: Order number
+        tour_name: "Tour: "
+        unit_cost: "Unit cost: "
+        amount_member: "Amount member: "
+        order_user: "Order user: "
+        contact_name: "Contact name: "
+        contact_phone: "Contact phone: "
+        contact_address: "Contact address: "
+        regis_tour_guide: Registed for tour guide
+        unregis_tour_guide: No registed for tour guide
+        status: "Status: "
+        close_button: Close
       flash:
         order_not_found: Order not found
         cant_update_order: Cannot update order
@@ -112,7 +135,8 @@ en:
         order_not_end: Can't update done status when tour did not end
   shared:
     error_messages:
-      error_text: error
+      error_text: "Have %{error_count} error:"
+      close_button: Close
   home:
     title: Travel Sun
     hello: Hello
@@ -146,11 +170,22 @@ en:
       comment_title: Comment
       option_title: Option
       view_order_button: View detail order
+      not_comment: Don't have a comment
+      user_rate: "rate %{rate} star"
     index:
       search_text: Search
       cost_range: Cost range
       category: Category
+      search_placeholder: Type to search...
+    tour:
+      not_rate: Not a rate
+      rate: "%{rate}/5 star"
   orders:
+    status:
+      pending: Pending
+      approved: Approved
+      cancelled: Cancelled
+      done: Done
     helper:
       default_option: Option default
     new:

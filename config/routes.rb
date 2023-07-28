@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
     namespace :admin do
       resources :tours, except: %i(delete)
-      resources :orders, only: %i(index update)
+      resources :orders, only: %i(index update show)
     end
     resources :tours, only: %i(show index)
     resources :orders, only: %i(new create update)
