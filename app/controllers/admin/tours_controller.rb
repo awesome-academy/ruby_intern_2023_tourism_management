@@ -1,3 +1,5 @@
+require_relative "../services/tour_service"
+
 class Admin::ToursController < Admin::AdminController
   authorize_resource
   before_action :prepare_create_tour, only: :create
@@ -6,7 +8,7 @@ class Admin::ToursController < Admin::AdminController
   before_action :find_category_by_id, only: :update
 
   def index
-    build_tour_filter
+    @q = TourService.load_paging_tour params[:q]
     @pagy_tours, @tours = pagy @q.result
   end
 
@@ -84,7 +86,7 @@ class Admin::ToursController < Admin::AdminController
   end
 
   def find_tour_by_id
-    @tour = Tour.includes(:category, options: [:rich_text_option_content]).find_by(id: params[:id])
+    @tour = TourService.find_tour_by_id params[:id]
     return if @tour
 
     flash[:danger] = t "admin.tours.flash.tour_not_found"

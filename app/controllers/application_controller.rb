@@ -26,11 +26,6 @@ class ApplicationController < ActionController::Base
     redirect_to back_path
   end
 
-  def build_tour_filter
-    @q = Tour.includes(:category, {image_attachment: :blob}).ransack(params[:q])
-    @q.sorts = ["updated_at desc", "name asc"] if @q.sorts.empty?
-  end
-
   protected
 
   def after_sign_in_path_for resource
