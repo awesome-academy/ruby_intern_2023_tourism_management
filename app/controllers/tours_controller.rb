@@ -1,11 +1,13 @@
+require_relative "./services/tour_service"
+
 class ToursController < ApplicationController
   authorize_resource
   before_action :load_categories
   before_action :find_tour_by_id, only: :show
 
   def index
-    build_tour_filter
-    @pagy_tours, @tours = pagy @q.result.includes(:category, {image_attachment: :blob}), items: Settings.pagy_items_9
+    @q = TourService.load_paging_tour params[:q]
+    @pagy_tours, @tours = pagy @q.result, items: Settings.pagy_items_9
   end
 
   def show
@@ -18,7 +20,7 @@ class ToursController < ApplicationController
   end
 
   def find_tour_by_id
-    @tour = Tour.includes(comments: :user, options: [:rich_text_option_content]).find_by(id: params[:id])
+    @tour = TourService.find_tour_by_id params[:id]
     return if @tour
 
     flash[:danger] = t "tours.not_found"

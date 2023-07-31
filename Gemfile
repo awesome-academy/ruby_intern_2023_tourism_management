@@ -3,8 +3,8 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "3.0.2"
 
-gem "active_storage_validations"
 gem "activerecord-import"
+gem "active_storage_validations"
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass"
@@ -14,6 +14,12 @@ gem "config"
 gem "devise", "~> 4.9", ">= 4.9.2"
 gem "faker"
 gem "figaro"
+gem "grape"
+gem "grape-entity", "~> 1.0"
+gem "grape_on_rails_routes"
+gem "grape-pagy"
+gem "grape-swagger"
+gem "grape-swagger-rails"
 gem "i18n-js", "~> 3.0", ">= 3.0.2"
 gem "image_processing", ">= 1.2"
 gem "jbuilder", "~> 2.7"

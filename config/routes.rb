@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     resources :tours, only: %i(show index)
     resources :orders, only: %i(new create update)
     resources :comments, only: %i(create update destroy)
+    mount API::Base, at: "/"
+    mount GrapeSwaggerRails::Engine, at: "/documentation"
   end
 end
