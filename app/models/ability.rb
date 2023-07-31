@@ -7,7 +7,7 @@ class Ability
 
     return if user.blank?
 
-    can :read, User, id: user.id
+    can [:read, :update], User, id: user.id
     can [:read, :create, :update], Order
     can [:create, :update, :destroy], Comment
 
