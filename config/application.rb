@@ -14,7 +14,9 @@ module TourismManagement
     config.i18n.default_locale = :vi
 
     config.middleware.use I18n::JS::Middleware
-    
+
     config.active_job.queue_adapter = :sidekiq
+
+    config.autoload_paths << Rails.root.join("lib")
   end
 end
